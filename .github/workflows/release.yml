@@ -202,6 +202,17 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+
+      - name: 清理同 tag 的旧 Release
+        # 重新发同一个 tag 时，旧附件会残留，action 删附件会 404。
+        # 先把旧的整个删掉，保证这个流程可以重复执行。
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes 2>/dev/null || \
+            echo "  （没有旧 Release，跳过）"
+
       - name: 列出产物
         run: ls -laR artifacts/
       - name: 创建 Release
