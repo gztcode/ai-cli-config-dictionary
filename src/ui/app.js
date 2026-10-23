@@ -117,9 +117,30 @@ async function copyText(text) {
 
 // ── 外链 ────────────────────────────────────────────────
 
-// 说明文字里经常内嵌官方文档地址（「参见 https://code.claude.com/docs/...」），
-// 之前是纯文本 —— 看得见却点不动。这里把它们变成真链接。
-const URL_RE = /\bhttps?:\/\/[^\s<>"'）】，。；：、]+/g;
+// 说明文字里经常内嵌官方文档地址（「参见 https://code.claude.com/docs/...」）。
+//
+// 一长串 URL 摆在说明里太吵 —— 人读的是「参见」两个字，URL 只是它的指向。
+// 所以：**URL 本身不显示**，把 URL 前面紧邻的那个词（「参见」「See」…）
+// 变成可点的链接，点开就是那个 URL。原文一个字没改，只是地址藏进了链接里。
+const URL_RE = /\bhttps?:\/\/[^\s<>"'）`，。；：、]+/g;
+
+// 引导词的边界：碰到这些字符就停（说明的正文从这里断开）
+const LEAD_STOP = '，,。；;：:（(【[「」『』"\'“”‘’、！？!?）)】';
+
+// 抽出文本里的所有 URL（去掉结尾粘上的标点）
+function splitUrls(text) {
+  const out = [];
+  if (!text) return out;
+  const s = String(text);
+  URL_RE.lastIndex = 0;
+  let m;
+  while ((m = URL_RE.exec(s)) !== null) {
+    let u = m[0];
+    while (u.length && '.,;:!?'.includes(u[u.length - 1])) u = u.slice(0, -1);
+    if (u) out.push(u);
+  }
+  return out;
+}
 
 /** 生成一个指向外部地址的链接 */
 function externalLink(url, text, cls) {
@@ -138,7 +159,7 @@ function externalLink(url, text, cls) {
   return a;
 }
 
-/** 把文本里的 URL 变成可点击的链接（其余仍是纯文本） */
+/** 把文本里的 URL 变成可点击的链接（URL 本身不显示，链接文字取它前面的原文词） */
 function linkify(text) {
   const frag = document.createDocumentFragment();
   if (text == null || text === '') return frag;
@@ -152,8 +173,22 @@ function linkify(text) {
     while (url.length && '.,;:!?'.includes(url[url.length - 1])) url = url.slice(0, -1);
     if (!url) continue;
     const at = m.index;
-    if (at > last) frag.appendChild(document.createTextNode(s.slice(last, at)));
-    frag.appendChild(externalLink(url));
+
+    // 往回找 URL 前面的引导词：先跨过空格，再吃到标点为止
+    let p = at;
+    while (p > last && /\s/.test(s[p - 1])) p--;
+    let leadStart = p;
+    while (leadStart > last
+           && !/\s/.test(s[leadStart - 1])
+           && !LEAD_STOP.includes(s[leadStart - 1])) {
+      leadStart--;
+    }
+    const lead = s.slice(leadStart, p);
+
+    if (leadStart > last) frag.appendChild(document.createTextNode(s.slice(last, leadStart)));
+    // 引导词就是链接文字；没有引导词时给个兜底标签
+    const label = lead.trim() || (lang === 'zh-CN' ? '文档 ↗' : 'docs ↗');
+    frag.appendChild(externalLink(url, label));
     last = at + url.length;
   }
   if (last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
@@ -161,7 +196,8 @@ function linkify(text) {
 }
 
 /** 填一段可能含链接的文字（替代 textContent） */
-function setText(node, text) {  node.textContent = '';
+function setText(node, text) {
+  node.textContent = '';
   node.appendChild(linkify(text));
   return node;
 }
@@ -264,13 +300,42 @@ function renderDictSide() {
     dt.title = errs ? `${errs} 个错误` : (warns ? `${warns} 个警告` : '无问题');
     n.appendChild(dt);
     box.appendChild(n);
-    box.appendChild(el('div', 's', `${t.stats.total_keys} keys · ${t.stats.with_doc_url} doc`));
+    box.appendChild(el('div', 's', `${t.stats.total_keys} 项 · ${t.stats.with_doc_url} 有文档`));
     box.onclick = () => { cur = i; PAGE = 'dict'; render(); };
     side.appendChild(box);
   });
 }
 
-function renderRow(key, tool, idx) {
+
+// ── 搜索匹配 ───────────────────────────────────────────
+//
+// 界面是中文的，搜索却只匹配英文说明 —— 那是没法用的。
+// 现在按「键路径 + 英文说明 + 当前语言的译文 + 枚举取值」一起匹配：
+// 搜「沙箱」、搜「sandbox」、搜「bypassPermissions」都能找到对应的键。
+function keyMatches(key, needle) {
+  if (!needle) return true;
+  const n = needle.toLowerCase();
+  const tr = (key.translations && key.translations[lang]) || '';
+  const hay = (key.path + ' ' + (key.description || '') + ' ' + tr).toLowerCase();
+  if (hay.includes(n)) return true;
+  // 枚举取值也算：输入某个选项值能直接定位到拥有它的键
+  const enums = (key.enum_values || [])
+    .map(e => (e && e.value != null ? String(e.value) : ''))
+    .join(' ')
+    .toLowerCase();
+  return !!enums && enums.includes(n);
+}
+
+/** 这棵子树里有没有命中的键（自己没有也算） */
+function subtreeHasMatch(key, needle) {
+  if (keyMatches(key, needle)) return true;
+  for (const c of key.children || []) {
+    if (subtreeHasMatch(c, needle)) return true;
+  }
+  return false;
+}
+
+function renderRow(key, tool, idx, needle) {
   const wrap = el('div', isObjRow(key) ? 'rowobj' : 'rowleaf');
   const isObj = isObjRow(key);
   const hdr = el('div', 'row hdr');
@@ -331,6 +396,8 @@ function renderRow(key, tool, idx) {
   const desc = el('div', 'desc');
   const tr = key.translations && key.translations[lang];
   const en = key.description || '';
+  // 说明里出现过的 URL（用来避免下面重复列一遍）
+  const descText = [tr, en].filter(Boolean).join('\n');
   if (lang === 'zh-CN' && tr) {
     // 说明里的 URL 要能直接点开
     desc.appendChild(setText(el('span', 'zh'), tr));
@@ -369,9 +436,18 @@ function renderRow(key, tool, idx) {
     kids.appendChild(c);
   }
   if (key.doc_urls && key.doc_urls.length) {
-    const l = el('div', 'links');
-    key.doc_urls.forEach(u => l.appendChild(externalLink(u)));
-    kids.appendChild(l);
+    // 说明里已经写出来的 URL 就不必再列一遍（那是最吵的一处重复）
+    const shown = new Set(splitUrls(descText));
+    const rest = key.doc_urls.filter(u => !shown.has(u));
+    if (rest.length) {
+      const l = el('div', 'links');
+      rest.forEach((u, i) => {
+        const a = externalLink(u, rest.length > 1 ? `官方文档 ${i + 1} ↗` : '官方文档 ↗');
+        a.title = u;
+        l.appendChild(a);
+      });
+      kids.appendChild(l);
+    }
   }
   for (const is of (idx.direct[key.path] || [])) {
     const d = el('div', 'iss ' + (is.level === 'error' ? 'e' : 'w'));
@@ -382,11 +458,13 @@ function renderRow(key, tool, idx) {
 
   if (isObj) {
     const box = el('div', 'kids');
+    // 自己命中 → 整棵子树都留着；只是后代命中 → 只留命中的那条链
+    const selfHit = !needle || keyMatches(key, needle);
     key.children.forEach(c => {
       if (c.name === '[]' || c.name === '[*]') return;
-      if (q && !((c.path + ' ' + (c.description || '')).toLowerCase().includes(q.toLowerCase()))) return;
+      if (needle && !selfHit && !subtreeHasMatch(c, needle)) return;
       if (filt === 'set' && !subtreeConfigured(c, tool.config)) return;
-      box.appendChild(renderRow(c, tool, idx));
+      box.appendChild(renderRow(c, tool, idx, needle));
     });
     if (box.childNodes.length) wrap.appendChild(box);
   }
@@ -439,7 +517,11 @@ function renderDict(main) {
       // 内置的派生 schema 没有远程地址，别做成能点的假链接
       b.appendChild(el('span', 'srcfile', url.replace(/^builtin:/, '')));
     } else {
-      b.appendChild(externalLink(url));
+      // 不显示长串地址：只留最后一段文件名，完整地址放 tooltip
+      const tail = url.split('?')[0].split('/').filter(Boolean).pop() || url;
+      const a = externalLink(url, tail + ' ↗');
+      a.title = url;
+      b.appendChild(a);
     }
     b.appendChild(document.createTextNode(
       `  · sha256 ${t.source.sha256.slice(0, 16)}…  · ${t.source.bytes} B  · ${t.source.fetched_at}`));
@@ -494,8 +576,9 @@ function renderDict(main) {
     if (filt === 'nodoc' && (k.doc_urls && k.doc_urls.length)) continue;
     if (filt === 'deprecated' && !k.deprecated) continue;
     if (filt === 'set' && !subtreeConfigured(k, t.config)) continue;
-    if (q && !((k.path + ' ' + (k.description || '')).toLowerCase().includes(q.toLowerCase()))) continue;
-    main.appendChild(renderRow(k, t, idx));
+    // 父键本身没命中，但子树里有命中的 —— 也要留着（否则搜嵌套键永远搜不到）
+    if (q && !subtreeHasMatch(k, q)) continue;
+    main.appendChild(renderRow(k, t, idx, q));
     shown++;
   }
   if (!shown) main.appendChild(el('div', 'empty', '没有匹配的键'));
@@ -1565,6 +1648,83 @@ function renderNewFilePanel(main) {
   main.appendChild(box);
 }
 
+/// 保存当前文件（校验 → 确认 → 落盘）
+///
+/// 按钮和 Cmd/Ctrl+S 走的是同一段逻辑 —— 快捷键不该比按钮少做校验。
+async function saveCurrentFile() {
+  const f = EDITOR.file;
+  if (!f || !EDITOR.ops.length) return;
+
+  // 保存前强制校验：有解析错误直接拦下，有错误则要用户确认
+  let v = null;
+  try {
+    v = await invoke('validate_edit', { path: EDITOR.file.path, ops: EDITOR.ops });
+  } catch (e) {
+    alert('校验失败：' + e);
+    return;
+  }
+  EDITOR.validation = v;
+  EDITOR.stale = false;
+  renderValidationPanel();
+  if (v.parse_error) {
+    alert('保存已取消：修改后的内容无法解析\n' + v.parse_error);
+    return;
+  }
+  if (v.error_count > 0) {
+    const detail = (v.issues || [])
+      .filter(i => i.level === 'error')
+      .map(i => '• ' + i.path + ' — ' + i.message)
+      .join('\n');
+    if (!confirm(`校验发现 ${v.error_count} 个错误，仍然保存吗？\n\n${detail}`)) {
+      return;
+    }
+  }
+  try {
+    const res = await invoke('commit_edit', {
+      path: EDITOR.file.path, ops: EDITOR.ops, base_fingerprint: EDITOR.file.fingerprint,
+    });
+    EDITOR.file = await invoke('open_file', { path: EDITOR.file.path });
+    EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
+    EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
+    render();
+    await runValidation();
+    alert('已保存' + (res.backup ? `\n备份：${res.backup}` : ''));
+  } catch (e) {
+    // 后端冲突错误是结构化 JSON 字符串
+    const msg = String((e && e.message) || e);
+    let payload = null;
+    try { payload = JSON.parse(msg); } catch (_) { payload = null; }
+    if (payload && payload.kind === 'conflict') {
+      const choice = await askChoice(
+        '文件已被其他程序修改',
+        `打开之后这个文件又变了（指纹 ${payload.expected} → ${payload.actual}）。\n` +
+        '继续保存会覆盖对方的改动。',
+        [
+          { id: 'reload', label: '放弃我的修改，重新载入', desc: '读取磁盘上的最新内容，丢弃当前未保存的改动' },
+          { id: 'overwrite', label: '仍然覆盖保存', desc: '用我的版本覆盖磁盘上的文件' },
+          { id: 'cancel', label: '先不保存', desc: '什么都不做，改动继续留在编辑器里' },
+        ]);
+      if (choice === 'reload') {
+        EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
+        EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
+        EDITOR.file = await invoke('open_file', { path: EDITOR.file.path });
+        render();
+      } else if (choice === 'overwrite') {
+        try {
+          const res2 = await invoke('commit_edit', { path: EDITOR.file.path, ops: EDITOR.ops });
+          EDITOR.file = await invoke('open_file', { path: EDITOR.file.path });
+          EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
+          EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
+          render();
+          alert('已覆盖保存' + (res2.backup ? `\n备份：${res2.backup}` : ''));
+        } catch (e2) { alert('保存失败：' + e2); }
+      }
+      return;
+    }
+    alert('保存失败：' + msg);
+  }
+}
+
 function renderEditor(main) {
   const f = EDITOR.file;
   if (!f) {
@@ -1620,76 +1780,7 @@ function renderEditor(main) {
   const save = el('button', 'primary', '保存到文件');
   save.id = 'btn-save';
   save.disabled = !EDITOR.ops.length;
-  save.onclick = async () => {
-    // 保存前强制校验：有解析错误直接拦下，有错误则要用户确认
-    let v = null;
-    try {
-      v = await invoke('validate_edit', { path: f.path, ops: EDITOR.ops });
-    } catch (e) {
-      alert('校验失败：' + e);
-      return;
-    }
-    EDITOR.validation = v;
-    EDITOR.stale = false;
-    renderValidationPanel();
-    if (v.parse_error) {
-      alert('保存已取消：修改后的内容无法解析\n' + v.parse_error);
-      return;
-    }
-    if (v.error_count > 0) {
-      const detail = (v.issues || [])
-        .filter(i => i.level === 'error')
-        .map(i => '• ' + i.path + ' — ' + i.message)
-        .join('\n');
-      if (!confirm(`校验发现 ${v.error_count} 个错误，仍然保存吗？\n\n${detail}`)) {
-        return;
-      }
-    }
-    try {
-      const res = await invoke('commit_edit', {
-        path: f.path, ops: EDITOR.ops, base_fingerprint: f.fingerprint,
-      });
-      EDITOR.file = await invoke('open_file', { path: f.path });
-      EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
-      EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
-      render();
-      await runValidation();
-      alert('已保存' + (res.backup ? `\n备份：${res.backup}` : ''));
-    } catch (e) {
-      // 后端冲突错误是结构化 JSON 字符串
-      const msg = String((e && e.message) || e);
-      let payload = null;
-      try { payload = JSON.parse(msg); } catch (_) { payload = null; }
-      if (payload && payload.kind === 'conflict') {
-        const choice = await askChoice(
-          '文件已被其他程序修改',
-          `打开之后这个文件又变了（指纹 ${payload.expected} → ${payload.actual}）。\n` +
-          '继续保存会覆盖对方的改动。',
-          [
-            { id: 'reload', label: '放弃我的修改，重新载入', desc: '读取磁盘上的最新内容，丢弃当前未保存的改动' },
-            { id: 'overwrite', label: '仍然覆盖保存', desc: '用我的版本覆盖磁盘上的文件' },
-            { id: 'cancel', label: '先不保存', desc: '什么都不做，改动继续留在编辑器里' },
-          ]);
-        if (choice === 'reload') {
-          EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
-          EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
-          EDITOR.file = await invoke('open_file', { path: f.path });
-          render();
-        } else if (choice === 'overwrite') {
-          try {
-            const res2 = await invoke('commit_edit', { path: f.path, ops: EDITOR.ops });
-            EDITOR.file = await invoke('open_file', { path: f.path });
-            EDITOR.ops = []; EDITOR.undo = []; EDITOR.redo = [];
-            EDITOR.newText = null; EDITOR.diff = []; EDITOR.dirty = false;
-            render();
-            alert('已覆盖保存' + (res2.backup ? `\n备份：${res2.backup}` : ''));
-          } catch (e2) { alert('保存失败：' + e2); }
-        }
-        return;
-      }
-      alert('保存失败：' + msg);
-    }
-  };
+  save.onclick = saveCurrentFile;
   acts.appendChild(save);
 
   const revert = el('button', null, '放弃修改');
@@ -2428,8 +2519,10 @@ function applyTheme(theme) {
   try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* 忽略 */ }
   const btn = document.getElementById('theme');
   if (btn) {
-    btn.textContent = theme === 'light' ? '深色' : '浅色';
-    btn.title = theme === 'light' ? '切换到深色模式' : '切换到浅色模式';
+    // 显示**当前**是哪个模式（不是点下去会变成哪个）——
+    // 按钮上一眼看到的就是自己所处的状态，不会点反。
+    btn.textContent = theme === 'light' ? '☀ 浅色' : '☾ 深色';
+    btn.title = theme === 'light' ? '当前浅色模式，点击切到深色' : '当前深色模式，点击切到浅色';
   }
 }
 
@@ -2469,8 +2562,66 @@ window.__focusSearch = () => {
   if (inp) { inp.focus(); inp.select(); }
 };
 
+// ── 键盘快捷键 ─────────────────────────────────────────
+//
+// 全局快捷键（Cmd/Ctrl+Shift+C / +F）由桌面端的托盘模块负责；
+// 这里管的是**窗口内**的常用操作：撤销重做、聚焦搜索、保存、关面板。
+/**
+ * 焦点是不是在可编辑的输入框里（那种情况下 Ctrl+Z 归它） */
+function inTextField(e) {
+  const t = e.target;
+  if (!t) return false;
+  const tag = (t.tagName || '').toLowerCase();
+  return tag === 'input' || tag === 'textarea' || t.isContentEditable;
+}
+
+function installShortcuts() {
+  document.addEventListener('keydown', (e) => {
+    // Cmd 和 Ctrl 都认：macOS 上 Cmd 是惯例，Ctrl 是很多人的肌肉记忆，
+    // 两者行为一致，不用先想「这台机器该按哪个」。
+    const mod = e.metaKey || e.ctrlKey;
+    if (!mod) {
+      // Esc：关掉打开的面板 / 弹窗
+      if (e.key === 'Escape' && EDITOR.panel) {
+        EDITOR.panel = null;
+        render();
+      }
+      return;
+    }
+    // Cmd+Ctrl 组合是系统级的（快捷键中心之类），让给系统
+    if (e.metaKey && e.ctrlKey) return;
+    const k = (e.key || '').toLowerCase();
+    if (k === 'z') {
+      // 输入框里的 Ctrl+Z 是「撤销我刚敲的字」，别抢
+      if (inTextField(e)) return;
+      e.preventDefault();
+      if (PAGE === 'edit') { if (e.shiftKey) redoOp(); else undoOp(); }
+      return;
+    }
+    if (k === 'y') {
+      if (inTextField(e)) return;
+      e.preventDefault();
+      if (PAGE === 'edit') redoOp();
+      return;
+    }
+    if (k === 'f') {
+      e.preventDefault();
+      if (PAGE !== 'dict') { PAGE = 'dict'; render(); }
+      const inp = document.getElementById('keysearch');
+      if (inp) { inp.focus(); inp.select(); }
+      return;
+    }
+    if (k === 's') {
+      e.preventDefault();
+      if (PAGE === 'edit' && EDITOR.ops.length) saveCurrentFile();
+      return;
+    }
+  });
+}
+
 function boot() {
   installTheme();
+  installShortcuts();
   document.getElementById('lang').onclick = () => {
     lang = lang === 'zh-CN' ? 'en' : 'zh-CN';
     document.getElementById('lang').textContent = lang === 'zh-CN' ? 'EN' : '中文';
