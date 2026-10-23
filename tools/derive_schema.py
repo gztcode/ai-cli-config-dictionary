@@ -1054,41 +1054,6 @@ GEMINI_DOC_BLOB = ("https://github.com/google-gemini/gemini-cli/blob/main/"
                    "docs/reference/configuration.md")
 
 
-def doc_section_mentions(md, base_url, key_re=r"`([A-Za-z_][\w]*(?:\.[\w]+)*)`"):
-    """扫文档各小节，把小节里**提到的键**记到该小节的锚点上。
-
-    有些工具的文档是叙述式的（没有逐键小节），但正文里会提到键名。
-    把「提到它的那个小节」作为链接，比完全没有链接有用得多。
-    """
-    out = {}
-    cur = ""
-    for line in md.splitlines():
-        hm = re.match(r"^#{2,4}\s+(.+?)\s*$", line)
-        if hm:
-            cur = strip_md(hm.group(1))
-            continue
-        if not cur:
-            continue
-        for k in re.findall(key_re, line):
-            if k not in out:
-                out[k] = doc_link(base_url, cur)
-    return out
-
-
-def doc_layer(md, base_url):
-    """把「小节里提到的键」整理成补充层的标准格式。
-
-    标准格式与 gemini-cli 的补充层一致：
-        `{ "键路径": { "description": "...", "doc_url": "..." } }`
-    这里只有 doc_url —— 说明文字要靠官方散文原句，不做二次加工。
-    """
-    mentions = doc_section_mentions(md, base_url)
-    out = {}
-    for k, u in mentions.items():
-        out[k] = {"doc_url": u}
-    return out
-
-
 # ── schema 感知的文档层 ────────────────────────────────
 #
 # 上面的「小节提及」是盲扫：抓到什么算���么。
