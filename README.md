@@ -209,14 +209,14 @@ tests/
 git tag v0.2.0 && git push origin v0.2.0
 ```
 
-产出的安装包：
+产出的安装包（附件名统一用 ASCII）：
 
 | 平台 | 文件 |
 |---|---|
-| macOS (Apple Silicon) | `AI配置字典-aarch64-apple-darwin.zip` + `.dmg` |
-| macOS (Intel) | `AI配置字典-x86_64-apple-darwin.zip` + `.dmg` |
-| Windows (x64) | `.msi` |
-| Linux (x64) | `.deb` + `.AppImage` |
+| macOS (Apple Silicon) | `AI-CLI-Config-Dictionary-aarch64-apple-darwin.zip` + `.dmg` |
+| macOS (Intel) | `AI-CLI-Config-Dictionary-x86_64-apple-darwin.zip` + `.dmg` |
+| Windows (x64) | `AI-CLI-Config-Dictionary-x86_64-pc-windows-msvc.msi` |
+| Linux (x64) | `AI-CLI-Config-Dictionary-x86_64-unknown-linux-gnu.deb` + `.AppImage` |
 
 另外还附上纯 Rust 的命令行版 `cfg-explorer-<target>`（无 GUI 依赖，可在服务器上跑 `scan` / `check` / `edit`）。
 

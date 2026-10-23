@@ -141,18 +141,27 @@ jobs:
           set -eu
           BUNDLE="desktop/src-tauri/target/${{ matrix.target }}/release/bundle"
           mkdir -p dist
+          # 附件名统一用 ASCII：upload-artifact 会把中文清洗成 "."
+          BASE="AI-CLI-Config-Dictionary-${{ matrix.target }}"
           case "${{ matrix.target }}" in
             *apple-darwin)
-              ditto -c -k --keepParent "$BUNDLE/macos/AI配置字典.app" \
-                "dist/AI配置字典-${{ matrix.target }}.zip"
-              cp "$BUNDLE"/dmg/*.dmg dist/ 2>/dev/null || true
+              ditto -c -k --keepParent "$BUNDLE/macos/AI配置字典.app" "dist/$BASE.zip"
+              for f in "$BUNDLE"/dmg/*.dmg; do
+                [ -f "$f" ] && cp "$f" "dist/$BASE.dmg"
+              done
               ;;
             *windows-msvc)
-              cp "$BUNDLE"/msi/*.msi dist/ 2>/dev/null || true
+              for f in "$BUNDLE"/msi/*.msi; do
+                [ -f "$f" ] && cp "$f" "dist/$BASE.msi"
+              done
               ;;
             *linux-gnu)
-              cp "$BUNDLE"/deb/*.deb dist/ 2>/dev/null || true
-              cp "$BUNDLE"/appimage/*.AppImage dist/ 2>/dev/null || true
+              for f in "$BUNDLE"/deb/*.deb; do
+                [ -f "$f" ] && cp "$f" "dist/$BASE.deb"
+              done
+              for f in "$BUNDLE"/appimage/*.AppImage; do
+                [ -f "$f" ] && cp "$f" "dist/$BASE.AppImage"
+              done
               ;;
           esac
           # 命令行版也带上（纯 Rust，无 GUI 依赖）
