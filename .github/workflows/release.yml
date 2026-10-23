@@ -35,6 +35,8 @@ jobs:
       - name: 去掉国内镜像配置
         # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
         # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        # 用 bash：Windows 默认的 PowerShell 里 `rm -f` 参数是有歧义的。
+        shell: bash
         run: rm -f .cargo/config.toml
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -85,6 +87,8 @@ jobs:
       - name: 去掉国内镜像配置
         # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
         # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        # 用 bash：Windows 默认的 PowerShell 里 `rm -f` 参数是有歧义的。
+        shell: bash
         run: rm -f .cargo/config.toml
 
       - uses: dtolnay/rust-toolchain@stable
@@ -181,6 +185,8 @@ jobs:
       - name: 去掉国内镜像配置
         # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
         # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        # 用 bash：Windows 默认的 PowerShell 里 `rm -f` 参数是有歧义的。
+        shell: bash
         run: rm -f .cargo/config.toml
       - uses: actions/download-artifact@v4
         with:
