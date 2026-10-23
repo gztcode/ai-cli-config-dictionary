@@ -1,0 +1,1745 @@
+{
+ "agent": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#global-toolset-disable"
+ },
+ "agent.agent_cache": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.agent_cache.idle_ttl_secs": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.agent_cache.max_evictions_per_pass": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.agent_cache.max_size": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.agent_cache.memory_high_mb": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.agent_cache.protect_recent": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-agent-cache"
+ },
+ "agent.api_max_retries": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#iteration-budget"
+ },
+ "agent.auto_recovery_cycles": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#iteration-budget"
+ },
+ "agent.budget_warning_ratio": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#iteration-budget"
+ },
+ "agent.clarify_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#clarify"
+ },
+ "agent.coding_instructions": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#verify-on-stop-coding-verification"
+ },
+ "agent.cron_drain_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-restart-drain"
+ },
+ "agent.disabled_toolsets": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#global-toolset-disable"
+ },
+ "agent.empty_response_guard.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "agent.execution_guidance": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#execution-discipline-guidance"
+ },
+ "agent.fast_auto_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#fast-mode"
+ },
+ "agent.gateway_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#session-stall-watchdog"
+ },
+ "agent.gateway_turn_lease_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-turn-lease-timeout"
+ },
+ "agent.local_stream_stale_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#api-timeouts"
+ },
+ "agent.max_turns": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#iteration-budget"
+ },
+ "agent.max_verify_nudges": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#verify-on-stop-coding-verification"
+ },
+ "agent.reasoning_overrides": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-model-reasoning-overrides"
+ },
+ "agent.reconnect_attention_after": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#reconnect-attention-escalation"
+ },
+ "agent.restart_after_turn_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-restart-drain"
+ },
+ "agent.restart_drain_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-restart-drain"
+ },
+ "agent.run_budget_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#wall-clock-run-budget"
+ },
+ "agent.service_tier": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#fast-mode"
+ },
+ "agent.session_stall_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#session-stall-watchdog"
+ },
+ "agent.stall_guards": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#runtime-anti-stall-guards"
+ },
+ "agent.stream_drain_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#api-timeouts"
+ },
+ "agent.text_verbosity": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#answer-length-text_verbosity"
+ },
+ "agent.tool_use_enforcement": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-use-enforcement"
+ },
+ "agent.turn_liveness": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#turn-liveness-watchdog"
+ },
+ "agent.turn_liveness.poll_s": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#turn-liveness-watchdog"
+ },
+ "agent.turn_liveness.timeout_s": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#turn-liveness-watchdog"
+ },
+ "agent.verify_guidance": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#verify-on-stop-coding-verification"
+ },
+ "agent.verify_on_stop": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#verify-on-stop-coding-verification"
+ },
+ "approvals": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#smart-approvals"
+ },
+ "approvals.denial_breaker_threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#denial-circuit-breaker"
+ },
+ "approvals.deny": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#deny-rules"
+ },
+ "approvals.mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#smart-approvals"
+ },
+ "approvals.smart_policy": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#custom-smart-approval-policy"
+ },
+ "approvals.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auth": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#provider-options"
+ },
+ "auxiliary": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.approval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.approval.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.approval.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.approval.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.approval.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.approval.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.approval.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.background_review": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.background_review.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.background_review.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.background_review.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.background_review.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.background_review.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.background_review.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.background_review.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.compression": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.compression.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.compression.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.compression.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.compression.no_progress_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#stream-progress-timeout"
+ },
+ "auxiliary.compression.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.compression.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.compression.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.curator": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.curator.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.curator.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.curator.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.curator.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.curator.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.curator.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.goal_judge.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.goal_judge.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.goal_judge.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.goal_judge.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.goal_judge.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.goal_judge.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.kanban_decomposer.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.kanban_decomposer.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.kanban_decomposer.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.kanban_decomposer.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.kanban_decomposer.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.kanban_decomposer.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.mcp": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.mcp.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.mcp.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.mcp.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.mcp.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.mcp.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.mcp.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.memory_query_rewrite.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.memory_query_rewrite.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.memory_query_rewrite.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.memory_query_rewrite.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.memory_query_rewrite.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.moa_aggregator": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.moa_aggregator.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.moa_aggregator.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.moa_aggregator.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.moa_aggregator.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.moa_aggregator.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.moa_reference": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.moa_reference.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.moa_reference.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.moa_reference.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.moa_reference.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.moa_reference.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.monitor.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.monitor.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.monitor.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.monitor.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.monitor.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.monitor.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.profile_describer.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.profile_describer.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.profile_describer.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.profile_describer.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.profile_describer.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.profile_describer.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "auxiliary.review.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.review.api_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "auxiliary.review.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.review.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.review.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.skills_hub": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.skills_hub.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.skills_hub.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.skills_hub.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.skills_hub.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.skills_hub.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.skills_hub.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.stream_only_base_urls": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#stream-only-endpoints"
+ },
+ "auxiliary.title_generation": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#configuring-auxiliary-models-interactively"
+ },
+ "auxiliary.title_generation.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.title_generation.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.title_generation.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.title_generation.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "auxiliary.title_generation.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.title_generation.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.title_generation.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.title_generation.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.triage_specifier.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.triage_specifier.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.tts_audio_tags.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.tts_audio_tags.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.vision": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.vision.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.vision.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.vision.download_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.vision.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.vision.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.vision.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.vision.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "auxiliary.voice_chat.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.voice_chat.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "auxiliary.voice_chat.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.voice_chat.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "auxiliary.voice_chat.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "auxiliary.voice_chat.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "bedrock": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "bedrock.discovery.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "browser": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "browser.camofox": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.camofox.adopt_existing_tab": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.camofox.managed_persistence": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.camofox.session_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.camofox.user_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.cdp_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.command_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.dialog_policy": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.dialog_timeout_s": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.engine": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#context-engine"
+ },
+ "browser.extension_control.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "browser.inactivity_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "browser.record_sessions": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#browser"
+ },
+ "checkpoints": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#checkpoints"
+ },
+ "checkpoints.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#checkpoints"
+ },
+ "checkpoints.max_snapshots": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#checkpoints"
+ },
+ "code_execution": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#code-execution"
+ },
+ "code_execution.mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#code-execution"
+ },
+ "compression": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.context_timeout_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.context_total_ceiling_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.hygiene_failure_cooldown_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.hygiene_hard_message_limit": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.hygiene_max_turn_hold_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.hygiene_timeout_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.hygiene_total_ceiling_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.idle_compact_after_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.in_place": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.proactive_prune_min_reclaim_tokens": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.proactive_prune_min_result_chars": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.proactive_prune_tokens": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.progress_notices": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.protect_first_n": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.protect_last_n": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.tail_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.target_ratio": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "compression.threshold_tokens": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "context": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#context-engine"
+ },
+ "context.engine": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#context-engine"
+ },
+ "context.memory_trim.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "context_file_max_chars": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#context-file-truncation"
+ },
+ "context_file_read_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#context-file-truncation"
+ },
+ "cron": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#file-mutation-verifier"
+ },
+ "cron.chronos.portal_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "cron.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "cron.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "curator": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "curator.backup.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "curator.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "dashboard": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth.password": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth.password_hash": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth.secret": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth.session_ttl_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.basic_auth.username": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.drain_auth": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.drain_auth.min_secret_chars": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.drain_auth.scope": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.oauth": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.oauth.client_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.oauth.portal_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.public_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.show_token_analytics": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.startup_orphan_sweep": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.theme": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.trusted_proxies": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.ws_orphan_activity_stale_s": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.ws_orphan_reap_grace_s": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.ws_ping_interval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "dashboard.ws_ping_timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "database": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#database-settings"
+ },
+ "database.journal_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#database-settings"
+ },
+ "delegation": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "delegation.api_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "delegation.api_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.base_url": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.compression_threshold_tokens": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.fallback_providers": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.max_concurrent_children": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.max_spawn_depth": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#configuring-auxiliary-models-interactively"
+ },
+ "delegation.oneshot_max_children": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.orchestrator_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "delegation.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#configuring-auxiliary-models-interactively"
+ },
+ "delegation.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "delegation.request_overrides": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "desktop": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#dashboard"
+ },
+ "desktop.auto_continue.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "desktop.font_family": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "discord": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "discord.auto_thread": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "discord.free_response_auto_thread": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "discord.free_response_channels": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "discord.missed_message_backfill.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "discord.missed_message_backfill.limit": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#file-read-safety"
+ },
+ "discord.require_mention": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "discord.voice_fx.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "display": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.battery": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#status-bar-field-selection-clitui"
+ },
+ "display.bell_on_complete": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.bell_on_prompt": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.cli_multiline_shortcuts": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.cli_rebuild_scrollback_on_redraw": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.compact": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.credits_notices": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.file_mutation_verifier": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.focus_saved_tool_progress": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#focus-view-focus-cli--tui"
+ },
+ "display.focus_view": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.interim_assistant_messages": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.personality": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.pet.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "display.platforms": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.platforms.discord": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "display.platforms.discord.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "display.platforms.slack": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "display.platforms.slack.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "display.platforms.telegram": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "display.platforms.telegram.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "display.platforms.wecom": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "display.platforms.wecom.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "display.resume_display": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.runtime_footer": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.runtime_footer.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.runtime_footer.fields": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.show_commentary": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.show_cost": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.show_reasoning": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.skin": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.spinner_token_flow": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.status_bar": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.status_bar.fields": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "display.suppress_warning_notifications": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.timestamp_format": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.timestamps": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.tool_preview_length": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.tool_progress_command": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.turn_summary": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "display.vim_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#display-settings"
+ },
+ "doctor": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#database-settings"
+ },
+ "fallback_providers": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "file_read_max_chars": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#file-read-safety"
+ },
+ "gateway": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-restart-drain"
+ },
+ "gateway.api_server": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "gateway.bot_loop_guard.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "gateway.message_timestamps.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "gateway.profile_routes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#delegation"
+ },
+ "gateway.strict": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#code-execution"
+ },
+ "goals": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#standing-goals-goal"
+ },
+ "goals.max_turns": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#standing-goals-goal"
+ },
+ "human_delay": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#human-delay"
+ },
+ "human_delay.max_ms": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#human-delay"
+ },
+ "human_delay.min_ms": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#human-delay"
+ },
+ "human_delay.mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#human-delay"
+ },
+ "kanban": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "local_runtime.backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "local_runtime.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "lsp.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "matrix": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "matrix.require_mention": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "mattermost": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "mattermost.free_response_channels": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "mattermost.require_mention": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "max_concurrent_sessions": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#group-chat-session-isolation"
+ },
+ "mcp": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-auxiliary-config-reference"
+ },
+ "memory": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#memory-configuration"
+ },
+ "memory.memory_char_limit": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#memory-configuration"
+ },
+ "memory.memory_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#memory-configuration"
+ },
+ "memory.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "memory.user_char_limit": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#memory-configuration"
+ },
+ "memory.user_profile_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#memory-configuration"
+ },
+ "memory.write_approval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#write-approval-for-skill-writes"
+ },
+ "moa.presets.default": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#common-setups"
+ },
+ "moa.presets.default.aggregator.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "moa.presets.default.aggregator.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "moa.presets.default.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "model_catalog.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "model_catalog.providers": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#fast-tiers-behind-a-gateway-or-proxy"
+ },
+ "model_overrides": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#custom-reasoning-tier-names"
+ },
+ "monitoring.export": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#persistent-shell"
+ },
+ "monitoring.export.otlp.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "monitoring.export.otlp.endpoint": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "monitoring.gateway_health_export.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "monitoring.gateway_health_export.resource_attributes.deployment.environment.name": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "monitoring.gateway_health_export.resource_attributes.service.name": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "network": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#network"
+ },
+ "network.force_ipv4": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#network"
+ },
+ "nous": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#common-setups"
+ },
+ "onboarding": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#onboarding"
+ },
+ "onboarding.profile_build": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#onboarding"
+ },
+ "onboarding.run": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#onboarding"
+ },
+ "openrouter": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#common-setups"
+ },
+ "openrouter.min_coding_score": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#openrouter-routing--pareto-code-for-auxiliary-tasks"
+ },
+ "plugins": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#common-terminal-backend-issues"
+ },
+ "prefill_messages_file": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "privacy": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#privacy"
+ },
+ "privacy.redact_pii": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#privacy"
+ },
+ "prompt_caching": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#prompt-caching"
+ },
+ "prompt_caching.cache_ttl": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#prompt-caching"
+ },
+ "proxy.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "quick_commands": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#quick-commands"
+ },
+ "runtime": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#runtime-limits"
+ },
+ "runtime.nofile_soft_limit": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#runtime-limits"
+ },
+ "secrets.bitwarden.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "secrets.bitwarden.encrypted_cache.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "secrets.onepassword.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "security": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "security.approval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#write-approval-for-skill-writes"
+ },
+ "security.approval.transport": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "security.redact_secrets": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "security.website_blocklist": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "security.website_blocklist.domains": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "security.website_blocklist.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "security.website_blocklist.shared_files": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#security"
+ },
+ "sessions": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#database-settings"
+ },
+ "sessions.retention_days": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-result-spillover-budget"
+ },
+ "skills": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#skill-settings"
+ },
+ "skills.auto_load": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#auto-loading-skills-every-session"
+ },
+ "skills.guard_agent_created": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#guard-on-agent-created-skill-writes"
+ },
+ "skills.write_approval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#write-approval-for-skill-writes"
+ },
+ "slack": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "slack.free_response_channels": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "slack.require_mention": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#discord"
+ },
+ "streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "streaming.buffer_threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "streaming.cursor": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "streaming.edit_interval": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "streaming.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "streaming.fresh_final_after_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "streaming.transport": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#gateway-streaming-telegram-discord-slack"
+ },
+ "stt": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.cloud_trim_keep_ms": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.cloud_trim_silence": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.cloud_trim_threshold_db": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.deepinfra": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.deepinfra.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "stt.echo_transcripts": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.elevenlabs": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "stt.elevenlabs.model_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "stt.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.groq": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.groq.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.groq.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "stt.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.initial_prompt": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.logprob_threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.no_speech_prob_threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.unload_after_idle_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.vad": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.local.vad_min_silence_ms": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.mistral": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#execution-discipline-guidance"
+ },
+ "stt.mistral.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "stt.mistral.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "stt.openai": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.openai.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.openai.max_retries": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.openai.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.openai.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.xai": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.xai.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "stt.xai.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "telegram": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "telegram.extra": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#per-platform-progress-overrides"
+ },
+ "telemetry.shared_metrics.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "telemetry.shared_metrics.endpoint": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "telemetry.shared_metrics.send": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#iteration-budget"
+ },
+ "terminal": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.client_env_passthrough": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.container_cpu": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.container_disk": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.container_memory": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.container_persistent": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.cwd": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.daytona_image": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.docker_env": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_extra_args": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_forward_env": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_image": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_mount_cwd_to_workspace": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_network": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_run_as_host_user": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_shared_container_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_snap_compat": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.docker_volumes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#docker-backend"
+ },
+ "terminal.env_passthrough": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.font_family": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.home_mode": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.modal_image": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.persistent_shell": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-backend"
+ },
+ "terminal.sync_back_max_bytes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.temp_dir": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.timeout": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminal-backend-configuration"
+ },
+ "terminal.vercel_image": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#vercel-sandbox-backend"
+ },
+ "terminal.vercel_runtime": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#vercel-sandbox-backend"
+ },
+ "timezone": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#timezone"
+ },
+ "tool_loop_guardrails": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.hard_stop_after": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.hard_stop_after.exact_failure": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.hard_stop_after.idempotent_no_progress": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.hard_stop_after.same_tool_failure": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.hard_stop_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.loop_caps": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.loop_caps.max_subagents": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.loop_caps.max_web_searches": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.non_interactive_hard_stop_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.warn_after": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.warn_after.exact_failure": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.warn_after.idempotent_no_progress": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.warn_after.same_tool_failure": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_loop_guardrails.warnings_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-loop-guardrails"
+ },
+ "tool_output": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-output-truncation-limits"
+ },
+ "tool_output.max_bytes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-output-truncation-limits"
+ },
+ "tool_output.max_line_length": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-output-truncation-limits"
+ },
+ "tool_output.max_lines": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tool-output-truncation-limits"
+ },
+ "tools": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#terminalhome_mode"
+ },
+ "tools.connectors.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "tools.tool_search.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "tts": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.deepinfra": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#speech-to-text-stt"
+ },
+ "tts.deepinfra.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "tts.deepinfra.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.edge": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.edge.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.elevenlabs": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.elevenlabs.model_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.elevenlabs.voice_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.gemini": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.gemini.audio_tags": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.gemini.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.gemini.persona_prompt_file": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.gemini.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.keep_warm_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.kittentts.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "tts.kittentts.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.minimax": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.minimax.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "tts.minimax.voice_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.mistral": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.mistral.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.mistral.voice_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.neutts": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.neutts.device": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.neutts.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.neutts.ref_audio": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.neutts.ref_text": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.openai": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.openai.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.openai.pcm_sample_rate": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.openai.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.piper.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.streaming": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#disabling-api-streaming"
+ },
+ "tts.xai": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.xai.bit_rate": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.xai.language": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.xai.sample_rate": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.xai.speed": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "tts.xai.voice_id": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "updates": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-authentication"
+ },
+ "updates.auto_switch_parked_branch": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-authentication"
+ },
+ "updates.backup_keep": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-authentication"
+ },
+ "updates.non_interactive_local_changes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-authentication"
+ },
+ "updates.pre_update_backup": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#ssh-authentication"
+ },
+ "vault.bitwarden.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "vault.onepassword.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "vision": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#environment-variable-substitution"
+ },
+ "vision.embed_target_bytes": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#native-vision-embed-budgets-top-level-vision"
+ },
+ "vision.max_calls_per_image": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#native-vision-embed-budgets-top-level-vision"
+ },
+ "vision.replay_recent_images": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#native-vision-embed-budgets-top-level-vision"
+ },
+ "voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "voice.auto_tts": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.beep_enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.beep_volume": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.gpt_live.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "voice.gpt_live.voice": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#tts-configuration"
+ },
+ "voice.max_recording_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.record_key": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.silence_duration": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "voice.silence_threshold": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#voice-mode-cli"
+ },
+ "wake_word.enabled": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "wake_word.openwakeword.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "wake_word.provider": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "web": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.extract_backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.keyless_fallback": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.keyless_rescue": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.provider_tier": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "web.search_backend": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#web-search-backends"
+ },
+ "x_search.model": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#full-reference"
+ },
+ "x_search.reasoning_effort": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#the-universal-config-pattern"
+ },
+ "x_search.timeout_seconds": {
+  "doc_url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md#api-timeouts"
+ }
+}

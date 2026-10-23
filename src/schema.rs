@@ -374,6 +374,7 @@ fn convert_prop(
     _required_names: &[String],
     is_required: bool,
     parent_path: &str,
+    inherited: &[String],
 ) -> IrKey {
     let sub = resolve(raw, defs);
     // 分支归约：把 anyOf / oneOf / allOf 里的结构合并进来
@@ -475,6 +476,7 @@ fn convert_prop(
                     &child_required,
                     creq,
                     &path,
+                    &doc_urls,
                 ));
             }
         }
@@ -482,13 +484,21 @@ fn convert_prop(
     // 数组元素 schema
     if let Some(items) = eff.get("items") {
         if items.is_object() {
-            children.push(convert_prop("[]", items, defs, &[], false, &path));
+            children.push(convert_prop(
+                "[]",
+                items,
+                defs,
+                &[],
+                false,
+                &path,
+                &doc_urls,
+            ));
         }
     }
     // 自由键 schema
     if let Some(ap) = add_props {
         if ap.is_object() {
-            children.push(convert_prop("[*]", ap, defs, &[], false, &path));
+            children.push(convert_prop("[*]", ap, defs, &[], false, &path, &doc_urls));
         }
     }
 
@@ -499,7 +509,13 @@ fn convert_prop(
         value_type,
         nullable,
         description: desc,
-        doc_urls,
+        // 父级没有自己的锚点时，子键继承父级的 —— 父级那一条文档链接
+        // 讲的就是整棵子树（例如 claude-code 的 `permissions` 一节涵盖所有子项）。
+        doc_urls: if doc_urls.is_empty() {
+            inherited.to_vec()
+        } else {
+            doc_urls
+        },
         enum_values,
         default: eff.get("default").cloned(),
         examples: eff
@@ -546,7 +562,7 @@ pub fn convert(schema: &Value) -> Vec<IrKey> {
             continue;
         }
         let is_req = required.iter().any(|r| r == name);
-        out.push(convert_prop(name, sub, &defs, &required, is_req, ""));
+        out.push(convert_prop(name, sub, &defs, &required, is_req, "", &[]));
     }
     out
 }

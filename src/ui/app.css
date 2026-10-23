@@ -2,7 +2,37 @@
   --bg:#0f1115; --panel:#161a21; --panel2:#1c212a; --line:#2a303b;
   --fg:#dfe4ec; --dim:#8b93a3; --accent:#5aa9ff; --ok:#3ecf8e;
   --warn:#f0b429; --err:#ff6b6b; --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --t-str:#7ee787; --t-num:#79c0ff; --t-bool:#d2a8ff; --t-arr:#ffa657;
+  --t-obj:#79c0ff; --t-enum:#f0b429; --t-any:#8b93a3;
+  --on-accent:#08121e; --shadow:rgba(0,0,0,.42);
 }
+/* ── 浅色主题 ────────────────────────────────────────
+   默认深色；系统或用户切到浅色时用这一套变量。
+   颜色都收敛到变量上，切换时不用重写规则。 */
+:root[data-theme="light"] {
+  --bg:#f5f6f8; --panel:#ffffff; --panel2:#eef1f5; --line:#d6dbe3;
+  --fg:#1b2430; --dim:#5d6774; --accent:#1668c7; --ok:#127a46;
+  --warn:#8a5a00; --err:#c02b2b;
+  --t-str:#0a7d3f; --t-num:#0a5bb5; --t-bool:#6f42c1; --t-arr:#a04a00;
+  --t-obj:#0a5bb5; --t-enum:#8a5a00; --t-any:#5d6774;
+  --on-accent:#ffffff;
+  --shadow:rgba(16,24,40,.16);
+}
+:root[data-theme="light"] .tag.t-str{color:var(--t-str)}
+:root[data-theme="light"] .tag.t-num{color:var(--t-num)}
+:root[data-theme="light"] .tag.t-bool{color:var(--t-bool)}
+:root[data-theme="light"] .tag.t-arr{color:var(--t-arr)}
+:root[data-theme="light"] .tag.t-obj{color:var(--t-obj)}
+:root[data-theme="light"] .tag.t-enum{color:var(--t-enum)}
+:root[data-theme="light"] .tag.t-any{color:var(--t-any)}
+:root[data-theme="light"] button.primary { color:var(--on-accent); }
+:root[data-theme="light"] .enumitem.psel { color:var(--on-accent); }
+:root[data-theme="light"] .enumitem.psel .ev,
+:root[data-theme="light"] .enumitem.psel .ed { color:var(--on-accent); }
+:root[data-theme="light"] .modalback { background:rgba(16,24,40,.34); }
+:root[data-theme="light"] .toast { box-shadow:0 8px 28px var(--shadow); }
+:root[data-theme="light"] .diffline { color:var(--dim); }
+
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--fg);
   font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
@@ -47,12 +77,16 @@ button.on { border-color:var(--accent); color:var(--accent); }
   padding-left:8px; border-left:2px solid var(--line); }
 .tag { font-size:10.5px; font-family:var(--mono); padding:1px 7px; border-radius:4px;
   border:1px solid var(--line); color:var(--dim); flex:0 0 auto; }
-.tag.t-str{color:#7ee787} .tag.t-num{color:#79c0ff} .tag.t-bool{color:#d2a8ff}
-.tag.t-arr{color:#ffa657} .tag.t-obj{color:#79c0ff} .tag.t-enum{color:#f0b429}
-.tag.t-any{color:#8b93a3}
+.tag.t-str{color:var(--t-str)} .tag.t-num{color:var(--t-num)} .tag.t-bool{color:var(--t-bool)}
+.tag.t-arr{color:var(--t-arr)} .tag.t-obj{color:var(--t-obj)} .tag.t-enum{color:var(--t-enum)}
+.tag.t-any{color:var(--t-any)}
 .tag.req { color:var(--err); border-color:var(--err); }
 .tag.dep { color:var(--warn); border-color:var(--warn); }
 .tag.doc { color:var(--ok); border-color:var(--ok); }
+a.tag { text-decoration:none; cursor:pointer; }
+a.tag:hover { border-color:var(--accent); color:var(--accent); }
+/* 没有精确锚点时的降级入口：文档索引页 + 页内搜索 */
+.tag.nodoc { color:var(--dim); border-style:dashed; }
 .tag.i18n { color:var(--accent); border-color:var(--accent); }
 .kids { padding:0 12px 10px 34px; border-top:1px solid var(--line); }
 .cur { font-family:var(--mono); font-size:11.5px; color:var(--ok); }
@@ -101,7 +135,7 @@ nav button.on { border-color:var(--accent); color:var(--accent); background:var(
 /* ── 模式切换 ───────────────────────────────────────── */
 .modes { display:flex; gap:6px; margin-bottom:12px; }
 .modes button { flex:1; padding:7px 6px; font-size:12.5px; }
-button.primary { background:var(--accent); border-color:var(--accent); color:#08121e; font-weight:600; }
+button.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); font-weight:600; }
 button.primary:disabled { opacity:.4; cursor:not-allowed; }
 
 /* ── 扫描面板 ───────────────────────────────────────── */
@@ -267,8 +301,8 @@ button.primary:disabled { opacity:.4; cursor:not-allowed; }
   border-radius:4px; cursor:pointer; font-size:12px;
 }
 .enumitem:hover { background:var(--panel2); }
-.enumitem.psel { background:var(--accent); color:#0b0e14; }
-.enumitem.psel .ev, .enumitem.psel .ed { color:#0b0e14; }
+.enumitem.psel { background:var(--accent); color:var(--on-accent); }
+.enumitem.psel .ev, .enumitem.psel .ed { color:var(--on-accent); }
 .enumitem .ev { font-family:var(--mono); color:var(--accent); flex:0 0 auto; }
 .enumitem .ed { color:var(--dim); font-size:11.5px; overflow:hidden;
   text-overflow:ellipsis; white-space:nowrap; }
@@ -320,3 +354,52 @@ button.cand { text-align:left; font-family:var(--mono); }
 .tag.set { color:var(--ok); border-color:var(--ok); }
 .cur.click { cursor:pointer; }
 .cur.click:hover { text-decoration:underline; }
+
+/* ── 轻提示 ─────────────────────────────────────────── */
+.toast {
+  position:fixed; left:50%; bottom:28px; transform:translate(-50%, 16px);
+  background:var(--panel2); border:1px solid var(--accent); color:var(--fg);
+  padding:9px 16px; border-radius:8px; font-size:12.5px;
+  box-shadow:0 8px 28px var(--shadow);
+  opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
+  z-index:9999; max-width:min(560px, 88vw); text-align:center;
+}
+.toast.show { opacity:1; transform:translate(-50%, 0); }
+
+/* ── 批量编辑 ───────────────────────────────────────── */
+.batchpanel { margin-top: 14px; }
+.batchsec { font-size:12.5px; color:var(--fg); font-weight:600; margin:14px 0 7px; }
+.batchfiles { max-height:230px; overflow-y:auto; border:1px solid var(--line);
+  border-radius:7px; background:var(--panel); padding:5px 0; }
+.batchfile { display:flex; align-items:center; gap:8px; padding:4px 10px;
+  font-size:12px; font-family:var(--mono); cursor:pointer; }
+.batchfile:hover { background:var(--panel2); }
+.batchfile .bp { flex:1; word-break:break-all; }
+.batchfile .bt { color:var(--dim); font-size:11px; }
+.batchrow { display:flex; gap:8px; margin-bottom:8px; align-items:center; }
+.batchrow input[type=text] { flex:1; background:var(--panel2); border:1px solid var(--line);
+  color:var(--fg); padding:7px 10px; border-radius:7px; font-size:12.5px;
+  font-family:var(--mono); }
+.batchrow select { background:var(--panel2); border:1px solid var(--line); color:var(--fg);
+  padding:7px 9px; border-radius:7px; font-size:12.5px; }
+.batchres { border:1px solid var(--line); border-radius:7px; margin-bottom:7px;
+  padding:7px 10px; background:var(--panel); }
+.batchres.ok { border-left:3px solid var(--ok); }
+.batchres.bad { border-left:3px solid var(--err); }
+.batchres .brhead { display:flex; gap:10px; align-items:baseline;
+  font-size:12px; font-family:var(--mono); }
+.batchres .brhead .bp { flex:1; word-break:break-all; }
+.batchres .brhead .bt { color:var(--dim); }
+.batchres .brerr { color:var(--err); font-size:11.5px; margin-top:4px; }
+.batchres .brwarn { color:var(--warn); font-size:11.5px; margin-top:4px; }
+.batchres .bdiff { margin-top:6px; max-height:220px; overflow-y:auto; }
+
+/* ── 配置片段库 ─────────────────────────────────────── */
+.snipitem { border:1px solid var(--line); border-radius:7px; padding:7px 9px;
+  margin-bottom:6px; background:var(--panel2); }
+.snipname { font-size:12.5px; font-weight:600; }
+.snipdesc { font-size:11.5px; color:var(--dim); margin-top:2px; }
+.snipkeys { font-size:11px; color:var(--accent); font-family:var(--mono);
+  margin-top:3px; word-break:break-all; }
+.snipbad { font-size:11px; color:var(--warn); margin-top:3px; }
+.snipacts { display:flex; gap:6px; margin-top:6px; }

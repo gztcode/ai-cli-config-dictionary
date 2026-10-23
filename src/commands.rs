@@ -59,6 +59,171 @@ impl CommitError {
     }
 }
 
+/// 批量预览：逐个文件算出写回后的文本、差异与校验结果
+///
+/// 单个文件失败不影响其它文件 —— 一次批量改十几个项目，
+/// 有一个格式不对不该让整批都看不了。
+pub fn preview_edit_batch(
+    registry: &Registry,
+    cache_dir: &Path,
+    targets: &[BatchTarget],
+) -> BatchPreview {
+    let mut files = Vec::new();
+    let mut ok_count = 0usize;
+    let mut fail_count = 0usize;
+
+    for t in targets {
+        let p = PathBuf::from(&t.path);
+        let tool = detect_tool(registry, &p);
+        let mut res = BatchFileResult {
+            path: t.path.clone(),
+            ok: false,
+            error: None,
+            new_text: String::new(),
+            diff: Vec::new(),
+            tool,
+            schema_available: false,
+            issues: Vec::new(),
+            error_count: 0,
+            warn_count: 0,
+            parse_error: None,
+        };
+
+        let file = match edit::load(&p) {
+            Ok(f) => f,
+            Err(e) => {
+                res.error = Some(e.to_string());
+                fail_count += 1;
+                files.push(res);
+                continue;
+            }
+        };
+        let new_text = match edit::apply_edits(&file, &t.ops) {
+            Ok(s) => s,
+            Err(e) => {
+                res.error = Some(e.to_string());
+                fail_count += 1;
+                files.push(res);
+                continue;
+            }
+        };
+        res.diff = edit::diff_summary(&file.text, &new_text);
+
+        match edit::parse_value(&new_text, file.format) {
+            Ok(value) => {
+                if let Some(ir) = res
+                    .tool
+                    .as_ref()
+                    .and_then(|name| registry.tools.iter().find(|t| &t.display_name == name))
+                    .and_then(|t| app::build_ir(t, cache_dir, &Default::default()))
+                {
+                    res.schema_available = true;
+                    let report = crate::validate::validate_config(&value, &ir.keys, &t.path);
+                    res.issues = report.issues.clone();
+                    res.error_count = report.error_count();
+                    res.warn_count = report.warn_count();
+                }
+            }
+            Err(e) => {
+                res.parse_error = Some(e.to_string());
+            }
+        }
+
+        res.new_text = new_text;
+        res.ok = true;
+        ok_count += 1;
+        files.push(res);
+    }
+
+    BatchPreview {
+        files,
+        ok_count,
+        fail_count,
+    }
+}
+
+/// 批量提交：一次改多个文件
+///
+/// **先全量检查再落盘**：任何一个文件在打开之后被改过，整批都拒绝写入
+/// （避免改了一半、另一半没改的半吊子状态）。写入阶段逐个文件记结果。
+pub fn commit_edit_batch(targets: &[BatchTarget]) -> BatchCommit {
+    // 1) 先检查所有文件的外部改动
+    let mut conflicts: Vec<String> = Vec::new();
+    for t in targets {
+        if let Some(base) = t.base_fingerprint.as_deref() {
+            if !base.is_empty() {
+                if let Some(err) = check_conflict(&t.path, base) {
+                    conflicts.push(err.payload());
+                }
+            }
+        }
+    }
+    if !conflicts.is_empty() {
+        let files = targets
+            .iter()
+            .map(|t| BatchFileResult {
+                path: t.path.clone(),
+                ok: false,
+                error: Some("有文件在打开之后被改过，整批未写入".to_string()),
+                new_text: String::new(),
+                diff: Vec::new(),
+                tool: None,
+                schema_available: false,
+                issues: Vec::new(),
+                error_count: 0,
+                warn_count: 0,
+                parse_error: None,
+            })
+            .collect();
+        return BatchCommit {
+            fail_count: targets.len(),
+            ok_count: 0,
+            saved: Vec::new(),
+            files,
+        };
+    }
+
+    // 2) 逐个写盘
+    let mut files = Vec::new();
+    let mut saved = Vec::new();
+    let mut ok_count = 0usize;
+    let mut fail_count = 0usize;
+    for t in targets {
+        let mut res = BatchFileResult {
+            path: t.path.clone(),
+            ok: false,
+            error: None,
+            new_text: String::new(),
+            diff: Vec::new(),
+            tool: None,
+            schema_available: false,
+            issues: Vec::new(),
+            error_count: 0,
+            warn_count: 0,
+            parse_error: None,
+        };
+        match commit_edit(&t.path, &t.ops, None) {
+            Ok(_) => {
+                res.ok = true;
+                res.new_text = String::new();
+                saved.push(t.path.clone());
+                ok_count += 1;
+            }
+            Err(e) => {
+                res.error = Some(e);
+                fail_count += 1;
+            }
+        }
+        files.push(res);
+    }
+    BatchCommit {
+        files,
+        ok_count,
+        fail_count,
+        saved,
+    }
+}
+
 /// 某个工具在本机上的实际配置（脱敏后）
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ToolUsage {
@@ -96,6 +261,162 @@ pub struct EditValidation {
     pub warn_count: usize,
     /// 解析错误（格式不合法时这里有值）
     pub parse_error: Option<String>,
+}
+
+/// 片段库条目（附带「这个键在 schema 里不存在」的提示）
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SnippetView {
+    #[serde(flatten)]
+    pub snippet: crate::snippets::Snippet,
+    /// 片段里写了、但对应工具的 schema 里没有的键
+    pub unknown_keys: Vec<String>,
+}
+
+/// 读片段库
+pub fn list_snippets(
+    registry: &Registry,
+    cache_dir: &Path,
+    snippets_path: &Path,
+) -> Vec<SnippetView> {
+    let store = crate::snippets::load(snippets_path);
+    let mut out = Vec::new();
+    for sn in store.snippets {
+        let unknown = unknown_keys(registry, cache_dir, &sn);
+        out.push(SnippetView {
+            snippet: sn,
+            unknown_keys: unknown,
+        });
+    }
+    out
+}
+
+/// 片段里哪些键在对应工具的 schema 里找不到
+fn unknown_keys(
+    registry: &Registry,
+    cache_dir: &Path,
+    sn: &crate::snippets::Snippet,
+) -> Vec<String> {
+    if sn.tool.is_empty() {
+        return Vec::new();
+    }
+    let Some(tool) = registry.tools.iter().find(|t| t.id == sn.tool) else {
+        return Vec::new();
+    };
+    let Some(ir) = app::build_ir(tool, cache_dir, &Default::default()) else {
+        return Vec::new();
+    };
+    let mut known: Vec<String> = Vec::new();
+    fn walk(keys: &[crate::ir::IrKey], out: &mut Vec<String>) {
+        for k in keys {
+            out.push(k.path.clone());
+            walk(&k.children, out);
+        }
+    }
+    walk(&ir.keys, &mut known);
+
+    let mut bad = Vec::new();
+    for it in &sn.items {
+        let p = it.path.trim();
+        if p.is_empty() {
+            continue;
+        }
+        if known.iter().any(|k| k == p) {
+            continue;
+        }
+        // 逐级回退：父路径存在也算（子键可能是动态的）
+        let mut hit = false;
+        let parts: Vec<&str> = p.split('.').collect();
+        for take in (1..parts.len()).rev() {
+            let prefix = parts[..take].join(".");
+            if known
+                .iter()
+                .any(|k| k == &prefix || k == &format!("{prefix}[*]"))
+            {
+                hit = true;
+                break;
+            }
+        }
+        if !hit {
+            bad.push(p.to_string());
+        }
+    }
+    bad
+}
+
+/// 写片段库
+pub fn save_snippets(
+    snippets_path: &Path,
+    snippets: &[crate::snippets::Snippet],
+) -> Result<(), String> {
+    crate::snippets::save(snippets_path, snippets)
+}
+
+/// 把片段施加到一个配置文件上，返回写回后的文本与差异
+pub fn apply_snippet(
+    registry: &Registry,
+    cache_dir: &Path,
+    snippets_path: &Path,
+    path: &str,
+    snippet_id: &str,
+) -> Result<EditPreview, String> {
+    let store = crate::snippets::load(snippets_path);
+    let sn = store
+        .snippets
+        .iter()
+        .find(|s| s.id == snippet_id)
+        .ok_or_else(|| format!("找不到片段: {snippet_id}"))?;
+    let _ = (registry, cache_dir);
+    preview_edit(path, &sn.ops())
+}
+
+/// 批量编辑的一个目标文件
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchTarget {
+    pub path: String,
+    /// 要施加在这个文件上的操作
+    pub ops: Vec<EditOp>,
+    /// 打开时的指纹（可选，传了就做外部改动检测）
+    pub base_fingerprint: Option<String>,
+}
+
+/// 批量预览里的单个文件结果
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchFileResult {
+    pub path: String,
+    /// 这个文件能不能改（不能的话 error 里有原因）
+    pub ok: bool,
+    pub error: Option<String>,
+    /// 写回后的完整文本
+    pub new_text: String,
+    /// 逐行差异
+    pub diff: Vec<String>,
+    /// 校验结果
+    pub tool: Option<String>,
+    pub schema_available: bool,
+    pub issues: Vec<Issue>,
+    pub error_count: usize,
+    pub warn_count: usize,
+    pub parse_error: Option<String>,
+}
+
+/// 批量预览的完整结果
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchPreview {
+    pub files: Vec<BatchFileResult>,
+    /// 有多少个文件改得动
+    pub ok_count: usize,
+    /// 有多少个文件改不了
+    pub fail_count: usize,
+}
+
+/// 批量提交的结果
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchCommit {
+    pub files: Vec<BatchFileResult>,
+    pub ok_count: usize,
+    pub fail_count: usize,
+    /// 实际写盘成功的文件
+    pub saved: Vec<String>,
 }
 
 /// 扫描磁盘上的 AI CLI 配置文件

@@ -1,0 +1,146 @@
+{
+ "$schema": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#format"
+ },
+ "agent": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#agents"
+ },
+ "agent.build": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#default-agent"
+ },
+ "agent.compaction": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#compaction"
+ },
+ "agent.plan": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#default-agent"
+ },
+ "attachment": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "autoupdate": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#format"
+ },
+ "command": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#commands"
+ },
+ "command.*.agent": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#agents"
+ },
+ "command.*.description": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#agents"
+ },
+ "command.*.model": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#format"
+ },
+ "command.*.template": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#commands"
+ },
+ "compaction": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#compaction"
+ },
+ "compaction.auto": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#compaction"
+ },
+ "compaction.prune": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#compaction"
+ },
+ "compaction.reserved": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#compaction"
+ },
+ "default_agent": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#default-agent"
+ },
+ "disabled_providers": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#policies"
+ },
+ "enabled_providers": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#policies"
+ },
+ "enterprise.url": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#remote"
+ },
+ "experimental": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#policies"
+ },
+ "experimental.policies": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#policies"
+ },
+ "experimental.subagent_depth": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#subagent-depth"
+ },
+ "formatter": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#formatters"
+ },
+ "instructions": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#instructions"
+ },
+ "lsp": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#lsp-servers"
+ },
+ "mcp": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#remote"
+ },
+ "mcp.timeout": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#models"
+ },
+ "media.image": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "media.image.auto_resize": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "media.image.max_base64_bytes": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "media.image.max_height": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "media.image.max_width": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#image-attachments"
+ },
+ "mode.build": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#default-agent"
+ },
+ "mode.plan": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#default-agent"
+ },
+ "model": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#format"
+ },
+ "permission": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#permissions"
+ },
+ "plugin": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#plugins"
+ },
+ "policies": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#policies"
+ },
+ "provider": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#models"
+ },
+ "server": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#format"
+ },
+ "shell": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#shell"
+ },
+ "small_model": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#models"
+ },
+ "snapshot": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#snapshot"
+ },
+ "subagent_depth": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#subagent-depth"
+ },
+ "tools": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#tools"
+ },
+ "watcher": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#watcher"
+ },
+ "watcher.ignore": {
+  "doc_url": "https://github.com/anomalyco/opencode/blob/dev/packages/web/src/content/docs/config.mdx#watcher"
+ }
+}

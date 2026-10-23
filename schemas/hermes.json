@@ -1677,7 +1677,7 @@
    "type": "object"
   },
   "delegation": {
-   "description": "Subagent delegation — override the provider:model used by delegate_task so children run on a cheaper/faster model. Uses the same runtime provider resolution as CLI/gateway startup, so every configured provider is supported.",
+   "description": "Subagent delegation: `backend` = task-routing strategy (\"default\": keys below), `backends.<name>` = its settings.",
    "properties": {
     "api_key": {
      "description": "key for delegation.base_url (falls back to OPENAI_API_KEY)",
@@ -1685,6 +1685,10 @@
     },
     "api_mode": {
      "description": "Wire protocol for delegation.base_url: \"chat_completions\" | \"codex_responses\" | \"anthropic_messages\". Empty = auto-detect from URL (e.g. /anthropic suffix); set explicitly for non-standard endpoints.",
+     "type": "string"
+    },
+    "backend": {
+     "default": "default",
      "type": "string"
     },
     "base_url": {

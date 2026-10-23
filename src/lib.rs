@@ -27,6 +27,7 @@ pub mod scan;
 pub mod schema;
 pub mod secret;
 pub mod serve;
+pub mod snippets;
 pub mod validate;
 
 pub use app::{build_ir, build_payload, AppPaths};

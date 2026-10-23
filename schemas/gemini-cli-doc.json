@@ -1,0 +1,1294 @@
+{
+ "--acp": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--allowed-mcp-server-names": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--allowed-tools <tool1,tool2,...>": {
+  "description": "dialog.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--approval-mode <mode>": {
+  "description": "prompting for others be enabled). > **Note:** This mode is currently under development and not yet fully > functional. `--yolo` for the new unified approach.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--debug": {
+  "description": "debug console with F12 to see the additional logging.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--delete-session <identifier>": {
+  "description": "UUIDs. `gemini --delete-session a1b2c3d4-e5f6-7890-abcd-ef1234567890`",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--extensions <extension_name ...>": {
+  "description": "available extensions are used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--fake-responses": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--help": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--include-directories <dir1,dir2,...>": {
+  "description": "support. `--include-directories /path/to/project1 --include-directories /path/to/project2`",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--list-extensions": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--list-sessions": {
+  "description": "message.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--model <model_name>": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--output-format <format>": {
+  "description": "Specifies the format of the CLI output for non-interactive mode.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--prompt <your_prompt>": {
+  "description": "non-interactive mode.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--prompt-interactive <your_prompt>": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--record-responses": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--resume [session_id]": {
+  "description": "provide a session index number, or provide a full session UUID. `gemini --resume a1b2c3d4-e5f6-7890-abcd-ef1234567890` or `gemini --resume`",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--sandbox": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--screen-reader": {
+  "description": "with screen readers.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--version": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "--yolo": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "CLI_TITLE": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "CODE_ASSIST_ENDPOINT": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_API_KEY": {
+  "description": "[authentication methods](../get-started/authentication.mdx). `.env` file.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_CLI_HOME": {
+  "description": "storage. `.gemini` folder inside this directory. PowerShell: `$env:GEMINI_CLI_HOME=\"C:\\path\\to\\user\\config\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_CLI_IDE_PID": {
+  "description": "is useful when running Gemini CLI in a standalone terminal while still wanting to associate it with a specific IDE instance.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_CLI_SURFACE": {
+  "description": "traffic reporting. channels. `$env:GEMINI_CLI_SURFACE=\"my-custom-tool\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_CLI_TRUSTED_FOLDERS_PATH": {
+  "description": "of the default `~/.gemini/`.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_CLI_TRUST_WORKSPACE": {
+  "description": "session, bypassing the folder trust check.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_MODEL": {
+  "description": "`$env:GEMINI_MODEL=\"gemini-3-flash-preview\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_SANDBOX": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_SYSTEM_MD": {
+  "description": "expands). [System Prompt Override](../cli/system-prompt.md).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_ENABLED": {
+  "description": "disabling it.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_LOG_PROMPTS": {
+  "description": "value is treated as disabling it.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_OTLP_ENDPOINT": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_OTLP_HEADERS": {
+  "description": "comma-separated `key=value` pairs; also falls back to `OTEL_EXPORTER_OTLP_HEADERS`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_OTLP_PROTOCOL": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_OUTFILE": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_TARGET": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_TRACES_ENABLED": {
+  "description": "other value is treated as disabling it.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_TELEMETRY_USE_COLLECTOR": {
+  "description": "Any other value is treated as disabling it.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GEMINI_WRITE_SYSTEM_MD": {
+  "description": "path.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_API_KEY": {
+  "description": "`$env:GOOGLE_API_KEY=\"YOUR_GOOGLE_API_KEY\"`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_APPLICATION_CREDENTIALS": {
+  "description": "The path to your Google Application Credentials JSON file. `export GOOGLE_APPLICATION_CREDENTIALS=\"/path/to/your/credentials.json\"` (Windows PowerShell: `$env:GOOGLE_APPLICATION_CREDENTIALS=\"C:\\path\\to\\your\\credentials.json\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_CLOUD_LOCATION": {
+  "description": "PowerShell: `$env:GOOGLE_CLOUD_LOCATION=\"YOUR_PROJECT_LOCATION\"`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_CLOUD_PROJECT": {
+  "description": "project. variable defaults to a special project allocated for Cloud Shell users. If you have `GOOGLE_CLOUD_PROJECT` set in your global environment in Cloud Shell, it will be overridden by this default. To use a different project in Cloud Shell, you must define `GOOGLE_CLOUD_PROJECT` in a `.env` file. PowerShell: `$env:GOOGLE_CLOUD_PROJECT=\"YOUR_PROJECT_ID\"`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_GEMINI_BASE_URL": {
+  "description": "`gemini-api-key` authentication). `localhost` (or `127.0.0.1` / `[::1]`). PowerShell: `$env:GOOGLE_GEMINI_BASE_URL=\"https://my-proxy.com\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_GENAI_API_VERSION": {
+  "description": "`$env:GOOGLE_GENAI_API_VERSION=\"v1\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "GOOGLE_VERTEX_BASE_URL": {
+  "description": "`vertex-ai` authentication). `localhost` (or `127.0.0.1` / `[::1]`). (Windows PowerShell: `$env:GOOGLE_VERTEX_BASE_URL=\"https://my-vertex-proxy.com\"`)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "NO_COLOR": {
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "OTLP_GOOGLE_CLOUD_PROJECT": {
+  "description": "PowerShell: `$env:OTLP_GOOGLE_CLOUD_PROJECT=\"YOUR_PROJECT_ID\"`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "SEATBELT_PROFILE": {
+  "description": "to the project folder (and a few other folders, see `packages/cli/src/utils/sandbox-macos-permissive-open.sb`) while allowing broad file reads and network access. allows network. a file named `sandbox-macos-<profile_name>.sb` in your project's `.gemini/` directory (for example, `my-project/.gemini/sandbox-macos-custom.sb`).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#telemetry"
+ },
+ "admin.extensions.enabled": {
+  "default": true,
+  "description": "If false, disallows extensions from being installed or used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "admin.mcp.config": {
+  "description": "Admin-configured MCP servers (allowlist).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "admin.mcp.enabled": {
+  "default": true,
+  "description": "If false, disallows MCP servers from being used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "admin.mcp.requiredConfig": {
+  "description": "Admin-required MCP servers that are always injected.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "admin.secureModeEnabled": {
+  "default": false,
+  "description": "If true, disallows YOLO mode and \"Always allow\" options from being used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "admin.skills.enabled": {
+  "default": true,
+  "description": "If false, disallows agent skills from being used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#admin"
+ },
+ "adminPolicyPaths": {
+  "description": "Additional admin policy files or directories to load.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#adminpolicypaths"
+ },
+ "advanced.autoConfigureMemory": {
+  "default": true,
+  "description": "Automatically configure Node.js memory limits. Note: Because memory is allocated during the initial process boot, this setting is only read from the global user settings file and ignores workspace-level overrides.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#advanced"
+ },
+ "advanced.bugCommand": {
+  "description": "Configuration for the bug report command.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#advanced"
+ },
+ "advanced.dnsResolutionOrder": {
+  "description": "The DNS resolution order.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#advanced"
+ },
+ "advanced.excludedEnvVars": {
+  "description": "Environment variables to exclude from project context.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#advanced"
+ },
+ "advanced.ignoreLocalEnv": {
+  "default": false,
+  "description": "Whether to ignore generic .env files in the project directory.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#advanced"
+ },
+ "agents.browser.allowedDomains": {
+  "description": "A list of allowed domains for the browser agent (e.g., [\"github.com\", \"*.google.com\"]).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.blockFileUploads": {
+  "default": false,
+  "description": "Hard-block file upload requests from the browser agent.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.confirmSensitiveActions": {
+  "default": false,
+  "description": "Require manual confirmation for sensitive browser actions (e.g., fill_form, evaluate_script).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.disableUserInput": {
+  "default": true,
+  "description": "Disable user input on browser window during automation.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.headless": {
+  "default": false,
+  "description": "Run browser in headless mode.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.maxActionsPerTask": {
+  "default": 100,
+  "description": "The maximum number of tool calls allowed per browser task. Enforcement is hard: the agent will be terminated when the limit is reached.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.profilePath": {
+  "description": "Path to browser profile directory for session persistence.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.browser.sessionMode": {
+  "default": "persistent",
+  "description": "Session mode: 'persistent', 'isolated', or 'existing'.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents",
+  "values": [
+   "persistent",
+   "isolated",
+   "existing"
+  ]
+ },
+ "agents.browser.visualModel": {
+  "description": "Model for the visual agent's analyze_screenshot tool. When set, enables the tool.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "agents.overrides": {
+  "description": "Override settings for specific agents, e.g. to disable the agent, set a custom model config, or run config.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#agents"
+ },
+ "billing.overageStrategy": {
+  "default": "ask",
+  "description": "How to handle quota exhaustion when AI credits are available. 'ask' prompts each time, 'always' automatically uses credits, 'never' disables credit usage.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#billing",
+  "values": [
+   "ask",
+   "always",
+   "never"
+  ]
+ },
+ "billing.vertexAi.requestType": {
+  "description": "Sets the X-Vertex-AI-LLM-Request-Type header for Vertex AI requests.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#billing",
+  "values": [
+   "dedicated",
+   "shared"
+  ]
+ },
+ "billing.vertexAi.sharedRequestType": {
+  "description": "Sets the X-Vertex-AI-LLM-Shared-Request-Type header for Vertex AI requests.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#billing",
+  "values": [
+   "priority",
+   "flex"
+  ]
+ },
+ "context.discoveryMaxDirs": {
+  "default": 200,
+  "description": "Maximum number of directories to search for memory.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.customIgnoreFilePaths": {
+  "description": "Additional ignore file paths to respect. These files take precedence over .geminiignore and .gitignore. Files earlier in the array take precedence over files later in the array, e.g. the first file takes precedence over the second one.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.enableFileWatcher": {
+  "default": false,
+  "description": "Enable file watcher updates for @ file suggestions (experimental).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.enableFuzzySearch": {
+  "default": true,
+  "description": "Enable fuzzy search when searching for files.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.enableRecursiveFileSearch": {
+  "default": true,
+  "description": "Enable recursive file search functionality when completing @ references in the prompt.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.respectGeminiIgnore": {
+  "default": true,
+  "description": "Respect .geminiignore files when searching.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileFiltering.respectGitIgnore": {
+  "default": true,
+  "description": "Respect .gitignore files when searching.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.fileName": {
+  "description": "The name of the context file or files to load into memory. Accepts either a single string or an array of strings.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.importFormat": {
+  "description": "The format to use when importing memory.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.includeDirectories": {
+  "description": "Additional directories to include in the workspace context. Missing directories will be skipped with a warning.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.includeDirectoryTree": {
+  "default": true,
+  "description": "Whether to include the directory tree of the current working directory in the initial request to the model.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.loadMemoryFromIncludeDirectories": {
+  "default": false,
+  "description": "Controls how /memory reload loads GEMINI.md files. When true, include directories are scanned; when false, only the current directory is used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "context.memoryBoundaryMarkers": {
+  "description": "File or directory names that mark the boundary for GEMINI.md discovery. The upward traversal stops at the first directory containing any of these markers. An empty array disables parent traversal.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#context"
+ },
+ "contextManagement.historyWindow.maxTokens": {
+  "default": 150000,
+  "description": "The number of tokens to allow before triggering compression.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.historyWindow.retainedTokens": {
+  "default": 40000,
+  "description": "The number of tokens to always retain.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.messageLimits.normalMaxTokens": {
+  "default": 2500,
+  "description": "The target number of tokens to budget for a normal conversation turn.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.messageLimits.normalizationHeadRatio": {
+  "default": 0.25,
+  "description": "The ratio of tokens to retain from the beginning of a truncated message (0.0 to 1.0).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.messageLimits.retainedMaxTokens": {
+  "default": 12000,
+  "description": "The maximum number of tokens a single conversation turn can consume before truncation.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.tools.distillation.maxOutputTokens": {
+  "default": 10000,
+  "description": "Maximum tokens to show to the model when truncating large tool outputs.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.tools.distillation.summarizationThresholdTokens": {
+  "default": 20000,
+  "description": "(number): Threshold above which truncated tool outputs will be summarized by an LLM.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.tools.outputMasking.minPrunableThresholdTokens": {
+  "default": 30000,
+  "description": "(number): Minimum prunable tokens required to trigger a masking pass.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.tools.outputMasking.protectLatestTurn": {
+  "default": true,
+  "description": "Ensures the absolute latest turn is never masked, regardless of token count.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "contextManagement.tools.outputMasking.protectionThresholdTokens": {
+  "default": 50000,
+  "description": "(number): Minimum number of tokens to protect from masking (most recent tool outputs).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#contextmanagement"
+ },
+ "experimental.adk.agentSessionInteractiveEnabled": {
+  "default": false,
+  "description": "Enable the agent session implementation for the interactive CLI.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.adk.agentSessionNoninteractiveEnabled": {
+  "default": false,
+  "description": "Enable non-interactive agent sessions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.adk.agentSessionSubagentEnabled": {
+  "default": false,
+  "description": "Route subagent invocations through the AgentSession protocol instead of legacy executors.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.autoMemory": {
+  "default": false,
+  "description": "Automatically extract memory patches and skills from past sessions in the background. Every change is written as a unified diff `.patch` file under `<projectMemoryDir>/.inbox/<kind>/` and held for review in /memory inbox; nothing is applied until you approve it.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.contextManagement": {
+  "default": false,
+  "description": "Enable logic for context management.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.directWebFetch": {
+  "default": false,
+  "description": "Enable web fetch behavior that bypasses LLM summarization.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.dynamicModelConfiguration": {
+  "default": false,
+  "description": "Enable dynamic model configuration (definitions, resolutions, and chains) via settings.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.enableAgents": {
+  "default": true,
+  "description": "Enable local and remote subagents.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.extensionConfig": {
+  "default": true,
+  "description": "Enable requesting and fetching of extension settings.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.extensionManagement": {
+  "default": true,
+  "description": "Enable extension management features.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.extensionRegistry": {
+  "default": false,
+  "description": "Enable extension registry explore UI.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.extensionRegistryURI": {
+  "default": "https://geminicli.com/extensions.json",
+  "description": "The URI (web URL or local file path) of the extension registry.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.extensionReloading": {
+  "default": false,
+  "description": "Enables extension loading/unloading within the CLI session.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemma": {
+  "default": true,
+  "description": "Enable access to Gemma 4 models via Gemini API.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemmaModelRouter.autoStartServer": {
+  "default": false,
+  "description": "Automatically start the LiteRT-LM server when Gemini CLI starts and the Gemma router is enabled.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemmaModelRouter.binaryPath": {
+  "default": "",
+  "description": "Custom path to the LiteRT-LM binary. Leave empty to use the default location (~/.gemini/bin/litert/).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemmaModelRouter.classifier.host": {
+  "default": "http://localhost:9379",
+  "description": "The host of the classifier.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemmaModelRouter.classifier.model": {
+  "default": "gemma3-1b-gpu-custom",
+  "description": "The model to use for the classifier. Only tested on `gemma3-1b-gpu-custom`.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.gemmaModelRouter.enabled": {
+  "default": false,
+  "description": "Enable the Gemma Model Router (experimental). Requires a local endpoint serving Gemma via the Gemini API using LiteRT-LM shim.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.generalistProfile": {
+  "default": false,
+  "description": "Suitable for general coding and software development tasks.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.modelSteering": {
+  "default": false,
+  "description": "Enable model steering (user hints) to guide the model during tool execution.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.powerUserProfile": {
+  "default": false,
+  "description": "Less cache friendly version of the generalist profile.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.stressTestProfile": {
+  "default": false,
+  "description": "Significantly lowers token limits to force early garbage collection and distillation for testing purposes.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.taskTracker": {
+  "default": false,
+  "description": "Enable task tracker tools.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.topicUpdateNarration": {
+  "default": false,
+  "description": "Deprecated: Use general.topicUpdateNarration instead.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.useOSC52Copy": {
+  "default": false,
+  "description": "Use OSC 52 for copying. This may be more robust than the default system when using remote terminal sessions (if your terminal is configured to allow it).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.useOSC52Paste": {
+  "default": false,
+  "description": "Use OSC 52 for pasting. This may be more robust than the default system when using remote terminal sessions (if your terminal is configured to allow it).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.voice.activationMode": {
+  "default": "push-to-talk",
+  "description": "How to trigger voice recording with the Space key.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental",
+  "values": [
+   "push-to-talk",
+   "toggle"
+  ]
+ },
+ "experimental.voice.backend": {
+  "default": "gemini-live",
+  "description": "The backend to use for voice transcription. Note: When using the Gemini Live backend, voice recordings are sent to Google Cloud for transcription.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental",
+  "values": [
+   "gemini-live",
+   "whisper"
+  ]
+ },
+ "experimental.voice.stopGracePeriodMs": {
+  "default": 4000,
+  "description": "How long to wait for final transcription after stopping recording.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.voice.whisperModel": {
+  "default": "ggml-base.en.bin",
+  "description": "The Whisper model to use for local transcription.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental",
+  "values": [
+   "ggml-tiny.en.bin",
+   "ggml-base.en.bin",
+   "ggml-large-v3-turbo-q5_0.bin",
+   "ggml-large-v3-turbo-q8_0.bin"
+  ]
+ },
+ "experimental.voiceMode": {
+  "default": false,
+  "description": "Enable experimental voice dictation and commands (/voice, /voice model).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "experimental.worktrees": {
+  "default": false,
+  "description": "Enable automated Git worktree management for parallel work.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#experimental"
+ },
+ "general.checkpointing.enabled": {
+  "default": false,
+  "description": "Enable session checkpointing for recovery",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.debugKeystrokeLogging": {
+  "default": false,
+  "description": "Enable debug logging of keystrokes to the console.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.defaultApprovalMode": {
+  "default": "default",
+  "description": "The default approval mode for tool execution. 'default' prompts for approval, 'auto_edit' auto-approves edit tools, and 'plan' is read-only mode. YOLO mode (auto-approve all actions) can only be enabled via command line (--yolo or --approval-mode=yolo).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general",
+  "values": [
+   "default",
+   "auto_edit",
+   "plan"
+  ]
+ },
+ "general.devtools": {
+  "default": false,
+  "description": "Enable DevTools inspector on launch.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.enableAutoUpdate": {
+  "default": true,
+  "description": "Enable automatic updates.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.enableAutoUpdateNotification": {
+  "default": true,
+  "description": "Enable update notification prompts.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.enableNotifications": {
+  "default": false,
+  "description": "Enable terminal run-event notifications for action-required prompts and session completion.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.logRagSnippets": {
+  "default": false,
+  "description": "Log full Code Customization (RAG) retrieved snippets to a local file for debugging.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.maxAttempts": {
+  "default": 10,
+  "description": "Maximum number of attempts for requests to the main chat model. Cannot exceed 10.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.notificationMethod": {
+  "default": "auto",
+  "description": "How to send terminal notifications.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general",
+  "values": [
+   "auto",
+   "osc9",
+   "osc777",
+   "bell"
+  ]
+ },
+ "general.openEditorInNewWindow": {
+  "default": false,
+  "description": "Open VS Code-family editors in a new window when editing files.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.plan.directory": {
+  "description": "The directory where planning artifacts are stored. If not specified, defaults to the system temporary directory. A custom directory requires a policy to allow write access in Plan Mode.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.plan.enabled": {
+  "default": true,
+  "description": "Enable Plan Mode for read-only safety during planning.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.plan.modelRouting": {
+  "default": true,
+  "description": "Automatically switch between Pro and Flash models based on Plan Mode status. Uses Pro for the planning phase and Flash for the implementation phase.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.preferredEditor": {
+  "description": "The preferred editor to open files in. Must be one of the built-in supported identifiers. Use /editor in the CLI to pick interactively, or leave unset to use $VISUAL/$EDITOR.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general",
+  "values": [
+   "vscode",
+   "vscodium",
+   "windsurf",
+   "cursor",
+   "zed",
+   "antigravity",
+   "sublimetext",
+   "lapce",
+   "nova",
+   "bbedit",
+   "vim",
+   "neovim",
+   "emacs",
+   "hx",
+   "emacsclient",
+   "micro"
+  ]
+ },
+ "general.retryFetchErrors": {
+  "default": true,
+  "description": "Retry on \"exception TypeError: fetch failed sending request\" errors.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.sessionRetention.enabled": {
+  "default": true,
+  "description": "Enable automatic session cleanup",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.sessionRetention.maxAge": {
+  "default": "30d",
+  "description": "Automatically delete chats older than this time period (e.g., \"30d\", \"7d\", \"24h\", \"1w\")",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.sessionRetention.maxCount": {
+  "description": "Alternative: Maximum number of sessions to keep (most recent)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.sessionRetention.minRetention": {
+  "default": "1d",
+  "description": "Minimum retention period (safety limit, defaults to \"1d\")",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.topicUpdateNarration": {
+  "default": true,
+  "description": "Enable the Topic & Update communication model for reduced chattiness and structured progress reporting.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "general.vimMode": {
+  "default": false,
+  "description": "Enable Vim keybindings",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#general"
+ },
+ "hooks.AfterAgent": {
+  "description": "Hooks that execute after agent loop completes. Can perform cleanup or summarize results.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.AfterModel": {
+  "description": "Hooks that execute after LLM responses. Can process outputs, extract information, or log interactions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.AfterTool": {
+  "description": "Hooks that execute after tool execution. Can process results, log outputs, or trigger follow-up actions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.BeforeAgent": {
+  "description": "Hooks that execute before agent loop starts. Can set up context or initialize resources.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.BeforeModel": {
+  "description": "Hooks that execute before LLM requests. Can modify prompts, inject context, or control model parameters.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.BeforeTool": {
+  "description": "Hooks that execute before tool execution. Can intercept, validate, or modify tool calls.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.BeforeToolSelection": {
+  "description": "Hooks that execute before tool selection. Can filter or prioritize available tools dynamically.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.Notification": {
+  "description": "Hooks that execute on notification events (errors, warnings, info). Can log or alert on specific conditions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.PreCompress": {
+  "description": "Hooks that execute before chat history compression. Can back up or analyze conversation before compression.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.SessionEnd": {
+  "description": "Hooks that execute when a session ends. Can perform cleanup or persist session data.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooks.SessionStart": {
+  "description": "Hooks that execute when a session starts. Can initialize session-specific resources or state.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooks"
+ },
+ "hooksConfig.disabled": {
+  "description": "List of hook names (commands) that should be disabled. Hooks in this list will not execute even if configured.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooksconfig"
+ },
+ "hooksConfig.enabled": {
+  "default": true,
+  "description": "Canonical toggle for the hooks system. When disabled, no hooks will be executed.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooksconfig"
+ },
+ "hooksConfig.notifications": {
+  "default": true,
+  "description": "Show visual indicators when hooks are executing.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#hooksconfig"
+ },
+ "ide.enabled": {
+  "default": false,
+  "description": "Enable IDE integration mode.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ide"
+ },
+ "ide.hasSeenNudge": {
+  "default": false,
+  "description": "Whether the user has seen the IDE integration nudge.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ide"
+ },
+ "mcp.allowed": {
+  "description": "A list of MCP servers to allow.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#mcp"
+ },
+ "mcp.excluded": {
+  "description": "A list of MCP servers to exclude.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#mcp"
+ },
+ "mcp.serverCommand": {
+  "description": "Command to start an MCP server.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#mcp"
+ },
+ "model.compressionThreshold": {
+  "default": 0.5,
+  "description": "The fraction of context usage at which to trigger context compression (e.g. 0.2, 0.3).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "model.disableLoopDetection": {
+  "default": false,
+  "description": "Disable automatic detection and prevention of infinite loops.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "model.maxSessionTurns": {
+  "default": -1,
+  "description": "Maximum number of user/model/tool turns to keep in a session. -1 means unlimited.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "model.name": {
+  "description": "The Gemini model to use for conversations.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "model.skipNextSpeakerCheck": {
+  "default": true,
+  "description": "Skip the next speaker check.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "model.summarizeToolOutput": {
+  "description": "Enables or disables summarization of tool output. Configure per-tool token budgets (for example {\"run_shell_command\": {\"tokenBudget\": 2000}}). Currently only the run_shell_command tool supports summarization.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#model"
+ },
+ "modelConfigs.aliases": {
+  "description": "Named presets for model configs. Can be used in place of a model name and can inherit from other aliases using an `extends` property.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.classifierIdResolutions": {
+  "description": "Rules for resolving classifier tiers (flash, pro) to concrete model IDs.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.customAliases": {
+  "description": "Custom named presets for model configs. These are merged with (and override) the built-in aliases.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.customOverrides": {
+  "description": "Custom model config overrides. These are merged with (and added to) the built-in overrides.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.modelChains": {
+  "description": "Availability policy chains defining fallback behavior for models.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.modelDefinitions": {
+  "description": "Registry of model metadata, including tier, family, and features.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.modelIdResolutions": {
+  "description": "Rules for resolving requested model names to concrete model IDs based on context.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "modelConfigs.overrides": {
+  "description": "Apply specific configuration overrides based on matches, with a primary key of model (or alias). The most specific match will be used.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#modelconfigs"
+ },
+ "output.format": {
+  "default": "text",
+  "description": "The format of the CLI output. Can be `text` or `json`.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#output",
+  "values": [
+   "text",
+   "json"
+  ]
+ },
+ "policyPaths": {
+  "description": "Additional policy files or directories to load.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#policypaths"
+ },
+ "privacy.usageStatisticsEnabled": {
+  "default": true,
+  "description": "Enable collection of usage statistics",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#privacy"
+ },
+ "security.allowedExtensions": {
+  "description": "List of Regex patterns for allowed extensions. If nonempty, only extensions that match the patterns in this list are allowed. Overrides the blockGitExtensions setting.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.auth.enforcedType": {
+  "description": "The required auth type. If this does not match the selected auth type, the user will be prompted to re-authenticate.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.auth.selectedType": {
+  "description": "The currently selected authentication type.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.auth.useExternal": {
+  "description": "Whether to use an external authentication flow.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.autoAddToPolicyByDefault": {
+  "default": false,
+  "description": "When enabled, the \"Allow for all future sessions\" option becomes the default choice for low-risk tools in trusted workspaces.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.blockGitExtensions": {
+  "default": false,
+  "description": "Blocks installing and loading extensions from Git.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.disableAlwaysAllow": {
+  "default": false,
+  "description": "Disable \"Always allow\" options in tool confirmation dialogs.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.disableYoloMode": {
+  "default": false,
+  "description": "Disable YOLO mode, even if enabled by a flag.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.enableConseca": {
+  "default": false,
+  "description": "Enable the context-aware security checker. This feature uses an LLM to dynamically generate and enforce security policies for tool use based on your prompt, providing an additional layer of protection against unintended actions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.enablePermanentToolApproval": {
+  "default": false,
+  "description": "Enable the \"Allow for all future sessions\" option in tool confirmation dialogs.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.environmentVariableRedaction.allowed": {
+  "description": "Environment variables to always allow (bypass redaction).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.environmentVariableRedaction.blocked": {
+  "description": "Environment variables to always redact.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.environmentVariableRedaction.enabled": {
+  "default": false,
+  "description": "Enable redaction of environment variables that may contain secrets.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.folderTrust.enabled": {
+  "default": true,
+  "description": "Setting to track whether Folder trust is enabled.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "security.toolSandboxing": {
+  "default": false,
+  "description": "Tool-level sandboxing. Isolates individual tools instead of the entire CLI process.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#security"
+ },
+ "skills.disabled": {
+  "description": "List of disabled skills.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#skills"
+ },
+ "skills.enabled": {
+  "default": true,
+  "description": "Enable Agent Skills.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#skills"
+ },
+ "tools.allowed": {
+  "description": "Tool names that bypass the confirmation dialog. Useful for trusted commands (for example [\"run_shell_command(git)\", \"run_shell_command(npm test)\"]). See shell tool command restrictions for matching details.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.callCommand": {
+  "description": "Defines a custom shell command for invoking discovered tools. The command must take the tool name as the first argument, read JSON arguments from stdin, and emit JSON results on stdout.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.confirmationRequired": {
+  "description": "Tool names that always require user confirmation. Takes precedence over allowed tools and core tool allowlists.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.core": {
+  "description": "Restrict the set of built-in tools with an allowlist. Match semantics mirror tools.allowed; see the built-in tools documentation for available names.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.disableLLMCorrection": {
+  "default": true,
+  "description": "Disable LLM-based error correction for edit tools. When enabled, tools will fail immediately if exact string matches are not found, instead of attempting to self-correct.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.discoveryCommand": {
+  "description": "Command to run for tool discovery.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.exclude": {
+  "description": "Tool names to exclude from discovery.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.sandbox": {
+  "description": "Legacy full-process sandbox execution environment. Set to a boolean to enable or disable the sandbox, provide a string path to a sandbox profile, or specify an explicit sandbox command (e.g., \"docker\", \"podman\", \"lxc\", \"windows-native\").",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.sandboxAllowedPaths": {
+  "description": "List of additional paths that the sandbox is allowed to access.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.sandboxNetworkAccess": {
+  "default": false,
+  "description": "Whether the sandbox is allowed to access the network.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.shell.backgroundCompletionBehavior": {
+  "default": "silent",
+  "description": "Controls what happens when a background shell command finishes. 'silent' (default): quietly exits in background. 'inject': automatically returns output to agent. 'notify': shows brief message in chat.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools",
+  "values": [
+   "silent",
+   "inject",
+   "notify"
+  ]
+ },
+ "tools.shell.enableInteractiveShell": {
+  "default": true,
+  "description": "Use node-pty for an interactive shell experience. Fallback to child_process still applies.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.shell.enableShellOutputEfficiency": {
+  "default": true,
+  "description": "Enable shell output efficiency optimizations for better performance.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.shell.inactivityTimeout": {
+  "default": 300,
+  "description": "The maximum time in seconds allowed without output from the shell command. Defaults to 5 minutes.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.shell.pager": {
+  "default": "cat",
+  "description": "The pager command to use for shell output. Defaults to `cat`.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.shell.showColor": {
+  "default": true,
+  "description": "Show color in shell output.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.truncateToolOutputThreshold": {
+  "default": 40000,
+  "description": "Maximum characters to show when truncating large tool outputs. Set to 0 or negative to disable truncation.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "tools.useRipgrep": {
+  "default": true,
+  "description": "Use ripgrep for file content search instead of the fallback implementation. Provides faster search performance.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#tools"
+ },
+ "ui.accessibility.enableLoadingPhrases": {
+  "default": true,
+  "description": "@deprecated Use ui.loadingPhrases instead. Enable loading phrases during operations.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.accessibility.screenReader": {
+  "default": false,
+  "description": "Render output in plain-text to be more screen reader accessible",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.autoThemeSwitching": {
+  "default": true,
+  "description": "Automatically switch between default light and dark themes based on terminal background color.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.collapseDrawerDuringApproval": {
+  "default": true,
+  "description": "Whether to collapse the UI drawer when a tool is awaiting confirmation.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.compactToolOutput": {
+  "default": true,
+  "description": "Display tool outputs (like directory listings and file reads) in a compact, structured format.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.customThemes": {
+  "description": "Custom theme definitions.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.customWittyPhrases": {
+  "description": "Custom witty phrases to display during loading. When provided, the CLI cycles through these instead of the defaults.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.debugRainbow": {
+  "default": false,
+  "description": "Enable debug rainbow rendering. Only useful for debugging rendering bugs and performance issues.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.dynamicWindowTitle": {
+  "default": true,
+  "description": "Update the terminal window title with current status icons (Ready: ◇, Action Required: ✋, Working: ✦)",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.errorVerbosity": {
+  "default": "low",
+  "description": "Controls whether recoverable errors are hidden (low) or fully shown (full).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui",
+  "values": [
+   "low",
+   "full"
+  ]
+ },
+ "ui.escapePastedAtSymbols": {
+  "default": false,
+  "description": "When enabled, @ symbols in pasted text are escaped to prevent unintended @path expansion.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.hideCWD": {
+  "default": false,
+  "description": "Hide the current working directory in the footer.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.hideContextPercentage": {
+  "default": true,
+  "description": "Hides the context window usage percentage.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.hideModelInfo": {
+  "default": false,
+  "description": "Hide the model name and context usage in the footer.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.hideSandboxStatus": {
+  "default": false,
+  "description": "Hide the sandbox status indicator in the footer.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.items": {
+  "description": "List of item IDs to display in the footer. Rendered in order",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.footer.showLabels": {
+  "default": true,
+  "description": "Display a second line above the footer items with descriptive headers (e.g., /model).",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.hideBanner": {
+  "default": false,
+  "description": "Hide the application banner",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.hideContextSummary": {
+  "default": false,
+  "description": "Hide the context summary (GEMINI.md, MCP servers) above the input.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.hideFooter": {
+  "default": false,
+  "description": "Hide the footer from the UI",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.hideTips": {
+  "default": false,
+  "description": "Hide helpful tips in the UI",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.hideWindowTitle": {
+  "default": false,
+  "description": "Hide the window title bar",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.incrementalRendering": {
+  "default": true,
+  "description": "Enable incremental rendering for the UI. This option will reduce flickering but may cause rendering artifacts. Only supported when useAlternateBuffer is enabled.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.inlineThinkingMode": {
+  "default": "off",
+  "description": "Display model thinking inline: off or full.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui",
+  "values": [
+   "off",
+   "full"
+  ]
+ },
+ "ui.loadingPhrases": {
+  "default": "off",
+  "description": "What to show while the model is working: tips, witty comments, all, or off.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui",
+  "values": [
+   "tips",
+   "witty",
+   "all",
+   "off"
+  ]
+ },
+ "ui.renderProcess": {
+  "default": true,
+  "description": "Enable Ink render process for the UI.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showCitations": {
+  "default": false,
+  "description": "Show citations for generated text in the chat.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showCompatibilityWarnings": {
+  "default": true,
+  "description": "Show warnings about terminal or OS compatibility issues.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showHomeDirectoryWarning": {
+  "default": true,
+  "description": "Show a warning when running Gemini CLI in the home directory.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showLineNumbers": {
+  "default": true,
+  "description": "Show line numbers in the chat.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showMemoryUsage": {
+  "default": false,
+  "description": "Display memory usage information in the UI",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showModelInfoInChat": {
+  "default": false,
+  "description": "Show the model name in the chat for each model turn.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showShortcutsHint": {
+  "default": true,
+  "description": "Show the \"? for shortcuts\" hint above the input.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showSpinner": {
+  "default": true,
+  "description": "Show the spinner during operations.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showStatusInTitle": {
+  "default": false,
+  "description": "Show Gemini CLI model thoughts in the terminal window title during the working phase",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.showUserIdentity": {
+  "default": true,
+  "description": "Show the signed-in user's identity (e.g. email) in the UI.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.terminalBackgroundPollingInterval": {
+  "default": 60,
+  "description": "Interval in seconds to poll the terminal background color.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.terminalBuffer": {
+  "default": false,
+  "description": "Use the new terminal buffer architecture for rendering.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.theme": {
+  "description": "The color theme for the UI. See the CLI themes guide for available options.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.useAlternateBuffer": {
+  "default": false,
+  "description": "Use an alternate screen buffer for the UI, preserving shell history.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "ui.useBackgroundColor": {
+  "default": true,
+  "description": "Whether to use background colors in the UI.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#ui"
+ },
+ "useWriteTodos": {
+  "default": true,
+  "description": "Enable the write_todos tool.",
+  "doc_url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md#usewritetodos"
+ }
+}

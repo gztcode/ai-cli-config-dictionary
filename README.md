@@ -3,7 +3,9 @@
 [![CI](https://github.com/gztcode/ai-cli-config-dictionary/actions/workflows/ci.yml/badge.svg)](https://github.com/gztcode/ai-cli-config-dictionary/actions/workflows/ci.yml)
 [![Release](https://github.com/gztcode/ai-cli-config-dictionary/actions/workflows/release.yml/badge.svg)](https://github.com/gztcode/ai-cli-config-dictionary/actions/workflows/release.yml)
 
-跨平台桌面应用（Rust + Tauri 2）：浏览 Claude Code、Codex、Gemini CLI、Grok Build、OpenCode、OpenClaw、Hermes、Pi、MiniMax Code 的**全部配置项**，查看每个 key 的官方说明与文档链接；**扫描整机所有项目**找出这些工具的配置文件；**独立的编辑子页面**，点开就能改——能新增、能增删数组、能撤销、能校验、能预览差异、能安全写回。
+跨平台桌面应用（Rust + Tauri 2）：浏览 Claude Code、Codex、Gemini CLI、Grok Build、OpenCode、OpenClaw、Hermes、Pi、MiniMax Code 的**全部配置项**，查看每个 key 的官方说明与文档链接；**扫描整机所有项目**找出这些工具的配置文件；**独立的编辑子页面**，点开就能改——能新增、能增删数组、能撤销、能校验、能预览差异、能安全写回，还能**一次改多个文件**。
+
+桌面端常驻菜单栏（关窗口不退出），支持**全局快捷键**唤起，**深色 / 浅色**主题随手切，还有一份**配置片段库**把常用的调优组合存成「一键应用」。
 
 > 独立原生应用（有 macOS/Windows/Linux 各自的安装包与原生窗口），不是网页。
 
@@ -56,6 +58,16 @@ cargo run -- serve                         # HTTP 桥：真实前端 + 真实命
 
 本机配置文件路径后面直接跟一个「编辑」链接 —— 点它就跳到编辑子页面。
 
+**文档链接分三级降级**，绝不伪造锚点：
+
+1. **精确锚点** —— schema 自带的官方文档 URL（Claude Code 大多是这种），点「DOC」直接跳到那一节
+2. **章节级锚点** —— 官方文档里以小节形式讲了这一批键时，反查「哪个小节提到了它」，链到那个小节
+3. **「搜文档」降级入口** —— 连章节都对不上时，给一个指向该工具**官方文档索引页**的入口，并把**搜索词复制到剪贴板**，让用户直接在文档站自己的搜索框里粘贴
+
+第 2 级靠 `tools/derive_schema.py` 的「**以 schema 的真实键为准，去官方文档里反查**」实现：先切出文档的每个小节、抽出小节里出现过的键形态 token（行内代码、JSON/JSON5 代码块的键路径、YAML 代码块的键路径），再用 schema 的键路径去逐级回退匹配（`providers.anthropic.options.baseURL` → `anthropic.options.baseURL` → `options.baseURL` → `baseURL`）。
+
+子键还会**继承父级的文档链接** —— 父级那条链接讲的就是整棵子树（比如 Claude Code 的 `permissions` 一节涵盖所有子项）。
+
 ### 2. 扫描磁盘
 
 **一次遍历同时产出两样东西**：发现的项目，和项目里的 AI CLI 配置文件。
@@ -91,6 +103,35 @@ cargo run -- serve                         # HTTP 桥：真实前端 + 真实命
 
 **密钥安全阀**：脱敏后的掩码值不会被当成真值写回文件 —— 用户没碰过的密钥字段，保存时原样保留。
 
+### 4. 批量编辑（同一个键改一批文件）
+
+项目一多，「给十几个项目都加上同一个配置」就成体力活。编辑器侧栏的**「批量编辑多个文件…」**可以：
+
+- 勾选一批文件（扫描结果里的、最近打开的，或手动加路径）
+- 填一个**键路径 + 值**（或改成「删除这个键」）
+- **逐个文件预览**差异与校验结果 —— 一个文件格式不对不影响其它文件的预览
+- **一次写盘**：写之前先全量检查有没有被别的程序改过，**任何一个冲突就整批不写**（不会留下「改了一半」的半吊子状态）
+
+JSON / JSONC / TOML / YAML 混着来也没问题，各文件按自己的格式写回，缩进和注释照原样。
+
+### 5. 配置片段库
+
+侧栏的**「配置片段」**是一组预置的常用配置组合（放开权限、开沙箱、调推理强度、开记忆……）：
+
+- 点「用到当前文件」→ 变成**待保存的普通改动**，照样能预览差异、校验、回退 —— 片段不绕过任何安全检查
+- 「把当前改动存成片段…」→ 把正在编辑的改动存进片段库，下次一键复用
+- 片段存在 `~/.config/cfg-explorer/snippets.json`，可以自己改 JSON
+- **内置片段的每个键都对着 schema 校验过**：键在 schema 里不存在会直接标红提示（有一条单测专门守这条）
+
+### 6. 桌面端体验
+
+| 能力 | 说明 |
+|---|---|
+| **托盘常驻** | 关掉窗口不退出，菜单栏图标常驻；托盘菜单可直接「显示主窗口 / 配置字典 / 扫描磁盘 / 编辑器 / 退出」 |
+| **全局快捷键** | `Cmd/Ctrl + Shift + C` 唤起主窗口，`Cmd/Ctrl + Shift + F` 唤起并聚焦搜索框；注册失败（被别的应用占用）只告警，不影响启动 |
+| **深色 / 浅色模式** | 顶栏一键切换；默认跟随系统 `prefers-color-scheme`，手动切过之后记住你的选择 |
+| **剪贴板** | 「搜文档」降级入口会把搜索词复制到剪贴板，直接在文档站里粘贴即可 |
+
 ---
 
 ## 架构
@@ -106,6 +147,7 @@ src/
   secret.rs              密钥识别与脱敏（分级词边界匹配）
   app.rs                 数据装配层（CLI / HTML / 桌面 App 共用）
   commands.rs            前端命令实现（桌面 App IPC 与 HTTP 桥共用同一份）
+  snippets.rs            配置片段库（内置片段 + 用户片段，键在 schema 里才认）
   scan.rs                磁盘扫描（自写多线程遍历器）
   jsonc.rs               自写 JSON/JSONC 解析器（记录每个值的字节区间）
   edit.rs                保格式编辑（JSON 字节级替换 / TOML toml_edit / YAML 行级定点）
@@ -114,15 +156,19 @@ src/
   ui/app.css, app.js     渲染层（HTML 导出 / 桌面 App / HTTP 桥共用同一份）
   i18n/zh-CN.json        多语言覆盖层
 desktop/src-tauri/       Tauri 2 桌面应用（IPC 适配层）
+  src/tray.rs            托盘常驻 + 全局快捷键
 tools/translate.py       全量中文词条生成（批量 LLM 翻译 + 术语表 + 质量闸门）
 tools/derive_schema.py   从各家官方来源派生 schema（表格 / Python 定义 / Zod / npm 包）
 tools/make_icon.py       图标生成（纯标准库）
 tests/
-  edit_roundtrip.rs      保格式编辑回归测试（29 个）
+  edit_roundtrip.rs      保格式编辑回归测试（32 个）
   secret_test.rs         密钥识别与脱敏测试（8 个）
   contract.rs            前端 ↔ Rust 的 JSON 契约测试（9 个）
   scan_test.rs           扫描器回归测试（7 个）
   i18n_test.rs           内置中文词条质量测试（6 个）
+  schema_sources_test.rs schema 来源与注册表一致性测试（6 个）
+  batch_edit_test.rs     批量编辑：格式保留 / 单个失败不牵连 / 冲突整批不写（5 个）
+  snippet_test.rs        配置片段库：键必须在 schema 里存在（4 个）
 ```
 
 **关键设计一：GUI 只消费 IR，不直接碰 JSON Schema。**
@@ -182,13 +228,35 @@ tests/
 |---|---|---|
 | Grok Build | 官方仓库 `26-config-reference.md` 的字段表 | 384 叶子，**说明覆盖 100%** |
 | Pi | 官方 npm 包里的 `docs/settings.md` 字段表 | 71 叶子，**说明覆盖 100%** |
-| Hermes Agent | 官方仓库 `config_defaults.py` 的 `DEFAULT_CONFIG` + 源码注释（注释即官方文档） | 925 叶子，说明覆盖 49% |
-| OpenClaw | 官方 npm 包里的 Zod schema（结构/枚举/默认值）＋ 官方生成式文档里的字段说明 | 1553 叶子，说明覆盖 1% |
-| MiniMax Code | 官方 npm 包 `@minimax-ai/code` 的配置默认值 | 46 叶子 |
+| Hermes Agent | 官方仓库 `config_defaults.py` 的 `DEFAULT_CONFIG` + 源码注释（注释即官方文档） | 926 叶子，说明覆盖 57% |
+| OpenClaw | 官方 npm 包里的 Zod schema（结构/枚举/默认值）＋ 官方生成式文档里的字段说明 | 1553 叶子，说明覆盖 5% |
+| MiniMax Code | 官方仓库 `packages/config/src/**` 全部 TypeScript 的 `Config` 接口（递归展开子接口） | 273 叶子，**链接覆盖 99%** |
 
-> **为什么 OpenClaw / MiniMax Code 的说明很少**：这两家的字段文档只存在于**散文**里
-> （OpenClaw 的文档是叙述式页面，MiniMax Code 的包里连字段表都没有）。
-> 我们不拿猜测去凑 —— 结构、类型、枚举、默认值照实给，说明只给能从官方文档确证的部分。
+> **MiniMax Code 的口径变了**：之前只认 npm 包里那份压缩后的默认值（46 个键），
+> 换成官方仓库 `packages/config/src/` 下的**全部** TypeScript ——
+> `Config` 接口引用的一堆子接口（`PermissionConfig` / `AgentsConfig` / `AsrConfig` /
+> `SkillsConfig` / `TuiConfig` …）都定义在兄弟文件里，字段说明也在那些文件里。
+> 键数从 46 涨到 273，链接覆盖 99%。
+
+### ③ 文档补充层（`doc_supplement`）
+
+官方 schema 常常**只给结构不给文字**（或者压根没有逐键锚点）。所以另有一层「文档补充层」：
+`registry.toml` 里给工具填 `doc_supplement = "xxx-doc.json"`，这一层只放
+**说明**与**章节级锚点**，叠在官方 schema 之上。
+
+| 工具 | 补充层来源 | 覆盖 |
+|---|---|---|
+| Gemini CLI | 官方 `docs/reference/configuration.md` 的逐键说明（Description / Default / Values） | 250 条说明 |
+| OpenCode | 官方 `config.mdx` 按小节反查 | 344/576 叶子有链接 |
+| OpenClaw | 12 个官方 `docs/gateway/config-*.md` 按小节反查 | 1410/1553 叶子有链接 |
+| Hermes Agent | 官方配置指南按小节反查 | 819/926 叶子有链接 |
+
+**反查的做法**（不是编造锚点）：先按官方 schema 取出真实的键路径，
+再把官方文档切成小节、抽出每个小节里出现过的键形态 token
+（行内代码、JSON/JSON5 代码块的键路径、YAML 代码块的键路径），
+然后用 schema 的键路径去逐级回退匹配 —— `providers.anthropic.options.baseURL`
+依次试 `providers.anthropic.options.baseURL` → `anthropic.options.baseURL`
+→ `options.baseURL` → `baseURL`，命中即链到那个小节。
 
 ---
 
@@ -233,23 +301,32 @@ git tag v0.2.0 && git push origin v0.2.0
 
 ---
 
-## 实测数据（本机，2026-10-22）
+## 实测数据（本机，2026-10-23）
 
-| 工具 | schema 来源 | 总键 | 叶子键 | 有说明 | 有枚举 | 有默认值 |
-|---|---|---|---|---|---|---|
-| Claude Code | SchemaStore | 1494 | 1183 | 1314 | 263 | 81 |
-| Codex CLI | 官方仓库 | 307 | 296 | 94 | 0 | 9 |
-| Gemini CLI | 官方仓库 | 575 | 399 | 457 | 25 | 235 |
-| OpenCode | 官方 | 719 | 576 | 155 | 257 | 0 |
-| Grok Build | 文档派生 | 453 | 384 | 391 | 1 | 0 |
-| OpenClaw | 官方包（Zod） | 2266 | 1553 | 30 | 244 | 4 |
-| Hermes Agent | 文档派生 | 1097 | 925 | 531 | 0 | 0 |
-| Pi | 文档派生 | 80 | 71 | 71 | 0 | 0 |
-| MiniMax Code | 官方包 | 64 | 46 | 0 | 0 | 0 |
+| 工具 | schema 来源 | 总键 | 叶子键 | 有说明 | 叶子带文档链接 | 有枚举 | 有默认值 |
+|---|---|---|---|---|---|---|---|
+| Claude Code | SchemaStore | 1494 | 1183 | 1314 | **635** (53%) | 263 | 81 |
+| Codex CLI | 官方仓库 | 307 | 296 | 94 | 1 (0%) | 0 | 27 |
+| Gemini CLI | 官方仓库 | 575 | 399 | 458 | **177** (44%) | 25 | 235 |
+| OpenCode | 官方 | 719 | 576 | 155 | **344** (59%) | 257 | 0 |
+| Grok Build | 文档派生 | 453 | 384 | 391 | **384** (100%) | 0 | 9 |
+| OpenClaw | 官方包（Zod）+ 文档补充层 | 2266 | 1553 | 83 | **1410** (90%) | 244 | 5 |
+| Hermes Agent | 文档派生 + 文档补充层 | 1098 | 926 | 531 | **819** (88%) | 0 | 677 |
+| Pi | 文档派生 | 80 | 71 | 71 | **71** (100%) | 15 | 52 |
+| MiniMax Code | 官方仓库 TypeScript | 367 | 273 | 48 | **271** (99%) | 3 | 7 |
 
-合计 **5571 个叶子键**，其中 **3043 个键带说明**（含数组节点与对象节点），全部有中文译文。
+合计 **5661 个叶子键**，其中 **4112 个（72%）带文档链接**，**3145 个键带中文译文**（含数组节点与对象节点）。
 
-**结论：文档链接无法统一收割。** 只有 Claude Code 的 schema 内嵌了带锚点的官方文档 URL（423 个键分布在 53 个页面上）；其余工具一个带锚点的链接都没有。产品上必须给「无精确链接」的键准备降级策略（指向该工具的文档索引页），而不是伪造精确锚点。
+**结论：文档链接无法统一收割，但可以「反查」。**
+只有 Claude Code 的 schema 内嵌了带锚点的官方文档 URL；其余工具一个带锚点的链接都没有。
+所以做了两级补齐：
+
+1. **以 schema 的真实键为准，去官方文档里反查**（见上面的「文档补充层」）
+2. **子键继承父级的链接** —— 父级那条链接讲的就是整棵子树
+
+剩下确实对不上的（比如 Codex 官网那份被 Cloudflare 挡在本机沙箱外，只能在浏览器里看），
+走「搜文档」降级：给该工具的**官方文档索引页** + 复制搜索词。
+**不伪造精确锚点** —— 这是产品底线。
 
 ---
 
@@ -257,7 +334,7 @@ git tag v0.2.0 && git push origin v0.2.0
 
 `src/i18n/zh-CN.json` 是覆盖层，键形如 `claude-code:model`。
 
-- **全量中文**：`tools/translate.py` 把 schema 里 **3043** 条有说明的键（叶子 + 数组节点 + 对象节点，字典页会一并渲染）去重成 **2195** 条唯一英文文本批量翻译，术语表保证全库一致，**质量闸门**校验反引号内容、环境变量名、占位符必须原样保留
+- **全量中文**：`tools/translate.py` 把 schema 里 **3145** 条有说明的键（叶子 + 数组节点 + 对象节点，字典页会一并渲染）去重成 **2299** 条唯一英文文本批量翻译，术语表保证全库一致，**质量闸门**校验反引号内容、环境变量名、占位符必须原样保留
 - **增量**：源文本变了才重译（`tools/.translate-cache.json` 存 hash）
 - **升级不丢词条**：应用启动时把内置的新词条**合并**进用户目录里的覆盖层，用户自己改过的条目不会被覆盖
 - fallback 链：请求语言 → 覆盖层 → 英文原文 → 「暂无官方说明」
@@ -317,6 +394,11 @@ python3 tools/translate.py --force    # 忽略缓存全部重译
 7. **父级不存在时，新增嵌套键会被静默丢掉。** 前端的预览树 `parentOf()` 走到缺失的中间层就返回 null，于是「添加 `sandbox.auto_allow_bash`」点了跟没点一样；而 TOML 落盘那边会自动建表 —— 同一件事两套行为。→ 前端预览补齐中间层，JSON / YAML 落盘也跟着补（JSON 造嵌套对象字面量，YAML 逐层缩进补块）。
 8. **缓存文件名不能只取 URL 末段。** 两家工具都用 `config.json` 结尾时会互相覆盖缓存。→ 缓存名加工具 id 前缀（`codex-config.schema.json`）。
 9. **注册表是应用自带的数据，不能只在文件不存在时播种。** 以前那么写，升级后的桌面 App 还在用旧注册表 —— 没有 `schema_file` 字段，新接的五家工具全空，Codex 的地址也还是被 Cloudflare 挡的。→ 每次启动都用内置副本刷新，旧文件备份成 `registry.user.toml`。
+10. **TypeScript 的 `Record<string, X>` 展开后，子键必须挂在 `additionalProperties` 上。** 之前把 `provider` 展开成了普通 `properties`，键路径对不上 IR 里的 `provider[*].api`，整棵子树在界面上消失。→ 动态键统一用 `additionalProperties`。
+11. **`interface X extends Y` 的基类字段要合并进来。** `CustomProviderConfig extends ProviderConfig`，只解析本体就少了 11 个字段。→ 解析时把基类字段排在本体前面，且各自保留自己的行号（链接要指到真正定义它的那一行）。
+12. **异步加载完数据不能整页重绘。** 片段库异步拉回来就 `render()` 的话，用户刚在「打开文件」输入框里敲的路径会被清空（E2E 里真的复现了）。→ 把输入内容存进状态，并且局部替换片段区块。
+13. **批量面板的按钮状态不能只在渲染时算一次。** 勾选框不会触发重绘，闭包里那份「已勾选列表」会过期 —— 预览时拿到的是空列表。→ 点按钮时重新从状态里取当前值。
+14. **批量写盘要「全有或全无」。** 逐个文件写的话，前面几个成功、后面一个冲突，就留下改了一半的状态。→ 写之前先全量检查指纹，任何一个冲突就整批拒绝。
 
 ---
 
@@ -393,12 +475,15 @@ cargo test --release      # 67 个测试
 
 ## 下一步（按优先级）
 
-1. 给「无精确文档链接」的键做降级策略（文档索引页 + 页内搜索）
-2. 密钥写系统钥匙串（macOS Keychain）
-3. OpenClaw / MiniMax Code 补字段说明（需要找到它们官方发布的字段文档或 schema）
-4. 跨平台打包（Windows msi / Linux deb、AppImage）
-5. 编辑器支持多文件批量改
-6. 应用体验：托盘常驻、全局快捷键、深色模式、配置片段库
+1. 密钥写系统钥匙串（macOS Keychain / Windows Credential Manager）
+2. 片段库支持「从 schema 里挑键」来新建片段（现在只能从当前改动存）
+3. Codex 文档链接：官网那份在本机沙箱里被 Cloudflare 挡（403），改用别的官方来源补上
+4. 托盘菜单加「最近打开的文件」快捷项
+5. 批量编辑支持「按项目批量」与「按工具批量」两种分组方式
 
-> 九家工具的 schema 已全部接上（4 家官方发布 + 5 家从官方来源派生），
-> 3043 条带说明的键 100% 有中文译文。
+> ✅ 已完成：文档链接三级降级（精确锚点 → 章节级锚点 → 索引页 + 搜索词）、
+> OpenClaw / MiniMax Code / Gemini 补字段说明、跨平台打包（Windows msi / Linux deb / AppImage）、
+> 编辑器多文件批量改、托盘常驻、全局快捷键、深色模式、配置片段库。
+>
+> 九家工具的 schema 已全部接上（4 家官方发布 + 5 家从官方来源派生 + 4 家文档补充层），
+> 3145 条带说明的键 100% 有中文译文。

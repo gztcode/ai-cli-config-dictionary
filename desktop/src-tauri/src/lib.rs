@@ -3,6 +3,8 @@
 //! 这一层只做「IPC 适配」：所有实际行为都在 `cfg_explorer::commands` 里，
 //! 桌面 App 和 CLI 的 HTTP 桥共用同一份实现。
 
+mod tray;
+
 use cfg_explorer::app::AppPaths;
 use cfg_explorer::commands::{self, EditPreview, EditValidation, OpenedFile, ToolUsage};
 use cfg_explorer::edit::{EditOp, SaveResult};
@@ -99,7 +101,69 @@ fn open_external(url: String) -> Result<(), String> {
         c.args(["/C", "start", "", &url]);
         c
     };
-    cmd.spawn().map(|_| ()).map_err(|e| format!("打开链接失败: {e}"))
+    cmd.spawn()
+        .map(|_| ())
+        .map_err(|e| format!("打开链接失败: {e}"))
+}
+
+/// 把一段文字复制到系统剪贴板
+///
+/// 降级到「搜文档」时要把搜索词给用户，网页里能用 navigator.clipboard，
+/// 桌面 App 里走系统命令更稳。
+#[tauri::command]
+fn copy_text(text: String) -> Result<(), String> {
+    use std::io::Write;
+    #[cfg(target_os = "macos")]
+    let mut cmd = {
+        let mut c = std::process::Command::new("pbcopy");
+        c.stdin(std::process::Stdio::piped());
+        c
+    };
+    #[cfg(target_os = "linux")]
+    let mut cmd = {
+        // wl-copy（Wayland）优先，回落到 xclip / xsel
+        let mut c = std::process::Command::new("wl-copy");
+        if which("wl-copy").is_none() {
+            c = if which("xclip").is_some() {
+                let mut x = std::process::Command::new("xclip");
+                x.args(["-selection", "clipboard"]);
+                x
+            } else {
+                let mut x = std::process::Command::new("xsel");
+                x.args(["--clipboard", "--input"]);
+                x
+            };
+        }
+        c.stdin(std::process::Stdio::piped());
+        c
+    };
+    #[cfg(target_os = "windows")]
+    let mut cmd = {
+        let mut c = std::process::Command::new("clip");
+        c.stdin(std::process::Stdio::piped());
+        c
+    };
+    let mut child = cmd.spawn().map_err(|e| format!("复制失败: {e}"))?;
+    if let Some(mut stdin) = child.stdin.take() {
+        stdin
+            .write_all(text.as_bytes())
+            .map_err(|e| format!("复制失败: {e}"))?;
+    }
+    child.wait().map_err(|e| format!("复制失败: {e}"))?;
+    Ok(())
+}
+
+/// 在 PATH 里找一个可执行文件（Linux 剪贴板工具要挑）
+#[cfg(target_os = "linux")]
+fn which(name: &str) -> Option<std::path::PathBuf> {
+    let path = std::env::var_os("PATH")?;
+    for dir in std::env::split_paths(&path) {
+        let p = dir.join(name);
+        if p.is_file() {
+            return Some(p);
+        }
+    }
+    None
 }
 
 /// 在文件管理器中显示配置文件
@@ -127,7 +191,9 @@ fn reveal_path(path: String) -> Result<(), String> {
         c.arg("/select,").arg(&p);
         c
     };
-    cmd.spawn().map(|_| ()).map_err(|e| format!("操作失败: {e}"))
+    cmd.spawn()
+        .map(|_| ())
+        .map_err(|e| format!("操作失败: {e}"))
 }
 
 /// 应用信息（注册表来源、目录等）
@@ -236,7 +302,10 @@ async fn commit_edit(
 
 /// 检查文件在打开之后有没有被改过
 #[tauri::command]
-async fn check_conflict(path: String, base_fingerprint: String) -> Result<serde_json::Value, String> {
+async fn check_conflict(
+    path: String,
+    base_fingerprint: String,
+) -> Result<serde_json::Value, String> {
     tauri::async_runtime::spawn_blocking(move || {
         Ok(serde_json::json!({
             "conflict": match commands::check_conflict(&path, &base_fingerprint) {
@@ -249,22 +318,113 @@ async fn check_conflict(path: String, base_fingerprint: String) -> Result<serde_
     .map_err(|e| e.to_string())?
 }
 
+/// 配置片段库：读出所有片段（附带「键在 schema 里不存在」的提示）
+#[tauri::command]
+async fn list_snippets(state: State<'_, AppState>) -> Result<Vec<commands::SnippetView>, String> {
+    let paths = state.paths.clone();
+    let registry = state.registry.clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        commands::list_snippets(&registry, &paths.cache_dir, &paths.snippets_path())
+    })
+    .await
+    .map_err(|e| e.to_string())
+}
+
+/// 配置片段库：保存
+#[tauri::command]
+fn save_snippets(
+    state: State<'_, AppState>,
+    snippets: Vec<cfg_explorer::snippets::Snippet>,
+) -> Result<(), String> {
+    commands::save_snippets(&state.paths.snippets_path(), &snippets)
+}
+
+/// 把一个片段施加到指定文件上（只预览，不写盘）
+#[tauri::command]
+async fn apply_snippet(
+    state: State<'_, AppState>,
+    path: String,
+    snippet_id: String,
+) -> Result<commands::EditPreview, String> {
+    let paths = state.paths.clone();
+    let registry = state.registry.clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        commands::apply_snippet(
+            &registry,
+            &paths.cache_dir,
+            &paths.snippets_path(),
+            &path,
+            &snippet_id,
+        )
+    })
+    .await
+    .map_err(|e| e.to_string())?
+}
+
+/// 批量预览：一次算出多个文件的写回结果与校验
+#[tauri::command]
+async fn preview_edit_batch(
+    state: State<'_, AppState>,
+    targets: Vec<commands::BatchTarget>,
+) -> Result<commands::BatchPreview, String> {
+    let paths = state.paths.clone();
+    let registry = state.registry.clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        commands::preview_edit_batch(&registry, &paths.cache_dir, &targets)
+    })
+    .await
+    .map_err(|e| e.to_string())
+}
+
+/// 批量提交：一次写多个文件
+#[tauri::command]
+async fn commit_edit_batch(
+    targets: Vec<commands::BatchTarget>,
+) -> Result<commands::BatchCommit, String> {
+    tauri::async_runtime::spawn_blocking(move || commands::commit_edit_batch(&targets))
+        .await
+        .map_err(|e| e.to_string())
+}
+
 pub fn run() {
     let paths = AppPaths::discover();
     paths.seed_defaults();
     let (registry, registry_source) = paths.find_registry();
 
     tauri::Builder::default()
+        .plugin(
+            tauri_plugin_global_shortcut::Builder::new()
+                .with_handler(|app, _sc, event| {
+                    if event.state() == tauri_plugin_global_shortcut::ShortcutState::Pressed {
+                        tray::focus_search(app);
+                    }
+                })
+                .build(),
+        )
         .manage(AppState {
             paths,
             registry,
             registry_source,
             data: Mutex::new(None),
         })
+        .setup(|app| {
+            // 托盘常驻：菜单里能唤起窗口、去扫描、退出
+            if let Err(e) = tray::build_tray(app.handle()) {
+                eprintln!("托盘图标创建失败：{e}");
+            }
+            // 全局快捷键（注册失败只告警，不影响应用启动）
+            tray::register_shortcuts(app.handle());
+            Ok(())
+        })
+        .on_window_event(|window, event| {
+            // 关窗口 = 藏到托盘，不是退出
+            tray::handle_window_event(window, event);
+        })
         .invoke_handler(tauri::generate_handler![
             get_data,
             refresh_schemas,
             open_external,
+            copy_text,
             reveal_path,
             app_info,
             scan_files,
@@ -277,7 +437,12 @@ pub fn run() {
             preview_edit,
             validate_edit,
             commit_edit,
-            check_conflict
+            check_conflict,
+            preview_edit_batch,
+            commit_edit_batch,
+            list_snippets,
+            save_snippets,
+            apply_snippet
         ])
         .run(tauri::generate_context!())
         .expect("启动 AI 配置字典失败");

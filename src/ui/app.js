@@ -45,6 +45,9 @@ let EDITOR = {
   addCtx: null,      // 新增键的上下文：{ parent: [], kind: 'key' | 'array' }
   addMode: 'schema', // 新增键面板的来源：'schema' | 'custom'
   newFile: null,     // 新建文件面板的状态
+  batch: null,       // 批量编辑面板的状态
+  snippets: null,    // 配置片段库
+  openPath: '',      // 「打开文件」输入框的内容（重绘时要保住）
 };
 
 const isDesktop = () => !!(window.__TAURI__ && window.__TAURI__.core);
@@ -59,6 +62,58 @@ const el = (t, cls, txt) => {
   if (txt != null) e.textContent = txt;
   return e;
 };
+
+// ── 轻提示（toast）───────────────────────────────────────
+
+let toastTimer = null;
+
+/** 屏幕底部弹一条提示，几秒后自动消失 */
+function toast(msg, ms) {
+  let box = document.getElementById('toast');
+  if (!box) {
+    box = el('div', 'toast');
+    box.id = 'toast';
+    document.body.appendChild(box);
+  }
+  box.textContent = msg;
+  box.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => box.classList.remove('show'), ms || 2600);
+}
+
+/**
+ * 复制一段文字到剪贴板。
+ * 桌面 App 走系统剪贴板（Rust 命令），网页版用浏览器 API。
+ */
+async function copyText(text) {
+  if (!text) return false;
+  try {
+    if (isDesktopApp()) {
+      await invoke('copy_text', { text: String(text) });
+      return true;
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(String(text));
+      return true;
+    }
+  } catch (e) {
+    // 落到下面的兜底
+  }
+  // 兜底：临时 textarea + execCommand
+  try {
+    const ta = el('textarea');
+    ta.value = String(text);
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch (e) {
+    return false;
+  }
+}
 
 // ── 外链 ────────────────────────────────────────────────
 
@@ -106,8 +161,7 @@ function linkify(text) {
 }
 
 /** 填一段可能含链接的文字（替代 textContent） */
-function setText(node, text) {
-  node.textContent = '';
+function setText(node, text) {  node.textContent = '';
   node.appendChild(linkify(text));
   return node;
 }
@@ -230,8 +284,42 @@ function renderRow(key, tool, idx) {
   hdr.appendChild(el('span', 'tag t-' + (vt === 'enum' ? 'enum' : vt), vt));
   if (key.required) hdr.appendChild(el('span', 'tag req', '必填'));
   if (key.deprecated) hdr.appendChild(el('span', 'tag dep', '废弃'));
-  if (key.doc_urls && key.doc_urls.length) hdr.appendChild(el('span', 'tag doc', 'DOC'));
   if (key.translations && Object.keys(key.translations).length) hdr.appendChild(el('span', 'tag i18n', 'i18n'));
+
+  // 文档链接：有精确锚点就直接点开；没有就降级成「文档索引页 + 页内搜索」。
+  // 官方文档不一定给每个 key 都带锚点，但总有个索引页能搜到。
+  if (key.doc_urls && key.doc_urls.length) {
+    const dtag = el('a', 'tag doc', 'DOC');
+    dtag.href = key.doc_urls[0];
+    dtag.target = '_blank';
+    dtag.rel = 'noreferrer';
+    dtag.title = '打开官方文档：\n' + key.doc_urls.join('\n');
+    dtag.onclick = (e) => {
+      e.stopPropagation();
+      if (isDesktopApp()) { e.preventDefault(); openExternal(key.doc_urls[0]); }
+    };
+    hdr.appendChild(dtag);
+  } else if (tool.docs_url) {
+    // 降级：官方文档没有这个键的精确锚点。
+    // 做法是「打开文档索引页 + 把搜索词复制到剪贴板」，让用户直接在
+    // 文档站自己的搜索框里粘贴 —— 不臆造锚点，也不假装能精确定位。
+    const term = (key.path || '').split('.').pop() || key.name || '';
+    const stag = el('a', 'tag nodoc', '搜文档');
+    stag.href = tool.docs_url;
+    stag.target = '_blank';
+    stag.rel = 'noreferrer';
+    stag.title = `${tool.display_name} 没有这个键的精确锚点。\n`
+      + `点开官方文档索引页，搜索词「${term}」已复制到剪贴板。`;
+    stag.onclick = async (e) => {
+      e.stopPropagation();
+      const ok = await copyText(term);
+      if (isDesktopApp()) { e.preventDefault(); openExternal(tool.docs_url); }
+      toast(ok
+        ? `已复制「${term}」，在文档页里搜索即可`
+        : `打开文档页后请手动搜索「${term}」`);
+    };
+    hdr.appendChild(stag);
+  }
 
   // 本机是否已配置
   const curVal = getPath(tool.config, key.path);
@@ -386,6 +474,7 @@ function renderDict(main) {
   const bar = el('div', 'bar');
   const inp = el('input');
   inp.type = 'search'; inp.placeholder = '搜索 key 或描述…'; inp.value = q;
+  inp.id = 'keysearch';
   inp.oninput = e => { q = e.target.value; render(); };
   bar.appendChild(inp);
   ['all', 'error', 'warning', 'nodoc', 'deprecated', 'set'].forEach(f => {
@@ -686,6 +775,8 @@ function renderEditSide() {
   const inp = el('input');
   inp.type = 'text';
   inp.placeholder = '输入配置文件的完整路径';
+  inp.value = EDITOR.openPath || '';
+  inp.oninput = e => { EDITOR.openPath = e.target.value; };
   inp.onkeydown = e => { if (e.key === 'Enter') openFile(inp.value.trim()); };
   r.appendChild(inp);
   box.appendChild(r);
@@ -697,7 +788,17 @@ function renderEditSide() {
   nf.id = 'btn-newfile';
   nf.onclick = () => { EDITOR.panel = 'newfile'; PAGE = 'edit'; render(); };
   box.appendChild(nf);
+
+  // 批量编辑：一次改多个文件
+  const bf = el('button', null, '批量编辑多个文件…');
+  bf.id = 'btn-batch';
+  bf.onclick = () => { EDITOR.panel = 'batch'; PAGE = 'edit'; render(); };
+  box.appendChild(bf);
+
   side.appendChild(box);
+
+  // 配置片段库
+  side.appendChild(renderSnippetBox());
 
   // 最近打开
   if (EDITOR.recent.length) {
@@ -1630,6 +1731,385 @@ function renderEditor(main) {
     if (p) p.scrollIntoView({ block: 'nearest' });
   }
   if (EDITOR.panel === 'newfile') renderNewFilePanel(main);
+  if (EDITOR.panel === 'batch') renderBatchPanel(main);
+}
+
+// ── 配置片段库 ──────────────────────────────────────────
+
+/// 读片段库（只读一次，之后靠 save_snippets 更新）
+async function loadSnippets() {
+  if (EDITOR.snippets) return EDITOR.snippets;
+  if (!isDesktop()) return [];
+  try {
+    EDITOR.snippets = await invoke('list_snippets') || [];
+  } catch (e) {
+    EDITOR.snippets = [];
+  }
+  return EDITOR.snippets;
+}
+
+/// 当前文件适用的片段（工具专属的排前面，通用片段排后面）
+function snippetsFor(toolId) {
+  const all = EDITOR.snippets || [];
+  const own = all.filter(s => s.tool && s.tool === toolId);
+  const gen = all.filter(s => !s.tool);
+  return own.concat(gen);
+}
+
+/// 把一个片段变成编辑操作
+function snippetOps(sn) {
+  return (sn.items || []).map(it => ({
+    op: it.value === null ? 'remove' : 'set',
+    path: (it.path || '').split('.').map(x => x.trim()).filter(Boolean),
+    value: it.value,
+  })).filter(o => o.path.length);
+}
+
+/// 应用片段：变成普通的待保存操作（走和手改一样的预览/差异/保存流程）
+function applySnippet(sn) {
+  const ops = snippetOps(sn);
+  if (!ops.length) { toast('这个片段是空的'); return; }
+  EDITOR.undo.push(EDITOR.ops.map(o => ({ ...o })));
+  if (EDITOR.undo.length > 100) EDITOR.undo.shift();
+  EDITOR.redo = [];
+  for (const op of ops) EDITOR.ops.push(op);
+  EDITOR.dirty = true;
+  EDITOR.stale = true;
+  render();
+  toast(`已加入 ${ops.length} 处修改，检查差异后保存`);
+}
+
+/// 把当前的待保存改动存成一个片段
+async function saveCurrentAsSnippet() {
+  if (!EDITOR.ops.length) { toast('当前没有待保存的改动'); return; }
+  const name = prompt('片段名称', '我的片段');
+  if (!name) return;
+  const items = EDITOR.ops
+    .filter(o => o.op === 'set' || o.op === 'remove')
+    .map(o => ({
+      path: o.path.join('.'),
+      value: o.op === 'remove' ? null : o.value,
+    }));
+  if (!items.length) { toast('这些改动没法存成片段'); return; }
+  const tool = toolForFile(EDITOR.file && EDITOR.file.path);
+  const sn = {
+    id: 'user-' + Date.now().toString(36),
+    name: name.trim(),
+    tool: tool ? tool.id : '',
+    description: '来自 ' + (EDITOR.file ? EDITOR.file.path : '当前文件'),
+    items,
+    builtin: false,
+  };
+  const list = (EDITOR.snippets || []).concat([sn]);
+  try {
+    await invoke('save_snippets', { snippets: list });
+    EDITOR.snippets = list;
+    render();
+    toast('已存进片段库');
+  } catch (e) {
+    alert('保存失败：' + e);
+  }
+}
+
+/// 移除一条自建片段
+async function dropSnippet(sn) {
+  if (!confirm(`移除片段「${sn.name}」？`)) return;
+  const list = (EDITOR.snippets || []).filter(x => x.id !== sn.id);
+  try {
+    await invoke('save_snippets', { snippets: list });
+    EDITOR.snippets = list;
+    render();
+  } catch (e) {
+    alert('操作失败：' + e);
+  }
+}
+
+/// 编辑器侧栏里的片段库区块
+function renderSnippetBox() {
+  const box = el('div', 'scanbox');
+  box.id = 'snippetbox';
+  box.appendChild(el('div', 'cftitle', '配置片段'));
+  const list = EDITOR.snippets || [];
+  if (!list.length) {
+    box.appendChild(el('div', 'tipline', '还没有片段。'));
+  }
+  const tool = toolForFile(EDITOR.file && EDITOR.file.path);
+  const mine = snippetsFor(tool ? tool.id : '');
+  const shown = mine.length ? mine : list;
+  for (const sn of shown) {
+    const it = el('div', 'snipitem');
+    it.appendChild(el('div', 'snipname', sn.name));
+    if (sn.description) it.appendChild(el('div', 'snipdesc', sn.description));
+    const keys = (sn.items || []).map(i => i.path).join('、');
+    if (keys) it.appendChild(el('div', 'snipkeys', keys));
+    const bad = (sn.unknown_keys || []).length;
+    if (bad) {
+      it.appendChild(el('div', 'snipbad',
+        `这些键在 schema 里没有：${sn.unknown_keys.join('、')}`));
+    }
+    const acts = el('div', 'snipacts');
+    const use = el('button', 'mini', '用到当前文件');
+    use.disabled = !EDITOR.file;
+    use.onclick = () => applySnippet(sn);
+    acts.appendChild(use);
+    if (!sn.builtin) {
+      const del = el('button', 'mini', '移除');
+      del.onclick = () => dropSnippet(sn);
+      acts.appendChild(del);
+    }
+    it.appendChild(acts);
+    box.appendChild(it);
+  }
+  const save = el('button', null, '把当前改动存成片段…');
+  save.disabled = !EDITOR.ops.length;
+  save.onclick = saveCurrentAsSnippet;
+  box.appendChild(save);
+  return box;
+}
+
+// ── 编辑器：批量改多个文件 ──────────────────────────────
+
+/// 批量编辑的候选文件清单
+///
+/// 优先用扫描结果（一次改一堆项目里的同一份配置），
+/// 再补上最近打开过的文件，最后允许手动加路径。
+function batchCandidates() {
+  const out = [];
+  const seen = new Set();
+  const push = (path, tag) => {
+    if (!path || seen.has(path)) return;
+    seen.add(path);
+    out.push({ path, tag });
+  };
+  const scan = SCAN.result && SCAN.result.files || [];
+  for (const f of scan) push(f.path, f.tool || f.format || '');
+  for (const p of EDITOR.recent) push(p, '最近打开');
+  if (EDITOR.file) push(EDITOR.file.path, '当前文件');
+  return out;
+}
+
+function batchState() {
+  if (!EDITOR.batch) {
+    EDITOR.batch = {
+      picked: {},          // path -> true
+      keyPath: '',
+      value: '',
+      mode: 'set',         // 'set' | 'del'
+      preview: null,       // 后端返回的批量预览
+      busy: false,
+      manual: '',          // 手动添加的路径
+    };
+  }
+  return EDITOR.batch;
+}
+
+/// 把批量面板里的键值转成后端要的操作
+function batchOps(st) {
+  const key = (st.keyPath || '').trim();
+  if (!key) return null;
+  const segs = key.split('.').map(s => s.trim()).filter(Boolean);
+  if (!segs.length) return null;
+  if (st.mode === 'del') return [{ op: 'remove', path: segs }];
+  // 值先按 JSON 解析；解析不了就当字符串（去掉两端的引号）
+  let v = (st.value || '').trim();
+  let parsed = v;
+  try { parsed = JSON.parse(v); } catch (_) {
+    parsed = v.replace(/^["']|["']$/g, '');
+  }
+  return [{ op: 'set', path: segs, value: parsed }];
+}
+
+function renderBatchPanel(main) {
+  const st = batchState();
+  const box = el('div', 'panel batchpanel');
+
+  const head = el('div', 'panelhead');
+  head.appendChild(el('div', 'panelttl', '批量编辑'));
+  const close = el('button', null, '关闭');
+  close.onclick = () => { EDITOR.panel = null; render(); };
+  head.appendChild(close);
+  box.appendChild(head);
+
+  box.appendChild(el('div', 'paneltip',
+    '一次给多个配置文件改同一个键。每个文件都会单独预览与校验，'
+    + '写盘时任何一个文件出问题都不会留下改了一半的状态。'));
+
+  // 1) 选文件
+  box.appendChild(el('div', 'batchsec', '① 选文件'));
+  const seenPaths = new Set();
+  const cands = batchCandidates()
+    .concat((st.extra || []).map(p => ({ path: p, tag: '手动添加' })))
+    .filter(c => {
+      if (seenPaths.has(c.path)) return false;
+      seenPaths.add(c.path);
+      return true;
+    });
+  const list = el('div', 'batchfiles');
+  if (!cands.length) {
+    list.appendChild(el('div', 'empty', '还没有候选文件。先到「扫描磁盘」页扫一次，或在下面手动加路径。'));
+  }
+  for (const c of cands) {
+    const row = el('label', 'batchfile');
+    const cb = el('input');
+    cb.type = 'checkbox';
+    cb.checked = !!st.picked[c.path];
+    cb.onchange = () => { st.picked[c.path] = cb.checked; refreshBtns(); };
+    row.appendChild(cb);
+    row.appendChild(el('span', 'bp', c.path));
+    if (c.tag) row.appendChild(el('span', 'bt', c.tag));
+    list.appendChild(row);
+  }
+  box.appendChild(list);
+
+  const addrow = el('div', 'batchrow');
+  const minp = el('input');
+  minp.type = 'text';
+  minp.placeholder = '手动加一个配置文件的完整路径';
+  minp.value = st.manual;
+  minp.oninput = () => { st.manual = minp.value; };
+  addrow.appendChild(minp);
+  const addbtn = el('button', null, '加入列表');
+  addbtn.onclick = () => {
+    const p = (st.manual || '').trim();
+    if (!p) return;
+    st.picked[p] = true;
+    st.extra = (st.extra || []).concat([p]);
+    st.manual = '';
+    render();
+  };
+  addrow.appendChild(addbtn);
+  box.appendChild(addrow);
+
+  // 2) 选键 + 值
+  box.appendChild(el('div', 'batchsec', '② 要改什么'));
+  // 按钮的可用状态随输入实时更新（不靠重绘）
+  let refreshBtns = () => {};
+  const keyrow = el('div', 'batchrow');
+  const kinp = el('input');
+  kinp.type = 'text';
+  kinp.placeholder = '键路径，例如 model 或 env.KEY';
+  kinp.value = st.keyPath;
+  kinp.oninput = () => { st.keyPath = kinp.value; st.preview = null; refreshBtns(); };
+  keyrow.appendChild(kinp);
+  box.appendChild(keyrow);
+
+  const valrow = el('div', 'batchrow');
+  const modeSel = el('select');
+  const m1 = el('option', null, '设置值');
+  m1.value = 'set';
+  const m2 = el('option', null, '删除这个键');
+  m2.value = 'del';
+  modeSel.appendChild(m1); modeSel.appendChild(m2);
+  modeSel.value = st.mode;
+  modeSel.onchange = () => { st.mode = modeSel.value; st.preview = null; render(); };
+  valrow.appendChild(modeSel);
+  const vinp = el('input');
+  vinp.type = 'text';
+  vinp.placeholder = '新值（JSON 语法：true / 123 / "abc"）';
+  vinp.value = st.value;
+  vinp.disabled = st.mode === 'del';
+  vinp.oninput = () => { st.value = vinp.value; st.preview = null; refreshBtns(); };
+  valrow.appendChild(vinp);
+  box.appendChild(valrow);
+
+  // 3) 预览 / 保存
+  const actions = el('div', 'batchrow');
+  const picked = Object.keys(st.picked).filter(p => st.picked[p]);
+  const ops = batchOps(st);
+
+  const prev = el('button', null, '预览改动');
+  prev.id = 'btn-batch-preview';
+  prev.disabled = !picked.length || !ops || st.busy;
+  prev.onclick = async () => {
+    // 用当前的勾选与输入（勾选框不会触发重绘，闭包里的快照会过期）
+    const now = Object.keys(st.picked).filter(p => st.picked[p]);
+    const curOps = batchOps(st);
+    if (!now.length || !curOps) { toast('先选文件、填键路径'); return; }
+    st.busy = true; render();
+    try {
+      const targets = now.map(p => ({ path: p, ops: curOps, base_fingerprint: null }));
+      st.preview = await invoke('preview_edit_batch', { targets });
+    } catch (e) {
+      alert('预览失败：' + e);
+      st.preview = null;
+    }
+    st.busy = false; render();
+  };
+  actions.appendChild(prev);
+
+  const save = el('button', 'primary', '保存到全部文件');
+  save.id = 'btn-batch-save';
+  save.disabled = !picked.length || !ops || st.busy;
+  refreshBtns = () => {
+    const now = Object.keys(st.picked).filter(p => st.picked[p]);
+    const ok = now.length > 0 && batchOps(st) && !st.busy;
+    prev.disabled = !ok;
+    save.disabled = !ok;
+  };
+  save.onclick = async () => {
+    const now = Object.keys(st.picked).filter(p => st.picked[p]);
+    const curOps = batchOps(st);
+    if (!now.length || !curOps) { toast('先选文件、填键路径'); return; }
+    st.busy = true; render();
+    try {
+      // 先预览一次，拿到每个文件的指纹与校验结果
+      const targets = now.map(p => ({ path: p, ops: curOps, base_fingerprint: null }));
+      const pv = await invoke('preview_edit_batch', { targets });
+      st.preview = pv;
+      const bad = (pv.files || []).filter(f => !f.ok || f.parse_error);
+      if (bad.length) {
+        const detail = bad.map(f => '• ' + f.path + ' — ' + (f.error || f.parse_error)).join('\n');
+        if (!confirm(`有 ${bad.length} 个文件改不了，仍然保存其余文件吗？\n\n${detail}`)) {
+          st.busy = false; render(); return;
+        }
+      }
+      const res = await invoke('commit_edit_batch', { targets });
+      st.busy = false;
+      const okc = (res.ok_count || 0);
+      toast(`已保存 ${okc} 个文件`);
+      st.preview = null;
+      render();
+    } catch (e) {
+      st.busy = false;
+      alert('保存失败：' + e);
+      render();
+    }
+  };
+  actions.appendChild(save);
+  box.appendChild(actions);
+
+  // 4) 预览结果
+  if (st.preview) {
+    box.appendChild(el('div', 'batchsec', '③ 预览结果'));
+    const sum = el('div', 'paneltip');
+    sum.textContent = `可改 ${st.preview.ok_count} 个，改不了 ${st.preview.fail_count} 个`;
+    box.appendChild(sum);
+    for (const f of st.preview.files || []) {
+      const item = el('div', 'batchres ' + (f.ok ? 'ok' : 'bad'));
+      const h = el('div', 'brhead');
+      h.appendChild(el('span', 'bp', f.path));
+      h.appendChild(el('span', 'bt', f.ok
+        ? (f.diff && f.diff.length ? `${f.diff.length} 行差异` : '无变化')
+        : (f.error || '失败')));
+      item.appendChild(h);
+      if (f.parse_error) item.appendChild(el('div', 'brerr', '解析失败：' + f.parse_error));
+      if (f.error_count) item.appendChild(el('div', 'brerr', `${f.error_count} 个校验错误`));
+      if (f.warn_count) item.appendChild(el('div', 'brwarn', `${f.warn_count} 个校验警告`));
+      if (f.ok && f.diff && f.diff.length) {
+        const d = el('div', 'bdiff');
+        for (const line of f.diff.slice(0, 40)) {
+          const l = el('div', 'diffline');
+          l.textContent = line;
+          d.appendChild(l);
+        }
+        if (f.diff.length > 40) d.appendChild(el('div', 'dim', `… 还有 ${f.diff.length - 40} 行`));
+        item.appendChild(d);
+      }
+      box.appendChild(item);
+    }
+  }
+
+  main.appendChild(box);
 }
 
 // ── 编辑器：本地视图（把待保存的操作应用到树上，改动立刻可见） ──
@@ -1902,7 +2382,24 @@ function render() {
   }
   if (PAGE === 'edit') {
     renderEditSide();
-    renderEditor(main);
+    // 批量编辑是独立面板：没打开任何文件时也能用
+    if (EDITOR.panel === 'batch') {
+      renderBatchPanel(main);
+    } else {
+      renderEditor(main);
+    }
+    // 片段库第一次进编辑器页时拉一次。
+    // 加载完**只替换片段区块**——整页重绘会把用户正在输入的内容清掉。
+    if (isDesktop() && !EDITOR.snippets) {
+      loadSnippets().then(() => {
+        if (PAGE !== 'edit') return;
+        const old = document.getElementById('snippetbox');
+        if (!old) return;
+        const fresh = renderSnippetBox();
+        fresh.id = 'snippetbox';
+        old.replaceWith(fresh);
+      });
+    }
     return;
   }
   if (!DATA) { main.appendChild(el('div', 'empty', '正在加载…')); return; }
@@ -1910,7 +2407,70 @@ function render() {
   renderDict(main);
 }
 
+// ── 主题（深色 / 浅色）─────────────────────────────────
+//
+// 默认跟随系统（prefers-color-scheme），用户手动切过之后以用户的选择为准，
+// 选择存在 localStorage 里。桌面 App 每次启动都会先读一遍。
+
+const THEME_KEY = 'cfg-theme';
+
+function currentTheme() {
+  try {
+    const t = localStorage.getItem(THEME_KEY);
+    if (t === 'light' || t === 'dark') return t;
+  } catch (e) { /* 隐私模式下 localStorage 可能不可用 */ }
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+    ? 'light' : 'dark';
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* 忽略 */ }
+  const btn = document.getElementById('theme');
+  if (btn) {
+    btn.textContent = theme === 'light' ? '深色' : '浅色';
+    btn.title = theme === 'light' ? '切换到深色模式' : '切换到浅色模式';
+  }
+}
+
+function installTheme() {
+  const header = document.querySelector('header');
+  const btn = document.createElement('button');
+  btn.id = 'theme';
+  btn.onclick = () => {
+    applyTheme(currentTheme() === 'light' ? 'dark' : 'light');
+  };
+  header.insertBefore(btn, document.getElementById('lang'));
+  // 按钮插进 DOM 之后再应用主题 —— applyTheme 要按 id 找按钮来改文字
+  applyTheme(currentTheme());
+  // 系统主题变化时跟着变（用户没手动切过才跟随）
+  if (window.matchMedia) {
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    const onChange = () => {
+      let saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* 忽略 */ }
+      if (!saved) applyTheme(mq.matches ? 'light' : 'dark');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+}
+
+// 桌面 App 的托盘菜单与全局快捷键会调这两个钩子。
+// 静态导出和 HTTP 桥里用不到，定义成空实现也不会出错。
+window.__goto = (page) => {
+  if (!['dict', 'scan', 'edit'].includes(page)) return;
+  PAGE = page;
+  render();
+};
+window.__focusSearch = () => {
+  if (PAGE !== 'dict') { PAGE = 'dict'; render(); }
+  const inp = document.getElementById('keysearch');
+  if (inp) { inp.focus(); inp.select(); }
+};
+
 function boot() {
+  installTheme();
   document.getElementById('lang').onclick = () => {
     lang = lang === 'zh-CN' ? 'en' : 'zh-CN';
     document.getElementById('lang').textContent = lang === 'zh-CN' ? 'EN' : '中文';

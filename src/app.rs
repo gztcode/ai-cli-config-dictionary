@@ -189,10 +189,102 @@ pub fn read_tool_configs(t: &Tool) -> Vec<LoadedConfig> {
 }
 
 /// 为单个工具构建 IR（schema → IR）。
+/// 内置的「文档补充层」。
+///
+/// 官方 schema 常常只给结构不给文字说明（或者压根没有逐键锚点），
+/// 这一层把官方文档里的说明和章节链接按键路径补上去。
+const DOC_SUPPLEMENTS: &[(&str, &str)] = &[
+    (
+        "gemini-cli-doc.json",
+        include_str!("../schemas/gemini-cli-doc.json"),
+    ),
+    (
+        "opencode-doc.json",
+        include_str!("../schemas/opencode-doc.json"),
+    ),
+    (
+        "hermes-doc.json",
+        include_str!("../schemas/hermes-doc.json"),
+    ),
+    (
+        "openclaw-doc.json",
+        include_str!("../schemas/openclaw-doc.json"),
+    ),
+];
+
+fn doc_supplement(name: &str) -> Option<&'static str> {
+    let n = name.trim();
+    DOC_SUPPLEMENTS
+        .iter()
+        .find(|(f, _)| *f == n)
+        .map(|(_, t)| *t)
+}
+
+/// 在补充层里给一个 IR 键路径找条目。
+///
+/// 补充层里的路径来自 JSON Schema（动态段写作 `*`），
+/// 而 IR 里的路径写作 `[*]`，两边要对齐；
+/// 还要支持「逐级去掉前缀」——`server.port` 找不到时，
+/// 可以退到 `server` 那一节（那一节确实讲到了 server）。
+fn lookup_supplement<'a>(
+    supplement: &'a serde_json::Map<String, Value>,
+    path: &str,
+) -> Option<&'a Value> {
+    let star_path = path.replace("[*]", "*");
+    if let Some(v) = supplement.get(path) {
+        return Some(v);
+    }
+    if let Some(v) = supplement.get(&star_path) {
+        return Some(v);
+    }
+    // 逐级退前缀：`a.b.c` → `a.b` → `a`
+    let parts: Vec<&str> = path.split('.').collect();
+    for take in (1..parts.len()).rev() {
+        let prefix = parts[..take].join(".");
+        if let Some(v) = supplement.get(&prefix) {
+            return Some(v);
+        }
+        let prefix_star = prefix.replace("[*]", "*");
+        if let Some(v) = supplement.get(&prefix_star) {
+            return Some(v);
+        }
+    }
+    None
+}
+
+/// 把文档补充层写进 IR 节点。
+///
+/// 补充层格式：`{ "键路径": { "description": "...", "doc_url": "..." } }`
+fn apply_doc_supplement(keys: &mut [IrKey], supplement: &serde_json::Map<String, Value>) {
+    for k in keys.iter_mut() {
+        if let Some(item) = lookup_supplement(supplement, &k.path) {
+            if let Some(d) = item.get("description").and_then(|x| x.as_str()) {
+                if !d.trim().is_empty() && k.description.is_none() {
+                    k.description = Some(d.to_string());
+                }
+            }
+            if let Some(u) = item.get("doc_url").and_then(|x| x.as_str()) {
+                if !u.is_empty() && !k.doc_urls.iter().any(|x| x == u) {
+                    k.doc_urls.push(u.to_string());
+                }
+            }
+        }
+        apply_doc_supplement(&mut k.children, supplement);
+    }
+}
+
 pub fn build_ir(t: &Tool, cache_dir: &Path, translations: &HashMap<String, String>) -> Option<Ir> {
     let (schema_value, source, _age) = load_schema(t, cache_dir)?;
     let mut keys = schema::convert(&schema_value);
     apply_translations(&mut keys, &t.id, translations);
+    // 文档补充层：官方文档里的说明与章节锚点
+    if !t.doc_supplement.trim().is_empty() {
+        if let Some(text) = doc_supplement(&t.doc_supplement) {
+            if let Ok(sup) = serde_json::from_str::<serde_json::Map<String, Value>>(text) {
+                apply_doc_supplement(&mut keys, &sup);
+            }
+        }
+    }
     let stats = schema::stats(&keys);
     Some(Ir {
         tool: t.id.clone(),
@@ -325,6 +417,11 @@ impl AppPaths {
 
     pub fn i18n_dir(&self) -> PathBuf {
         self.config_dir.join("i18n")
+    }
+
+    /// 配置片段库文件
+    pub fn snippets_path(&self) -> PathBuf {
+        self.config_dir.join("snippets.json")
     }
 
     /// 首次运行时把内置的注册表与翻译播种到用户目录，之后用户可自由改写

@@ -23,6 +23,8 @@ pub struct ServeOptions {
     pub registry: Registry,
     pub cache_dir: PathBuf,
     pub i18n_dir: PathBuf,
+    /// 配置片段库文件
+    pub snippets_path: PathBuf,
 }
 
 /// 启动服务（阻塞）
@@ -144,6 +146,10 @@ fn dispatch(opts: &ServeOptions, cmd: &str, args: &Value) -> Result<Value, Strin
         let v = args.get("ops").cloned().unwrap_or(json!([]));
         serde_json::from_value(v).map_err(|e| e.to_string())
     };
+    let batch_targets_arg = |a: &Value| -> Result<Vec<commands::BatchTarget>, String> {
+        let v = a.get("targets").cloned().unwrap_or(json!([]));
+        serde_json::from_value(v).map_err(|e| e.to_string())
+    };
     let to_value = |v: serde_json::Value| Ok(v);
 
     match cmd {
@@ -232,6 +238,41 @@ fn dispatch(opts: &ServeOptions, cmd: &str, args: &Value) -> Result<Value, Strin
                 ),
                 None => to_value(json!({ "conflict": Value::Null })),
             }
+        }
+        "list_snippets" => {
+            let r = commands::list_snippets(&opts.registry, &opts.cache_dir, &opts.snippets_path);
+            to_value(serde_json::to_value(r).map_err(|e| e.to_string())?)
+        }
+        "save_snippets" => {
+            let v = args.get("snippets").cloned().unwrap_or(json!([]));
+            let snippets: Vec<crate::snippets::Snippet> =
+                serde_json::from_value(v).map_err(|e| e.to_string())?;
+            commands::save_snippets(&opts.snippets_path, &snippets)?;
+            to_value(json!(null))
+        }
+        "apply_snippet" => {
+            let sid = args
+                .get("snippet_id")
+                .and_then(|v| v.as_str())
+                .ok_or_else(|| "缺少参数 snippet_id".to_string())?;
+            let r = commands::apply_snippet(
+                &opts.registry,
+                &opts.cache_dir,
+                &opts.snippets_path,
+                path_arg()?,
+                sid,
+            )?;
+            to_value(serde_json::to_value(r).map_err(|e| e.to_string())?)
+        }
+        "preview_edit_batch" => {
+            let targets = batch_targets_arg(args)?;
+            let r = commands::preview_edit_batch(&opts.registry, &opts.cache_dir, &targets);
+            to_value(serde_json::to_value(r).map_err(|e| e.to_string())?)
+        }
+        "commit_edit_batch" => {
+            let targets = batch_targets_arg(args)?;
+            let r = commands::commit_edit_batch(&targets);
+            to_value(serde_json::to_value(r).map_err(|e| e.to_string())?)
         }
         "app_info" => to_value(json!({
             "registry_source": "http-bridge",

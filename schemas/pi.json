@@ -4,19 +4,22 @@
   "autocompleteMaxVisible": {
    "default": 5,
    "description": "Visible autocomplete entries, from 3 to 20.",
-   "type": "number"
+   "type": "number",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "branchSummary": {
    "properties": {
     "reserveTokens": {
      "default": 16384,
      "description": "Tokens reserved when summarizing branch history.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#branch-summaries"
     },
     "skipPrompt": {
      "default": false,
      "description": "Skip the branch-summary prompt and default to no summary.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#branch-summaries"
     }
    },
    "type": "object"
@@ -29,14 +32,16 @@
     "streaming",
     "idle"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "codemode": {
    "properties": {
     "inlineBudget": {
      "default": 3000,
      "description": "Estimated tokens (characters / 4) the codemode tool's description may spend on tool declarations. Tools that do not fit are left out and found with searchTools(). 0 lists only namespaces.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#tools"
     },
     "mode": {
      "default": "on",
@@ -45,7 +50,8 @@
       "on",
       "only"
      ],
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#tools"
     }
    },
    "type": "object"
@@ -53,35 +59,41 @@
   "collapseChangelog": {
    "default": false,
    "description": "Show a condensed changelog after an update.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#updates-telemetry-and-warnings"
   },
   "compaction": {
    "properties": {
     "enabled": {
      "default": true,
      "description": "Enable automatic compaction.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#compaction"
     },
     "keepRecentTokens": {
      "default": 20000,
      "description": "Recent tokens retained without summarization.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#compaction"
     },
     "modelOverrides": {
      "description": "Per-model token settings keyed by exact provider/modelId.",
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#compaction"
     },
     "reserveTokens": {
      "default": 16384,
      "description": "Tokens reserved for the model response.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#compaction"
     }
    },
    "type": "object"
   },
   "defaultModel": {
    "description": "Startup model ID.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "defaultProjectTrust": {
    "default": "ask",
@@ -91,11 +103,13 @@
     "always",
     "never"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "defaultProvider": {
    "description": "Startup AI provider.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "defaultThinkingLevel": {
    "default": "medium",
@@ -109,11 +123,13 @@
     "xhigh",
     "max"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "defaultTools": {
    "description": "Tools enabled at startup. Plain names replace the defaults; +name adds a tool and -name removes one. An empty array disables all built-in tools but not extension or SDK tools.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#tools"
   },
   "doubleEscapeAction": {
    "default": "tree",
@@ -123,39 +139,47 @@
     "fork",
     "none"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "editorPaddingX": {
    "default": 0,
    "description": "Horizontal editor padding from 0 to 3 cells.",
-   "type": "number"
+   "type": "number",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "enableAnalytics": {
    "default": false,
    "description": "Opt in to analytics data sharing. Currently used only by the experimental first-run setup.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#updates-telemetry-and-warnings"
   },
   "enableInstallTelemetry": {
    "default": true,
    "description": "Enable anonymous install/update reporting and selected provider attribution headers. Does not control update checks.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#updates-telemetry-and-warnings"
   },
   "enableSkillCommands": {
    "default": true,
    "description": "Register skills as /skill:name commands.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "enabledModels": {
    "description": "Model patterns used for startup selection and model cycling. Uses the same format as --models.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "extensions": {
    "description": "Extension files or directories.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "externalEditor": {
    "description": "Command opened by the external-editor keybinding.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "followUpMode": {
    "default": "one-at-a-time",
@@ -164,12 +188,14 @@
     "all",
     "one-at-a-time"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "fullscreenCopyOnSelect": {
    "default": true,
    "description": "Copy selected text automatically in fullscreen mode.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "fullscreenExitOutput": {
    "default": "transcript",
@@ -178,7 +204,8 @@
     "transcript",
     "resume-hint"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "fullscreenScrollbar": {
    "default": "auto",
@@ -188,37 +215,44 @@
     "always",
     "hidden"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "fullscreenWheelScrollLines": {
    "default": "auto",
-   "description": "Lines per mouse-wheel event in fullscreen mode, from 1 to 100. \"auto\" moves one line per event in local macOS terminals, which already accelerate wheel and trackpad input; elsewhere, and over SSH, it speeds up fast wheel spins to at most 6 lines per event. Alt+wheel moves five times as far."
+   "description": "Lines per mouse-wheel event in fullscreen mode, from 1 to 100. \"auto\" moves one line per event in local macOS terminals, which already accelerate wheel and trackpad input; elsewhere, and over SSH, it speeds up fast wheel spins to at most 6 lines per event. Alt+wheel moves five times as far.",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "hideThinkingBlock": {
    "default": false,
    "description": "Hide thinking blocks in the transcript.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "httpIdleTimeoutMs": {
    "default": 300000,
    "description": "HTTP header and body idle timeout in milliseconds. Set to 0 to disable.",
-   "type": "number"
+   "type": "number",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
   },
   "httpProxy": {
    "description": "Proxy URL applied as HTTP_PROXY and HTTPS_PROXY for Pi-managed HTTP clients. Can only be set in agent-directory settings.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
   },
   "images": {
    "properties": {
     "autoResize": {
      "default": true,
      "description": "Resize images to at most 2000 by 2000 pixels before sending them to a model.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "blockImages": {
      "default": false,
      "description": "Prevent images from being sent to models.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     }
    },
    "type": "object"
@@ -228,7 +262,8 @@
     "codeBlockIndent": {
      "default": " ",
      "description": "Prefix used to indent rendered code blocks.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "mermaid": {
      "default": "streaming",
@@ -238,18 +273,21 @@
       "final",
       "streaming"
      ],
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     }
    },
    "type": "object"
   },
   "modelThinkingLevels": {
    "description": "Per-model startup thinking levels keyed by exact provider/modelId.",
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "npmCommand": {
    "description": "Command and arguments used for npm package lookup and installation.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#shell"
   },
   "outputPad": {
    "default": 1,
@@ -258,58 +296,69 @@
     "0",
     "1"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "packages": {
    "description": "npm, git, or local Pi package sources. See Pi Packages.",
-   "type": "array"
+   "type": "array",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "prompts": {
    "description": "Prompt-template files or directories.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "quietStartup": {
    "default": false,
    "description": "true hides the startup header and loaded-resource listing. \"header\" keeps the header (version and key hints) but hides the model scope line and loaded-resource listing.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "retry": {
    "properties": {
     "baseDelayMs": {
      "default": 2000,
      "description": "Initial exponential-backoff delay in milliseconds.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
     },
     "enabled": {
      "default": true,
      "description": "Enable automatic agent-level retry for transient failures.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
     },
     "maxAgentDelayMs": {
      "default": 60000,
      "description": "Maximum agent-level retry delay in milliseconds.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
     },
     "maxRetries": {
      "default": 3,
      "description": "Maximum agent-level retry attempts.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
     },
     "provider": {
      "properties": {
       "maxRetries": {
        "default": 0,
        "description": "Provider-level retry attempts.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
       },
       "maxRetryDelayMs": {
        "default": 60000,
        "description": "Maximum server-requested delay in milliseconds. Set to 0 to disable the limit.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
       },
       "timeoutMs": {
        "description": "Provider request timeout in milliseconds.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
       }
      },
      "type": "object"
@@ -319,29 +368,35 @@
   },
   "sessionDir": {
    "description": "Session storage directory. Relative paths resolve from the working directory. PI_CODING_AGENT_SESSION_DIR and --session-dir override this setting.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#sessions-and-context"
   },
   "shellCommandPrefix": {
    "description": "Prefix prepended to every shell command.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#shell"
   },
   "shellPath": {
    "description": "Custom shell executable path. Supports a leading ~.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#shell"
   },
   "showCacheMissNotices": {
    "default": false,
    "description": "Show notices for significant cache misses, successful cache warming, compaction usage, and provider recovery.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "showHardwareCursor": {
    "default": false,
    "description": "Show the terminal cursor while Pi positions it for input methods.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "skills": {
    "description": "Skill files or directories.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "steeringMode": {
    "default": "one-at-a-time",
@@ -350,24 +405,28 @@
     "all",
     "one-at-a-time"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "terminal": {
    "properties": {
     "clearOnShrink": {
      "default": false,
      "description": "Clear empty rows when rendered content shrinks.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "hyperlinks": {
      "default": "auto",
      "description": "Override OSC 8 hyperlink detection.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "imageWidthCells": {
      "default": 60,
      "description": "Preferred inline image width in terminal cells.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "images": {
      "default": "auto",
@@ -378,22 +437,26 @@
       "auto",
       "false"
      ],
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "showImages": {
      "default": true,
      "description": "Display inline images when supported.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "showTerminalProgress": {
      "default": false,
      "description": "Show OSC 9;4 progress in the terminal tab.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     },
     "trueColor": {
      "default": "auto",
      "description": "Override true-color detection.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
     }
    },
    "type": "object"
@@ -401,15 +464,18 @@
   "theme": {
    "default": "system",
    "description": "Built-in or custom theme name. system derives colors from the terminal theme.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "themes": {
    "description": "Theme files or directories.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#resources"
   },
   "thinkingBudgets": {
    "description": "Token budgets for minimal, low, medium, and high thinking levels.",
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#model-and-thinking"
   },
   "transport": {
    "default": "auto",
@@ -420,7 +486,8 @@
     "websocket",
     "websocket-cached"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
   },
   "treeFilterMode": {
    "default": "default",
@@ -432,7 +499,8 @@
     "labeled-only",
     "all"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#interaction"
   },
   "tuiMode": {
    "default": "fullscreen",
@@ -441,14 +509,16 @@
     "regular",
     "fullscreen"
    ],
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#terminal-and-display"
   },
   "warnings": {
    "properties": {
     "anthropicExtraUsage": {
      "default": true,
      "description": "Warn when Anthropic subscription authentication may use paid extra usage.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#updates-telemetry-and-warnings"
     }
    },
    "type": "object"
@@ -456,7 +526,8 @@
   "websocketConnectTimeoutMs": {
    "default": 15000,
    "description": "WebSocket connection timeout in milliseconds. Set to 0 to disable.",
-   "type": "number"
+   "type": "number",
+   "x-doc-url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md#network-and-retries"
   }
  },
  "type": "object"

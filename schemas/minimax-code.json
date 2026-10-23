@@ -1,270 +1,1577 @@
 {
- "$schema": "http://json-schema.org/draft-07/schema#",
  "properties": {
+  "agentRuntime": {
+   "properties": {
+    "defaultFramework": {
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-runtime-config.ts#L44"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1016"
+  },
   "agentStop": {
    "properties": {
     "debounceMs": {
-     "default": 500,
-     "type": "integer"
+     "description": "Window in ms for coalescing terminal `session.*` events before the detector evaluates AgentStop gates. Default 500ms. Setting `0` effectively disables debouncing — every terminal event triggers a synchronous re-evaluation, which is generally only useful in tests.",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L294"
     },
     "maxActiveSpanMs": {
-     "default": 1800,
-     "type": "integer"
+     "description": "Maximum continuous producer-active span (in ms) before the detector forces an `AgentStop` even when the inbox is non-empty. Default 30 minutes. Set to `0` to disable the backstop entirely (the detector still fires on natural idle).",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L301"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L991"
+  },
+  "agents": {
+   "properties": {
+    "default": {
+     "properties": {
+      "builtinTools": {
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L90"
+      },
+      "delegation": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L95"
+      },
+      "mavis": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L94"
+      },
+      "modelConfigId": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L85"
+      },
+      "persona": {
+       "properties": {
+        "enabled": {
+         "type": "boolean"
+        }
+       },
+       "type": "object",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L86"
+      },
+      "skills": {
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L92"
+      },
+      "tools": {
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L88"
+      },
+      "webSearch": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L96"
+      }
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/agent-capabilities.ts#L101"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L983"
+  },
+  "agentsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L969"
+  },
+  "askUser": {
+   "properties": {
+    "enabled": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/ask-user-config.ts#L7"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L996"
+  },
+  "beta": {
+   "properties": {
+    "asr": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L473"
+    },
+    "autoMemory": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L332"
+    },
+    "browserAgentCursor": {
+     "description": "Visible pointer animation for model-driven Browser click, double-click, and hover actions. Kept separate from both the CLI/TUI `browserUseTooling` opt-in and Desktop Plugin activation so Browser Use can remain available while the presentation layer is rolled out safely. Both visibility fields are `online`, so dev/test, Preview, Inside, and external production builds show the pointer by default. An explicit `beta.browserAgentCursor: false` remains available as a kill switch.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L417"
+    },
+    "browserBridge": {
+     "description": "Browser bridge HTTP API and UI panel — drives a real Chrome session via the Mavis Browser Bridge extension (logged-in sites, persistent cookies, extensions). `defaultVisibility: 'test', configurableVisibility: 'online'` — ships ON in dev/test for daily use and OFF in prod by default; prod users opt in via `beta.browserBridge: true` once they've installed the Chrome extension and confirmed the broker socket.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L378"
+    },
+    "browserUseAutoOpenPanel": {
+     "description": "Whether model-driven Browser actions reveal the right-side Browser panel. This is a presentation preference only: disabling it does not revoke Browser Use permission or prevent the Agent from operating an existing Browser tab in the background. The preference defaults ON in every environment to preserve the existing visible-action behavior, while an explicit `false` keeps Browser actions in the background until the user opens the panel manually.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L406"
+    },
+    "browserUseTooling": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L395"
+    },
+    "codexOAuth": {
+     "description": "OpenAI Codex OAuth model settings entry. Enabled by default in every build environment and release package; set `beta.codexOAuth: false` to hide it. Provider configuration stays in `config.yaml` and OAuth credentials stay in `<dataDir>/codex-auth.json`.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L503"
+    },
+    "cuMode": {
+     "description": "Computer Use mode — agent-driven mouse/keyboard/screen control via the archon Electron renderer. Adds a CU toggle to the chat input toolbar, a CUBanner above MessageInput, a Computer Use permissions section in SettingsModal/Desktop, and the dock-restore abort behaviour. Both visibility fields are `online`, so CU is available in every environment. CU controls the user's host machine via macOS TCC-gated screen recording / accessibility / input synthesis, but the toggle still defaults to OFF — user must explicitly click it and grant macOS TCC permissions. Even when this gate is true, the toggle still defaults to OFF and the user must explicitly click it (and grant the macOS TCC permission on first run) before any CU tool call can fire. The gate controls whether the toggle/banner/permission section are *available* in the UI — not whether CU is *active*.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L472"
+    },
+    "desktopPlanMode": {
+     "description": "Desktop Plan Mode. Available online by default, with explicit `false` as an emergency kill switch for new entry. Runtime owners must keep exit and persisted-state recovery available while this switch is off.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L423"
+    },
+    "desktopPlanModeAgentEntry": {
+     "description": "Model-facing Desktop Plan Mode entry guidance and `EnterPlanMode` tool. Kept separate from `desktopPlanMode` so users retain manual `/plan` and composer entry while Agent-initiated entry stays opt-in. `defaultVisibility: 'none', configurableVisibility: 'online'` — every channel starts with Agent entry disabled; explicit `true` is available as a controlled rollback while the parent Plan Mode switch remains enabled.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L433"
+    },
+    "filePanelBrowser": {
+     "description": "FilePanel embedded browser — an Electron-only WebContentsView target shown inside the right-side panel. Both visibility fields are `online`, so it ships ON by default in every environment while retaining `beta.filePanelBrowser: false` as an emergency kill switch.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L385"
+    },
+    "filePanelBrowserMultiTab": {
+     "description": "Multiple logical tabs inside the FilePanel embedded browser. Both visibility fields are `online`, so it ships ON by default in every environment while retaining `beta.filePanelBrowserMultiTab: false` as an emergency rollback to the established single-tab behavior.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L393"
+    },
+    "keepAlive": {
+     "description": "Legacy OpenCode keep-alive pool. New local sessions do not use this path, but the daemon package remains in the workspace compile surface while old opencode sessions are still resumable through the legacy boundary.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L448"
+    },
+    "mcodeTools": {
+     "description": "Bundled mcode-tools CLI and Electron Device Flow integration. Packaged dev/test/staging/prod builds default ON on macOS/Linux/Windows. An explicit config.yaml false value may opt any supported build out. This switch does not control native web_search; Electron, TUI and CLI use the native tool without starting the built-in Matrix MCP.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L497"
+    },
+    "peek": {
+     "description": "/btw side-question peek command (the UI's \"Aside\" slash palette row). Both visibility fields are `test`, so dev/test ships ON by default while prod is force-off regardless of config.yaml (even `beta.peek: true` cannot open it). Fail-closed contract: local-runtime `/mavis/api/config` returns the resolved `beta.peek`, UI hydrates `runtimeFlagStore.peekEnabled` strictly from `beta?.peek === true`, and the composer only exposes `/btw` when that flag is true.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L442"
+    },
+    "promptOverride": {
+     "description": "Memory prompt override via filesystem — when enabled, memory-related LLM prompts check `{dataDir}/internal/prompts/{name}.md` first. If the file exists, its content replaces the hardcoded prompt entirely. Its visibility ceiling is `test` because prompt file paths are not yet stable for end-users.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L456"
+    },
+    "skillEvolve": {
+     "description": "Skill self-evolution — signal collection, scanning, editor spawning, and the nightly evolve cron. `defaultVisibility: 'test', configurableVisibility: 'online'` — dev/test ships ON by default so contributors get the feedback loop without extra setup; production ships OFF by default and requires `beta.skillEvolve: true` opt-in (model gating + nightly cron + filesystem writes are non-trivial side effects that prod users should explicitly accept). Note: `skillEvolveBuiltinMr` is the finer-grained gate for the built-in MR path specifically; it is configurable only through the test channel and is relevant only when this parent gate is on.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L347"
+    },
+    "skillEvolveBuiltinMr": {
+     "description": "Built-in skill evolution via MR — when set, the nightly evolver may dispatch a worker that opens a GitLab MR against the daemon source repo for each built-in skill needing changes. Gated separately from `skillEvolve` so users with a source repo (dev installs) can still opt out of MR-driven built-in evolution while keeping user/agent/project skill evolution enabled. Its visibility ceiling is `test` because prod npm installs have no source repo to push to.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L357"
+    },
+    "skillProposal": {
+     "description": "v3 skill creation proposal pipeline — session-end fallback re-prompt asks eligible agents to reflect on whether the just-finished session revealed a reusable pattern worth crystallizing into a new skill. Wires up the ProposalStore CRUD and the fallback prompt's \"proposal\" section. `defaultVisibility: 'test', configurableVisibility: 'online'`: dev/test ships ON by default so contributors collect proposals automatically; prod ships OFF and requires `beta.skillProposal: true` opt-in (extra session-end LLM tokens + ProposalStore writes are explicit-consent surface).",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L369"
+    },
+    "taskHistoryProjectGrouping": {
+     "description": "Sidebar Task History project-grouping overflow entry (`recents` ↔ `projects`). Replaces the prior `isWebVariant` platform gate. Hydrated from `beta?.taskHistoryProjectGrouping === true` (strict); fail-closed keeps trigger hidden + `viewMode` locked to `recents`. Both visibility fields are `online`, keeping the desktop selector available by default in every channel. See runtime-flags.ts.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L482"
+    },
+    "threadGoal": {
+     "description": "Thread Goal UI, tools, accounting, and auto-continuation. Dev/test and internal prod builds default ON for dogfooding; external and inside prod builds default OFF but can be explicitly enabled with `beta.threadGoal: true` in config.yaml.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L489"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L981"
+  },
+  "browser": {
+   "properties": {
+    "chromePath": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/browser-config.ts#L4"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1002"
+  },
+  "builtinSkillsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L974"
   },
   "cli": {
    "properties": {
     "spawn": {
      "properties": {
       "enabled": {
-       "default": true,
-       "type": "boolean"
+       "description": "Expose `mavis session spawn` CLI command. `spawn` lets users / external scripts manually create child sessions for an agent (with parent linkage, initial prompt, and optional agent auto-creation). Mavis itself and its agents do NOT need this — team plans spawn worker sessions via the in-process daemon API, not via CLI. Default: false. Enable only if you want external tooling to drive spawn.",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L790"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L794"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1000"
+  },
+  "contentReview": {
+   "properties": {
+    "enabled": {
+     "type": "boolean"
+    },
+    "testBaseURL": {
+     "type": "string"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1023"
   },
   "contextManagement": {
    "properties": {
+    "compactionTriggerAt": {
+     "description": "Upper bound for the automatic context compaction trigger. A value in `(0, 1]` is a ratio of the current model's context window; an integer above 1 is an absolute token count. The effective trigger is the lower of this value and the built-in trigger, so it can only make compaction start earlier. The runtime ignores invalid numbers (such as `1.5`) with a warning. Unset keeps the built-in behavior.",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L899"
+    },
     "cuMaxScreenshotsInContext": {
-     "default": 2,
-     "type": "integer"
+     "description": "Maximum number of Computer Use screenshots to keep as inline image data in the conversation context sent to the LLM. CU screenshots (from `desktop_screenshot`, `desktop_zoom`, `desktop_screenshot_region` tools) are large base64-encoded images that accumulate rapidly during CU sessions.  When the total count exceeds this limit, older screenshots are replaced with a text placeholder containing the on-disk file path, so the model can re-read them via the Read tool if needed. Set to `0` to disable (keep all screenshots). Default: 5.",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L888"
     },
     "disableSystemReminderModels": {
-     "type": "array"
+     "description": "Models for which the per-message `<system-reminder>` injection is fully disabled. Used by models with very tight context budgets where repeated SR injection is too costly (e.g. minimax M2.7). Each turn the daemon would normally append a `<system-reminder>` block to the user message; for listed models the block is skipped entirely. Format: array of `\"providerID/modelID\"` strings. Default: empty (SR enabled for every model). Note: this only affects the per-message SR (path B). The static `<agent_memory>` / `<global_memory>` / `<daily_digest>` blocks injected into the system prompt (path A) are unaffected.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L872"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1010"
+  },
+  "cuBackend": {
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1027"
+  },
+  "custom_provider": {
+   "additionalProperties": {
+    "type": "object"
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L949"
+  },
+  "dataDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L968"
+  },
+  "defaultLightModel": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L960"
+  },
+  "defaultModel": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L954"
+  },
+  "defaultModelContextWindow": {
+   "type": "number",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L958"
+  },
+  "defaultModelThinking": {
+   "properties": {
+    "effort": {
+     "type": "string"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L957"
+  },
+  "defaultModelVariant": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L956"
+  },
+  "devPort": {
+   "type": "number",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L938"
+  },
+  "goal": {
+   "properties": {
+    "defaultActiveSeconds": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L25"
+    },
+    "defaultMainTurns": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L23"
+    },
+    "defaultTokens": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L21"
+    },
+    "evidence": {
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L35"
+    },
+    "graceSteps": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L26"
+    },
+    "maxRetries": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L41"
+    },
+    "maxTokens": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L47"
+    },
+    "maxTurns": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L46"
+    },
+    "modelPolicy": {
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L38"
+    },
+    "objectiveMaxChars": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L12"
+    },
+    "profile": {
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L45"
+    },
+    "repeatedNotMetLimit": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L33"
+    },
+    "repeatedReplyLimit": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L30"
+    },
+    "timeoutSeconds": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L48"
+    },
+    "verification": {
+     "description": "Deliberately has no default and is never written during initialization: only a value the user typed into the config file takes effect. When it is absent the runtime derives the mode from the model route actually in use.",
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/goal-config.ts#L18"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1035"
   },
   "goalWarnings": {
-   "type": "array"
+   "default": [],
+   "items": {
+    "type": "string"
+   },
+   "type": "array",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1039"
+  },
+  "harnessesDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L978"
   },
   "logLevel": {
    "default": "info",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L937"
   },
   "logRetentionDays": {
    "default": 3,
-   "type": "integer"
+   "description": "Number of days to retain log files before automatic cleanup. Default: 3. A value of 0 or undefined also defaults to 3.",
+   "type": "number",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1021"
+  },
+  "logsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L975"
+  },
+  "mcpToolSearch": {
+   "properties": {
+    "enabled": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L911"
+    },
+    "maxSchemaTextLen": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L918"
+    },
+    "minDeferCount": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L914"
+    },
+    "modelWhitelist": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L912"
+    },
+    "systemHint": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L917"
+    },
+    "thresholdPct": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L913"
+    },
+    "topKDefault": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L915"
+    },
+    "topKMax": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L916"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1025"
   },
   "memory": {
    "properties": {
     "dailyDigest": {
      "properties": {
       "enabled": {
-       "default": true,
-       "type": "boolean"
+       "description": "Generate daily digest files under `<dataDir>/agents/<name>/daily/`. This only gates digest generation and daily TTL archival. It does NOT disable the scheduler itself: session-level fallback re-prompts and memory-tracking cleanup continue to run. Default: false.",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L831"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L852"
     },
     "enabled": {
-     "default": false,
-     "type": "boolean"
+     "description": "Master switch for desktop memory behavior. When false, the desktop daemon/plugin stop injecting memory, showing memory reminders, auto-generating/cleaning memory, and accepting memory writes through Mavis APIs. Existing files are preserved and read/search remains available for inspection. Default: true.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L845"
     },
     "proactive": {
-     "default": true,
-     "type": "boolean"
+     "description": "Opt-in hot-path reminder that asks the main agent to evaluate durable memory. Default: false.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L851"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L985"
+  },
+  "memoryDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L971"
+  },
+  "minimaxModelContextLimits": {
+   "additionalProperties": {
+    "type": "number"
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L947"
+  },
+  "minimaxModelSource": {
+   "enum": [
+    "token_plan",
+    "minimax_api_key"
+   ],
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L951"
+  },
+  "minimax_api": {
+   "description": "BYOK: user's own MiniMax API key. Written only through the ModelProvider API — excluded from the generic config update whitelist so a sanitized GET /config payload can never be written back over the real key.",
+   "properties": {
+    "apiKey": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1173"
+    },
+    "baseURL": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1175"
+    },
+    "modelContextLimits": {
+     "additionalProperties": {
+      "type": "number"
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1177"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L945"
+  },
+  "nexus": {
+   "properties": {
+    "enabled": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1204"
+    },
+    "model": {
+     "properties": {
+      "modelID": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1199"
+      },
+      "providerID": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1198"
+      },
+      "variant": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1200"
+      }
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1205"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L952"
+  },
+  "notifications": {
+   "properties": {
+    "branchFinish": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L248"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L967"
   },
   "opencode": {
    "properties": {
     "keepAlive": {
      "properties": {
       "agents": {
-       "type": "array"
+       "items": {
+        "type": "string"
+       },
+       "type": "array",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L803"
       },
       "enabled": {
-       "default": true,
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L800"
       },
       "maxLifetimeMs": {
-       "default": 28800000.0,
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L802"
       },
       "maxProcesses": {
-       "default": 5,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L801"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L814"
     },
     "spawnConcurrency": {
-     "default": 3,
-     "type": "integer"
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L816"
     },
     "xdg": {
      "properties": {
       "dataIsolation": {
-       "default": true,
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L809"
       },
       "startupImport": {
-       "default": "off",
-       "type": "string"
+       "type": "object",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L810"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L815"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1008"
+  },
+  "permission": {
+   "properties": {
+    "classifierTimeoutMs": {
+     "description": "Base timeout (ms) for the auto-mode permission classifier. Default 60_000 calibrated for thinking-class LLMs. Hard floor 5_000ms — lower values silently fall back to the default. No ceiling.",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/permission-config.ts#L36"
+    },
+    "policyOwner": {
+     "description": "Final deterministic policy owner. Core is the default; Engine remains an explicit rollback path.",
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/permission-config.ts#L22"
+    },
+    "storageWriteVersion": {
+     "description": "Disk format used for new or explicitly modified permission.json files. Readers always accept both versions; v2 is the product default and an explicit v1 value is the storage rollback switch.",
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/permission-config.ts#L29"
+    },
+    "userConfirmationEnabled": {
+     "description": "Whether permission checks may create user-confirmation requests. Standard builds default to true. Headless builds may default this to false so an ASK decision fails closed instead of waiting forever.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/permission-config.ts#L43"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L963"
   },
   "permissionMode": {
    "default": "auto",
-   "type": "string"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L962"
+  },
+  "plansDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L977"
+  },
+  "pluginsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L976"
+  },
+  "promptConfig": {
+   "properties": {
+    "autoUpdate": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L253"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1033"
+  },
+  "provider": {
+   "additionalProperties": {
+    "properties": {
+     "api": {
+      "type": "string",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1146"
+     },
+     "blacklist": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1156"
+     },
+     "catalogModels": {
+      "additionalProperties": {
+       "properties": {
+        "attachment": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1105"
+        },
+        "capabilities": {
+         "properties": {
+          "files_api_file_id_ttl_sec": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1085"
+          },
+          "files_api_ref_scheme": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1084"
+          },
+          "files_api_upload_endpoint": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1083"
+          },
+          "max_attachments_count": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1089"
+          },
+          "max_image_bytes_inline": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1086"
+          },
+          "max_images_per_request": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1091"
+          },
+          "max_request_body_bytes": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1088"
+          },
+          "max_video_bytes_inline": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1087"
+          },
+          "support_files_api": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1081"
+          },
+          "support_image": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1077"
+          },
+          "support_json_object_output": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1080"
+          },
+          "support_video": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1078"
+          },
+          "use_file_api": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1082"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1125"
+        },
+        "configuration_source": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1104"
+        },
+        "contextWindowOptionHints": {
+         "additionalProperties": {
+          "type": "object"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1117"
+        },
+        "contextWindowOptions": {
+         "items": {
+          "type": "number"
+         },
+         "type": "array",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1113"
+        },
+        "cost": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1110"
+        },
+        "defaultVariant": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1128"
+        },
+        "enabled": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1101"
+        },
+        "experimental": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1119"
+        },
+        "family": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1102"
+        },
+        "headers": {
+         "additionalProperties": {
+          "type": "string"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1124"
+        },
+        "id": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1099"
+        },
+        "interleaved": {
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1109"
+        },
+        "limit": {
+         "properties": {
+          "context": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1064"
+          },
+          "input": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1065"
+          },
+          "output": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1066"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1111"
+        },
+        "modalities": {
+         "properties": {
+          "input": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1070"
+          },
+          "output": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1071"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1118"
+        },
+        "name": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1100"
+        },
+        "options": {
+         "additionalProperties": {},
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1123"
+        },
+        "parameterErrors": {
+         "properties": {
+          "contextOptions": {},
+          "effortOptions": {}
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1115"
+        },
+        "provider": {
+         "properties": {
+          "api": {
+           "type": "string"
+          },
+          "npm": {
+           "type": "string"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1126"
+        },
+        "reasoning": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1106"
+        },
+        "release_date": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1103"
+        },
+        "status": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1120"
+        },
+        "temperature": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1107"
+        },
+        "thinking": {
+         "properties": {
+          "defaultEffort": {
+           "type": "object",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L216"
+          },
+          "effortOptions": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L214"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1121"
+        },
+        "thinking_config": {
+         "properties": {
+          "default_value": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L229"
+          },
+          "mode": {
+           "type": "object",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L227"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1122"
+        },
+        "tool_call": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1108"
+        },
+        "variants": {
+         "additionalProperties": {
+          "properties": {
+           "disabled": {
+            "type": "boolean"
+           }
+          },
+          "type": "object"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1127"
+        }
+       },
+       "type": "object"
+      },
+      "type": "object",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1153"
+     },
+     "env": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1148"
+     },
+     "id": {
+      "type": "string",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1149"
+     },
+     "model_order": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1155"
+     },
+     "models": {
+      "additionalProperties": {
+       "properties": {
+        "attachment": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1105"
+        },
+        "capabilities": {
+         "properties": {
+          "files_api_file_id_ttl_sec": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1085"
+          },
+          "files_api_ref_scheme": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1084"
+          },
+          "files_api_upload_endpoint": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1083"
+          },
+          "max_attachments_count": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1089"
+          },
+          "max_image_bytes_inline": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1086"
+          },
+          "max_images_per_request": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1091"
+          },
+          "max_request_body_bytes": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1088"
+          },
+          "max_video_bytes_inline": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1087"
+          },
+          "support_files_api": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1081"
+          },
+          "support_image": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1077"
+          },
+          "support_json_object_output": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1080"
+          },
+          "support_video": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1078"
+          },
+          "use_file_api": {
+           "type": "boolean",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1082"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1125"
+        },
+        "configuration_source": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1104"
+        },
+        "contextWindowOptionHints": {
+         "additionalProperties": {
+          "type": "object"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1117"
+        },
+        "contextWindowOptions": {
+         "items": {
+          "type": "number"
+         },
+         "type": "array",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1113"
+        },
+        "cost": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1110"
+        },
+        "defaultVariant": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1128"
+        },
+        "enabled": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1101"
+        },
+        "experimental": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1119"
+        },
+        "family": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1102"
+        },
+        "headers": {
+         "additionalProperties": {
+          "type": "string"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1124"
+        },
+        "id": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1099"
+        },
+        "interleaved": {
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1109"
+        },
+        "limit": {
+         "properties": {
+          "context": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1064"
+          },
+          "input": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1065"
+          },
+          "output": {
+           "type": "number",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1066"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1111"
+        },
+        "modalities": {
+         "properties": {
+          "input": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1070"
+          },
+          "output": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1071"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1118"
+        },
+        "name": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1100"
+        },
+        "options": {
+         "additionalProperties": {},
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1123"
+        },
+        "parameterErrors": {
+         "properties": {
+          "contextOptions": {},
+          "effortOptions": {}
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1115"
+        },
+        "provider": {
+         "properties": {
+          "api": {
+           "type": "string"
+          },
+          "npm": {
+           "type": "string"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1126"
+        },
+        "reasoning": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1106"
+        },
+        "release_date": {
+         "type": "string",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1103"
+        },
+        "status": {
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1120"
+        },
+        "temperature": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1107"
+        },
+        "thinking": {
+         "properties": {
+          "defaultEffort": {
+           "type": "object",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L216"
+          },
+          "effortOptions": {
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L214"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1121"
+        },
+        "thinking_config": {
+         "properties": {
+          "default_value": {
+           "type": "string",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L229"
+          },
+          "mode": {
+           "type": "object",
+           "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L227"
+          }
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1122"
+        },
+        "tool_call": {
+         "type": "boolean",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1108"
+        },
+        "variants": {
+         "additionalProperties": {
+          "properties": {
+           "disabled": {
+            "type": "boolean"
+           }
+          },
+          "type": "object"
+         },
+         "type": "object",
+         "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1127"
+        }
+       },
+       "type": "object"
+      },
+      "type": "object",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1151"
+     },
+     "name": {
+      "type": "string",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1147"
+     },
+     "npm": {
+      "type": "string",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1150"
+     },
+     "options": {
+      "properties": {
+       "apiKey": {
+        "type": "string",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1134"
+       },
+       "authMode": {
+        "type": "object",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1136"
+       },
+       "baseURL": {
+        "type": "string",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1135"
+       },
+       "chunkTimeout": {
+        "type": "number",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1140"
+       },
+       "enterpriseUrl": {
+        "type": "string",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1137"
+       },
+       "headers": {
+        "additionalProperties": {
+         "type": "string"
+        },
+        "type": "object",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1141"
+       },
+       "setCacheKey": {
+        "type": "boolean",
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1138"
+       },
+       "timeout": {
+        "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1139"
+       }
+      },
+      "type": "object",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1158"
+     },
+     "whitelist": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1157"
+     }
+    },
+    "type": "object"
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L939"
   },
   "review": {
    "properties": {
     "mode": {
-     "default": "subagent",
-     "type": "string"
+     "enum": [
+      "inline",
+      "subagent"
+     ],
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L922"
     },
     "modeSource": {
-     "default": "default",
-     "type": "string"
-    },
-    "turnDiffCard": {
-     "default": "concise",
-     "type": "string"
+     "enum": [
+      "default",
+      "explicit"
+     ],
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L924"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1029"
   },
   "runawayGuard": {
+   "default": {
+    "enabled": false
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1012"
+  },
+  "sandbox": {
    "properties": {
+    "deniedDomains": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L27"
+    },
+    "denyRead": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L22"
+    },
+    "denyWrite": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L23"
+    },
     "enabled": {
-     "default": false,
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L19"
+    },
+    "localAccess": {
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L29"
+    },
+    "policy": {
+     "properties": {
+      "mode": {
+       "type": "string"
+      }
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/sandbox-config.ts#L26"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1037"
   },
   "sessionRotate": {
    "properties": {
     "activeSessionLookbackHours": {
-     "default": 12,
-     "type": "integer"
+     "description": "Lookback window used by rotate bootstrap to list recently active sessions. Sessions with updatedAt within this many hours are shown to the new session so it can explain why follow-up messages may arrive after rotation. Default: 12. Valid range: positive finite number.",
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L273"
     },
     "enabled": {
-     "default": false,
-     "type": "boolean"
+     "description": "Master switch for session rotation (Main and Branch). When false, `POST /api/agent/:name/session/rotate` returns 403 FEATURE_DISABLED. Default: true. Set to false to disable rotation entirely.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L264"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L989"
   },
   "sessionTitle": {
    "properties": {
     "enabled": {
-     "default": false,
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L776"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L998"
+  },
+  "sessionsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L970"
   },
   "skillEvolve": {
    "properties": {
     "builtinMrEnabled": {
-     "default": true,
-     "type": "boolean"
+     "description": "Whether the nightly evolver may handle built-in skill signals by dispatching a worker that opens a GitLab MR against the daemon source repo. When false, built-in signals are dismissed (legacy behavior). Mirrors `BetaConfig.skillEvolveBuiltinMr` — the beta gate is limited to the test channel and wins first; this resolved field is what the internal-scheduler reads when injecting capability hints into the `skill-evolve-nightly` SKILL.md prompt. Default `false` — opt-in. Even with the beta gate enabled, opening MRs against a source repo is an externally visible side effect, so users must explicitly set `skillEvolve.builtinMrEnabled: true` (alongside `sourceRepo`) to participate. Mirrors the `sourceRepo: undefined` default — both must be set together. Implicitly false when the parent `enabled` is false (no point evolving built-ins if the whole pipeline is off).",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L79"
     },
     "disableModelPrefixes": {
-     "type": "array"
+     "description": "Model ID prefixes for which skill-evolve is disabled per-session. When the resolved model ID starts with any of these prefixes, skill-evolve teaching and scan triggers are suppressed for that session. Also used to auto-derive the global `enabled` flag when it is not explicitly set: if all configured model IDs match one of these prefixes (or no models are configured), `enabled` defaults to `false`. Default: ['MiniMax-M2'].",
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L59"
     },
     "enabled": {
-     "default": false,
-     "type": "boolean"
+     "description": "Master switch. When false, signal collection, scanning, routing, and editor spawning are all disabled. API endpoints return 403. Auto-derived when not explicitly set in config.yaml: if **all** configured model IDs start with a prefix in `disableModelPrefixes` (case-insensitive), defaults to `false`; otherwise `true`. No models configured also defaults to `false`. An explicit `enabled: true/false` in config.yaml always wins.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L39"
     },
     "excludeAgents": {
-     "type": "array"
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L49"
     },
     "inSession": {
      "properties": {
       "N": {
-       "default": 20,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L13"
       },
       "maxPendingPerSession": {
-       "default": 1,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L17"
       },
       "minIntervalSeconds": {
-       "default": 30,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L15"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L41"
     },
     "lifecycle": {
      "properties": {
       "archiveThresholdDays": {
-       "default": 30,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L25"
       },
       "staleThresholdDays": {
-       "default": 15,
-       "type": "integer"
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L23"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L99"
+    },
+    "minConfidence": {
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L45"
     },
     "proposal": {
+     "description": "v3: skill creation proposal pipeline (session-end fallback re-prompt → ProposalStore → nightly skill-evolve consumes). When the parent `enabled` is false, all proposal sub-features are forced off. Mirrors `BetaConfig.skillProposal` — its beta definition defaults through test and is configurable through online. That gate wins first; this resolved object is what the daily-digest fallback and scanner read.",
      "properties": {
       "eligibleAgents": {
-       "type": "array"
+       "description": "Agent name allow-list for fallback re-prompt + skill reflection. Special value `[\"*\"]` enables all agents. Default: `[\"mavis\"]`.",
+       "items": {
+        "type": "string"
+       },
+       "type": "array",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L120"
       },
       "enabled": {
-       "default": true,
-       "type": "boolean"
+       "description": "Resolved master switch. False when: - `skillEvolve.enabled` is false (parent gate) - `beta.skillProposal` is false (beta gate) True when both gates are on.",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L114"
       },
       "minMessageCount": {
-       "default": 40,
-       "type": "integer"
+       "description": "Minimum message count before a session is eligible for skill-reflection re-prompt (independent of the memory-fallback minimum). Default: 40.",
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L125"
       },
       "skipPassiveSessionEnd": {
-       "default": false,
-       "type": "boolean"
+       "description": "When true (default in v3), the passive scanner does NOT subscribe to `session.finish` / `session.error` / `session.compressed` EventBus events — the daily-digest fallback re-prompt covers that need with higher accuracy (the original agent reflects on its own conversation). The in-session `scan-request` path is unaffected and continues to fire. Set to `false` to keep the legacy v2 behavior (both paths produce signals, expect duplicate signal volume).",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L137"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L97"
+    },
+    "scannerModel": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L47"
     },
     "signalCooldownHours": {
-     "default": 24,
-     "type": "integer"
+     "type": "number",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L43"
     },
-    "sourceRepo": {}
+    "sourceRepo": {
+     "description": "Optional absolute path to the source repository used for built-in skill evolution MRs. Runtime built-in skills usually live under the dataDir copy (`.minimax/.builtin-skills`), so walking up from that directory cannot find the repo in packaged/dev-profile installs. When set, the internal nightly scheduler validates this path and uses it as the MR source repo.",
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skill-evolve-config.ts#L87"
+    }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L987"
   },
-  "skipParentDeathGuard": {
-   "default": true,
-   "type": "boolean"
+  "skills": {
+   "properties": {
+    "external": {
+     "properties": {
+      "duplicateWarn": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skills-config.ts#L53"
+      },
+      "enabled": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skills-config.ts#L49"
+      },
+      "sources": {
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skills-config.ts#L55"
+      },
+      "walkUp": {
+       "type": "boolean",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skills-config.ts#L51"
+      }
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/skills-config.ts#L59"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L994"
   },
-  "skipWindowsHardSafetyChecks": {
-   "default": true,
-   "type": "boolean"
+  "skillsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L972"
   },
   "sseErrorPush": {
    "properties": {
     "history": {
-     "default": false,
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L234"
     },
     "stream": {
-     "default": false,
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L236"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L965"
+  },
+  "subAgentsDir": {
+   "type": "string",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L979"
+  },
+  "telemetry": {
+   "properties": {
+    "diagnostics": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L933"
+    },
+    "enabled": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L929"
+    },
+    "metrics": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L931"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1006"
+  },
+  "toolResultCompaction": {
+   "default": {},
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1014"
+  },
+  "tui": {
+   "properties": {
+    "customStatusLine": {
+     "properties": {
+      "colorMode": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L22"
+      },
+      "command": {
+       "description": "Command line to execute. Tokenized like `externalEditorCommand` (no shell pipes on POSIX); wrap paths with spaces in quotes.",
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L16"
+      },
+      "display": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L18"
+      },
+      "intervalSeconds": {
+       "description": "Optional periodic refresh in seconds. Default 0 (event-driven only); positive values are floored to a 10s minimum by the TUI.",
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L31"
+      },
+      "maxLines": {
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L24"
+      },
+      "position": {
+       "type": "string",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L20"
+      },
+      "timeoutMs": {
+       "type": "number",
+       "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L26"
+      }
+     },
+     "type": "object",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L61"
+    },
+    "events": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L42"
+    },
+    "method": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L40"
+    },
+    "programStatus": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L47"
+    },
+    "showTips": {
+     "type": "boolean",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L45"
+    },
+    "statusLine": {
+     "description": "Status line items, in display order. Item ids are kebab-case, for example `[\"model-with-reasoning\", \"context-remaining\", \"current-dir\"]`. The TUI owns the item catalog and ignores ids it does not recognize, so a config written for a newer build still renders. `undefined` means \"use the build default\". An empty array is honoured as a deliberately blank status line.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L59"
+    },
+    "terminalTitle": {
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L36"
+    },
+    "when": {
+     "type": "string",
+     "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/tui-config.ts#L39"
+    }
+   },
+   "type": "object",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1004"
   },
   "worktreeRefreshBeforeCreate": {
    "default": false,
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/MiniMax-AI/minimax-code/blob/main/packages/config/src/config.ts#L1031"
   }
  },
  "type": "object"

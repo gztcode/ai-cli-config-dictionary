@@ -1,0 +1,2681 @@
+{
+ "accessGroups.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "acp": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.allowedAgents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.backend": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.defaultAgent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.dispatch": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.dispatch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.fallbacks": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.runtime.installCommand": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.stream": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.stream.deliveryMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.stream.repeatSuppression": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.stream.tagVisibility": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "acp.stream.tagVisibility.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.defaults": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.authInheritance.agentId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-http-contract"
+ },
+ "agents.defaults.bootstrapMaxChars": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.bootstrapTotalMaxChars": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.compaction": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.compaction.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.compaction.memoryFlush.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.compaction.memoryFlush.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.compaction.midTurnPrecheck.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.compaction.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.defaults.compaction.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.compaction.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.defaults.compaction.qualityGuard.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.compaction.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.defaults.contextInjection": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.contextLimits": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.contextPruning": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.contextPruning.hardClear.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.contextPruning.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.defaults.contextPruning.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.contextPruning.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.contextPruning.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.contextPruning.ttl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#crabbox-profile"
+ },
+ "agents.defaults.cwd": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.embeddedAgent.cyberFailover.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.defaults.embeddedAgent.cyberFailover.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.heartbeat": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.heartbeat.accountId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.defaults.heartbeat.agentId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-http-contract"
+ },
+ "agents.defaults.heartbeat.every": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "agents.defaults.heartbeat.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.heartbeat.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.defaults.heartbeat.to": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.defaults.humanDelay.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.defaults.imageMaxDimensionPx": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.imageQuality": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.mediaModels.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#what-each-page-covers"
+ },
+ "agents.defaults.modelPolicy.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.modelSelectionScope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.models.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.defaults.models.*.agentRuntime.id": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.defaults.repoRoot": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.sandbox": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#what-each-page-covers"
+ },
+ "agents.defaults.sandbox.backend": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "agents.defaults.sandbox.browser": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.defaults.sandbox.browser.cdpPort": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.defaults.sandbox.browser.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.defaults.sandbox.browser.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.sandbox.docker.dns": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wide-area-dns-sd"
+ },
+ "agents.defaults.sandbox.docker.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.defaults.sandbox.docker.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.defaults.sandbox.docker.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.sandbox.docker.ulimits.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.defaults.sandbox.docker.user": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.defaults.sandbox.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.defaults.sandbox.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.defaults.sandbox.ssh": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.sandbox.ssh.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.sessionStore.agentId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-session-and-agent-policy"
+ },
+ "agents.defaults.silentReply.group": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#media-model-template-variables"
+ },
+ "agents.defaults.skills": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.skipBootstrap": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.skipOptionalBootstrapFiles": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.startupContext": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.startupContext.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.defaults.startupContext.maxFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "agents.defaults.subagents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "agents.defaults.subagents.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.defaults.subagents.thinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.defaults.systemAgent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.defaults.systemAgent.agentId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-http-contract"
+ },
+ "agents.defaults.thinkingDefault": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.defaults.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.defaults.userTimezone": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "agents.defaults.workspace": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.entries": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "agents.entries.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.contextLimits": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.entries.*.cwd": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.heartbeat": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-retries-and-fan-out"
+ },
+ "agents.entries.*.heartbeat.accountId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.heartbeat.every": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "agents.entries.*.heartbeat.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.heartbeat.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.entries.*.heartbeat.to": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.humanDelay.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.entries.*.identity": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.identity.name": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.identity.theme": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "agents.entries.*.memory.search.cache.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.memory.search.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.memory.search.local": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.memory.search.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.memory.search.multimodal.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.memory.search.multimodal.maxFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "agents.entries.*.memory.search.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.memory.search.remote": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.memory.search.remote.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.memory.search.remote.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.entries.*.memory.search.remote.batch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.memory.search.remote.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.memory.search.remote.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.memory.search.store.vector.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.modelPolicy.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.models.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.models.*.agentRuntime.id": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.name": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.sandbox": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.sandbox.backend": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "agents.entries.*.sandbox.browser": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.entries.*.sandbox.browser.cdpPort": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.entries.*.sandbox.browser.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.entries.*.sandbox.browser.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.sandbox.docker.dns": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wide-area-dns-sd"
+ },
+ "agents.entries.*.sandbox.docker.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.sandbox.docker.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.sandbox.docker.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.sandbox.docker.ulimits.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.sandbox.docker.user": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "agents.entries.*.sandbox.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.entries.*.sandbox.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.sandbox.ssh": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.sandbox.ssh.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.skills": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.skillsLimits.maxSkillsPromptChars": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "agents.entries.*.subagents.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.subagents.thinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.thinkingDefault": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.agentToAgent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "agents.entries.*.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.byProvider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "agents.entries.*.tools.byProvider.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tools.byProvider.*.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tools.byProvider.*.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tools.codeMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "agents.entries.*.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.elevated": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "agents.entries.*.tools.elevated.allowFrom.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tools.elevated.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tools.exec": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "agents.entries.*.tools.exec.applyPatch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tools.exec.ask": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.entries.*.tools.exec.host": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#canvas-widget-presenter"
+ },
+ "agents.entries.*.tools.exec.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.entries.*.tools.exec.node": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.exec.reviewer.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tools.exec.reviewer.thinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.tools.exec.reviewer.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.exec.safeBinProfiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tools.exec.security": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "agents.entries.*.tools.exec.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "agents.entries.*.tools.github": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.github.gitAuthor.name": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.tools.loopDetection": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "agents.entries.*.tools.loopDetection.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tools.message": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "agents.entries.*.tools.message.actions.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tools.message.broadcast": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#config-includes-include"
+ },
+ "agents.entries.*.tools.message.broadcast.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tools.message.crossContext.marker.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tools.sandbox": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.sandbox.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.sandbox.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.sandbox.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tools.toolsBySender": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "agents.entries.*.tools.toolsBySender.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tools.toolsBySender.*.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tools.toolsBySender.*.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "agents.entries.*.tts.auto": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "agents.entries.*.tts.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tts.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "agents.entries.*.tts.modelOverrides.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "agents.entries.*.tts.personas.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tts.personas.*.label": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "agents.entries.*.tts.personas.*.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.tts.personas.*.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "agents.entries.*.tts.personas.*.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tts.personas.*.providers.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tts.personas.*.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.tts.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.tts.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "agents.entries.*.tts.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tts.providers.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "agents.entries.*.tts.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "agents.entries.*.tts.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "approvals.exec": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#setup-secrets"
+ },
+ "approvals.exec.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "approvals.exec.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "approvals.plugin.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "approvals.plugin.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "approvals.plugin.slack.plugins": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "approvals.plugin.slack.plugins.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "approvals.plugin.slack.plugins.*.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "approvals.plugin.slack.plugins.*.tools.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "auth.order": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#auth-storage"
+ },
+ "auth.order.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "auth.profiles": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#auth-storage"
+ },
+ "auth.profiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "auth.profiles.*.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "auth.profiles.*.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "broadcast": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#config-includes-include"
+ },
+ "broadcast.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "browser": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.attachOnly": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.cdpUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.defaultProfile": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.evaluateEnabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.executablePath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.extensionRelay": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.extensionRelay.allowLegacyAuth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.extraArgs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "browser.profiles.*.attachOnly": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.cdpPort": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.cdpUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.driver": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.executablePath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.mcpArgs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.profiles.*.userDataDir": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.snapshotDefaults": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.snapshotDefaults.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "browser.ssrfPolicy": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.ssrfPolicy.allowIpv6UniqueLocalRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "browser.ssrfPolicy.allowRfc2544BenchmarkRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "browser.ssrfPolicy.allowedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.ssrfPolicy.blockedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.ssrfPolicy.dangerouslyAllowPrivateNetwork": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.tabCleanup": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "browser.tabCleanup.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "channels.defaults": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-channels.md#what-each-page-covers"
+ },
+ "channels.defaults.botLoopProtection.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "channels.modelByChannel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-channels.md#what-each-page-covers"
+ },
+ "channels.modelByChannel.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "channels.modelByChannel.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "cloudWorkers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#cloud-worker-environments"
+ },
+ "cloudWorkers.desktop": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "cloudWorkers.preparedPool": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#crabbox-profile"
+ },
+ "cloudWorkers.preparedPool.maxTotal": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#crabbox-profile"
+ },
+ "cloudWorkers.profiles": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#required-worker-profile"
+ },
+ "cloudWorkers.profiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "cloudWorkers.profiles.*.install": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "cloudWorkers.profiles.*.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "cloudWorkers.profiles.*.readyWorkers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#crabbox-profile"
+ },
+ "cloudWorkers.profiles.*.settings": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#required-worker-profile"
+ },
+ "cloudWorkers.profiles.*.suspendAfter": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#crabbox-profile"
+ },
+ "cloudWorkers.projectProfiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "cloudWorkers.requiredProfile": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#required-worker-profile"
+ },
+ "commands": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "commands.allowFrom.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "commands.config": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "commands.debug": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "commands.mcp": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "commands.plugins": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "commands.restart": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
+ },
+ "commands.text": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "cron": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "cron.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.failureAlert": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.failureAlert.accountId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.after": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.channel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.cooldownMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.includeSkipped": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.failureAlert.to": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
+ },
+ "cron.sessionRetention": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.skipMissedJobs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.triggers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.triggers.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookSsrfPolicy": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookSsrfPolicy.allowIpv6UniqueLocalRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookSsrfPolicy.allowRfc2544BenchmarkRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookSsrfPolicy.allowedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookSsrfPolicy.blockedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "cron.webhookToken": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "desktop": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "desktop.host": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "desktop.host.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "desktop.host.managed": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "desktop.host.passwordFile": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "desktop.host.port": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#desktop"
+ },
+ "diagnostics": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.cacheTrace": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.cacheTrace.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.flags": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.captureContent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.endpoint": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.flushIntervalMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "diagnostics.otel.logs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.logsEndpoint": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.logsExporter": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.metrics": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.metricsEndpoint": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.protocol": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.sampleRate": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.serviceName": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.traces": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "diagnostics.otel.tracesEndpoint": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#diagnostics"
+ },
+ "discovery": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "discovery.mdns": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "discovery.mdns.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "discovery.wideArea": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wide-area-dns-sd"
+ },
+ "discovery.wideArea.domain": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wide-area-dns-sd"
+ },
+ "env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "env.shellEnv": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#env-inline-env-vars"
+ },
+ "env.shellEnv.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#env-inline-env-vars"
+ },
+ "env.shellEnv.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#env-inline-env-vars"
+ },
+ "env.vars": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#env-inline-env-vars"
+ },
+ "env.vars.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.allowRealIpFallback": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.allowTailscale": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.identityScopes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.identityScopes.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.auth.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.password": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.rateLimit": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.rateLimit.exemptLoopback": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.rateLimit.lockoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.rateLimit.maxAttempts": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.rateLimit.windowMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.token": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.trustedProxy.allowLoopback": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.auth.trustedProxy.deviceAutoApprove.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "gateway.auth.trustedProxy.deviceAutoApprove.scopes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.bind": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.cliAgents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.cliAgents.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.allowedOrigins": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.automaticallyFetchFavicons": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.basePath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.communityInvite": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.dangerouslyAllowHostHeaderOriginFallback": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.environment": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.environment.color": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.environment.label": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.experimental.customPlugins": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.github.host": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.github.token": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.controlUi.newSessionModelDefaults": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.github.host": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.http": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.http.endpoints.chatCompletions.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "gateway.http.endpoints.chatCompletions.images.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "gateway.http.endpoints.chatCompletions.images.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.http.endpoints.responses.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#openai-compatible-endpoints"
+ },
+ "gateway.http.endpoints.responses.files.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "gateway.http.endpoints.responses.files.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.http.endpoints.responses.files.urlAllowlist": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#openai-compatible-endpoints"
+ },
+ "gateway.http.endpoints.responses.images.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "gateway.http.endpoints.responses.images.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.http.endpoints.responses.images.urlAllowlist": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#openai-compatible-endpoints"
+ },
+ "gateway.http.endpoints.responses.maxUrlParts": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#openai-compatible-endpoints"
+ },
+ "gateway.http.securityHeaders.strictTransportSecurity": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#openai-compatible-endpoints"
+ },
+ "gateway.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.browser": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "gateway.nodes.browser.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "gateway.nodes.browser.node": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.commands": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.commands.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#paired-node-desktops"
+ },
+ "gateway.nodes.commands.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#paired-node-desktops"
+ },
+ "gateway.nodes.pairing": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.pairing.autoApproveCidrs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.pairing.autoApproveLocal": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.pairing.sshVerify": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.nodes.pluginTools.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "gateway.port": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "gateway.portals.ingress.domain": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wide-area-dns-sd"
+ },
+ "gateway.portals.ingress.port": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "gateway.projects.defaultRepository.url": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.publicOrigin": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.push": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.push.apns": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.push.apns.relay": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.push.apns.relay.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.push.apns.relay.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.reload": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
+ },
+ "gateway.reload.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
+ },
+ "gateway.remote": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.edgeAuth.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.remote.password": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.remotePort": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.sshHostKeyPolicy": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.tlsFingerprint": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.token": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.transport": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.remote.url": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.assignments": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.assignments.byGithubLogin": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.assignments.byGithubLogin.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.roles.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.roles.definitions.*.agents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "gateway.roles.definitions.*.modelPolicy.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "gateway.roles.definitions.*.modelPolicy.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "gateway.roles.definitions.*.modelPolicy.sourceAgent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions.*.sandbox": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions.*.scopes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions.*.sessions": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.roles.definitions.*.sessions.others": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tailscale": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tailscale.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tailscale.preserveFunnel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.terminal": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.terminal.detachedSessionTimeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.terminal.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.terminal.shell": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tls.autoGenerate": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tls.caPath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tls.certPath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tls.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tls.keyPath": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
+ },
+ "gateway.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.trustedProxies": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.uploads": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "gateway.uploads.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "hooks": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "hooks.allowRequestSessionKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.allowedAgentIds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.allowedSessionKeyPrefixes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.defaultSessionKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-session-and-agent-policy"
+ },
+ "hooks.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.gmail": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.account": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.allowUnsafeExternalContent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#mapping-details"
+ },
+ "hooks.gmail.hookUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.includeBody": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.label": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "hooks.gmail.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.pushToken": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.renewEveryMinutes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.serve": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.serve.bind": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.serve.path": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.serve.port": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.subscription": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.tailscale": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.tailscale.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.tailscale.path": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.tailscale.target": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.thinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.gmail.topic": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "hooks.internal": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.internal.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "hooks.internal.entries": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "hooks.internal.entries.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "hooks.internal.entries.*.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "hooks.internal.entries.*.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "hooks.internal.entries.*.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "hooks.internal.load": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "hooks.internal.load.extraDirs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "hooks.mappings": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.path": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.presets": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.token": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "hooks.transformsDir": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "logging": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#audit"
+ },
+ "logging.audit": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#audit"
+ },
+ "logging.audit.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#audit"
+ },
+ "logging.audit.executionIdentity": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#audit"
+ },
+ "logging.audit.messages": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#audit"
+ },
+ "logging.consoleLevel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "logging.consoleStyle": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "logging.file": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "logging.level": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "logging.maxFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "logging.redactPatterns": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "mcp": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.apps.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "mcp.servers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.args": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.clientCert": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.clientKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.codex": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.codex.agents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.codex.defaultToolsApprovalMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "mcp.servers.*.connectionTimeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.cwd": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "mcp.servers.*.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "mcp.servers.*.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "mcp.servers.*.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.oauth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.oauth.authProfileId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.oauth.identity": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.oauth.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.requestTimeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.sslVerify": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.supportsParallelToolCalls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.toolFilter": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.toolFilter.exclude": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.toolFilter.include": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.transport": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.servers.*.url": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "mcp.sessionIdleTtlMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "memory.citations": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "memory.search.cache.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "memory.search.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "memory.search.local": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "memory.search.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "memory.search.multimodal.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "memory.search.multimodal.maxFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "memory.search.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "memory.search.remote": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "memory.search.remote.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "memory.search.remote.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "memory.search.remote.batch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "memory.search.remote.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "memory.search.remote.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "memory.search.store.vector.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "messages": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "messages.inbound.byChannel.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "messages.inbound.debounceMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
+ },
+ "messages.queue.byChannel.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "messages.queue.debounceMsByChannel.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "messages.queue.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "messages.statusReactions.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.catalogRefresh": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.catalogRefresh.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.catalogRefresh.url": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.agentRuntime.id": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "models.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "models.providers.*.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "models.providers.*.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.localService": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.providers.*.localService.args": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.localService.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.providers.*.localService.cwd": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "models.providers.*.localService.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "models.providers.*.localService.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "models.providers.*.request.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.request.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.request.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "models.providers.*.request.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "models.providers.*.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "nodeHost.agentRuns.claude.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "nodeHost.autoUpdate.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "nodeHost.browserProxy.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "nodeHost.mcp": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.args": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.clientCert": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.clientKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.codex": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.codex.agents": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.codex.defaultToolsApprovalMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "nodeHost.mcp.servers.*.connectionTimeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.cwd": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "nodeHost.mcp.servers.*.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "nodeHost.mcp.servers.*.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "nodeHost.mcp.servers.*.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.oauth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.oauth.authProfileId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.oauth.identity": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.oauth.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.requestTimeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.sslVerify": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.supportsParallelToolCalls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.toolFilter": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.toolFilter.exclude": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.toolFilter.include": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.transport": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.mcp.servers.*.url": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "nodeHost.skills": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "nodeHost.skills.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "nodeHost.workerRuns.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "plugins": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#acp"
+ },
+ "plugins.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.entries": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.entries.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "plugins.entries.*.config": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.entries.*.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "plugins.entries.*.hooks": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.entries.*.hooks.allowPromptInjection": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.entries.*.hooks.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "plugins.entries.*.hooks.timeouts.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "plugins.entries.*.llm.allowedModels": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "plugins.entries.*.subagent.allowedModels": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "plugins.load": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.load.paths": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "plugins.slots.contextEngine": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "plugins.slots.memory": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "proxy.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "proxy.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "secrets": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#setup-secrets"
+ },
+ "secrets.defaults": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "secrets.defaults.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "secrets.defaults.exec": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "secrets.defaults.file": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "secrets.egressProxy": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
+ },
+ "secrets.egressProxy.allowedHosts": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
+ },
+ "secrets.egressProxy.bypassHosts": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
+ },
+ "secrets.egressProxy.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
+ },
+ "secrets.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "secrets.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "security": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "security.audit": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "security.installPolicy.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "security.installPolicy.exec": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#setup-secrets"
+ },
+ "security.installPolicy.exec.args": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "security.installPolicy.exec.command": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "security.installPolicy.exec.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "security.installPolicy.exec.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "security.installPolicy.exec.passEnv": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "security.installPolicy.exec.source": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "security.installPolicy.exec.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "security.installPolicy.exec.trustedDirs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "session.identityLinks.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "session.maintenance.coldStorage.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "session.maintenance.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.reset.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.resetByChannel.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "session.resetByChannel.*.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.resetByType.direct": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "session.resetByType.direct.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.resetByType.group": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#media-model-template-variables"
+ },
+ "session.resetByType.group.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.resetByType.thread.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "session.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "session.sendPolicy.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "session.sharing.suggest": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "session.threadBindings.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "skills": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.allowBundled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.entries": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.entries.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "skills.entries.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.entries.*.config": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "skills.entries.*.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "skills.entries.*.env": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.entries.*.env.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "skills.install": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.install.allowUploadedArchives": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.install.nodeManager": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.install.preferBrew": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.limits.maxCandidatesPerRoot": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.limits.maxSkillFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.limits.maxSkillsInPrompt": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.limits.maxSkillsLoadedPerSource": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.limits.maxSkillsPromptChars": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-agents.md#where-each-section-moved"
+ },
+ "skills.load": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.load.allowSymlinkTargets": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.load.extraDirs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.load.watch": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "skills.workshop.autonomous.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "skills.workshop.maxSkillBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "storage.locations.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "storage.locations.*.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "storage.locations.*.settings": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md#required-worker-profile"
+ },
+ "surfaces.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "surfaces.*.silentReply.group": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#media-model-template-variables"
+ },
+ "talk.agentId": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-http-contract"
+ },
+ "talk.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "talk.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "talk.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "talk.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "talk.realtime.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "talk.realtime.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "talk.realtime.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "talk.realtime.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "talk.realtime.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "talk.realtime.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "talk.realtime.transport": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "telemetry": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#telemetry"
+ },
+ "telemetry.consentedAt": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#telemetry"
+ },
+ "telemetry.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.agentToAgent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "tools.agentToAgent.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.agentToAgent.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.byProvider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "tools.byProvider.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.byProvider.*.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.byProvider.*.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.codeMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.elevated": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "tools.elevated.allowFrom.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.elevated.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.exec": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.exec.applyPatch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.exec.ask": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.exec.host": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#canvas-widget-presenter"
+ },
+ "tools.exec.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tools.exec.node": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.exec.reviewer.model": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.exec.reviewer.thinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "tools.exec.reviewer.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.exec.safeBinProfiles.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.exec.security": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hooks"
+ },
+ "tools.exec.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.github": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.github.gitAuthor.name": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "tools.links.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.links.models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.links.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.links.scope.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.links.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.loopDetection": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.loopDetection.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.media.audio.attachments.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tools.media.audio.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.media.audio.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media.audio.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "tools.media.audio.providerOptions.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.providerOptions.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.request.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.request.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.request.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.request.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "tools.media.audio.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.audio.scope.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.media.audio.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.media.image": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media.image.attachments.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tools.media.image.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.media.image.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media.image.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "tools.media.image.providerOptions.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.providerOptions.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.request.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.request.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.request.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.request.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "tools.media.image.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.image.scope.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.media.image.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.media.models": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media.video.attachments.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tools.media.video.baseUrl": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.media.video.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.media.video.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.maxBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#gmail-integration"
+ },
+ "tools.media.video.providerOptions.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.providerOptions.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.request.auth": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.request.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.request.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.request.tls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#bridge-legacy-removed"
+ },
+ "tools.media.video.scope": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.media.video.scope.default": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.media.video.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.message": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-hooks.md#hook-agent-payload"
+ },
+ "tools.message.actions.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.message.broadcast": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#config-includes-include"
+ },
+ "tools.message.broadcast.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.message.crossContext.marker.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.sandbox": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.sandbox.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.sandbox.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.sandbox.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.sessions": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.sessions_spawn": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.sessions_spawn.attachments.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.sessions_spawn.attachments.maxFileBytes": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md#logging"
+ },
+ "tools.subagents.tools": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.subagents.tools.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.subagents.tools.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tools.toolsBySender": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#where-each-section-moved"
+ },
+ "tools.toolsBySender.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.toolsBySender.*.allow": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.toolsBySender.*.deny": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#plugins"
+ },
+ "tools.updatePlan": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.web": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-tools.md#what-each-page-covers"
+ },
+ "tools.web.fetch.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.web.fetch.headers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.web.fetch.headers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tools.web.fetch.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tools.web.fetch.ssrfPolicy": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "tools.web.fetch.ssrfPolicy.allowIpv6UniqueLocalRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "tools.web.fetch.ssrfPolicy.allowRfc2544BenchmarkRange": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#automations-cron"
+ },
+ "tools.web.fetch.ssrfPolicy.allowedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "tools.web.fetch.ssrfPolicy.blockedHostnames": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "tools.web.fetch.ssrfPolicy.dangerouslyAllowPrivateNetwork": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#browser"
+ },
+ "tools.web.fetch.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "tools.web.search.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.web.search.openaiCodex.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tools.web.search.openaiCodex.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tools.web.search.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tools.web.search.timeoutSeconds": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#codex-harness-plugin-config"
+ },
+ "transcripts.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tts.auto": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "tts.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tts.mode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#mdns-bonjour"
+ },
+ "tts.modelOverrides.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#models"
+ },
+ "tts.personas.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tts.personas.*.label": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "tts.personas.*.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tts.personas.*.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "tts.personas.*.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tts.personas.*.providers.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tts.personas.*.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tts.provider": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tts.providers": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secret-providers-config"
+ },
+ "tts.providers.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tts.providers.*.*": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#mcp"
+ },
+ "tts.providers.*.apiKey": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md#skills"
+ },
+ "tts.timeoutMs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gateway"
+ },
+ "ui": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.accent": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.chatFollowUpMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.chatPersistCommentary": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.chatSendShortcut": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.chatShowThinking": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.chatShowToolCalls": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.locale": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.theme": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.prefs.themeMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "ui.seamColor": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md#ui"
+ },
+ "update": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "update.auto": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "update.auto.enabled": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "update.channel": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "update.checkOnStart": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#update"
+ },
+ "wizard": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.accessMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.appRecommendations": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.lastRunAt": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.lastRunCommand": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.lastRunCommit": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.lastRunMode": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.lastRunVersion": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "wizard.securityAcknowledgedAt": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#wizard"
+ },
+ "worktreeAcceleration": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreeacceleration"
+ },
+ "worktreeMaxCount": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreemaxcount"
+ },
+ "worktreeRoot": {
+  "doc_url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreeroot"
+ }
+}

@@ -75,16 +75,22 @@
    "additionalProperties": false,
    "properties": {
     "allowedAgents": {
+     "description": "allowlist of agent ids permitted for ACP runtime sessions; empty means no additional restriction.",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "backend": {
-     "type": "string"
+     "description": "default ACP runtime backend id (must match a registered ACP runtime plugin).",
+     "type": "string",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "defaultAgent": {
-     "type": "string"
+     "description": "fallback ACP target agent id when spawns do not specify an explicit target.",
+     "type": "string",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "dispatch": {
      "additionalProperties": false,
@@ -96,13 +102,17 @@
      "type": "object"
     },
     "enabled": {
-     "type": "boolean"
+     "description": "global ACP feature gate (default: true; set false to hide ACP dispatch and spawn affordances).",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "fallbacks": {
+     "description": "ordered list of fallback ACP backend ids tried when the primary backend fails early with a transient-looking error (unavailable, rate-limited, quota exhausted, or overloaded) before it produced any output. Each entry must match a registered ACP runtime plugin backend.",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "runtime": {
      "additionalProperties": false,
@@ -5209,9 +5219,11 @@
      "additionalProperties": false,
      "properties": {
       "maxTotal": {
+       "description": "non-negative integer Gateway-wide reserve cap; defaults to 4. Preparing workers and unconfirmed cleanup count toward both limits. Set 0 to drain unused reserves and stop refill. Reserves incur running-machine charges and expire from successful session activation or explicit build demand using the provider's existing idle policy. See Ready workers.",
        "maximum": 9007199254740991,
        "minimum": 0,
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md"
       }
      },
      "type": "object"
@@ -5253,11 +5265,13 @@
       ],
       "type": "object"
      },
+     "description": "named worker profiles with non-empty, whitespace-trimmed ids. Each profile selects a provider registered by a plugin.",
      "propertyNames": {
       "minLength": 1,
       "type": "string"
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-cloud-workers.md"
     },
     "projectProfiles": {
      "additionalProperties": {
@@ -5367,7 +5381,9 @@
    "additionalProperties": false,
    "properties": {
     "enabled": {
-     "type": "boolean"
+     "description": "execute stored automation jobs (default: true). Set false to pause all automation execution without deleting jobs.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
     },
     "failureAlert": {
      "additionalProperties": false,
@@ -5375,31 +5391,37 @@
      "properties": {
       "accountId": {
        "description": "optional account or channel id to scope alert delivery.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "after": {
        "description": "consecutive failures before an alert fires (positive integer, min: 1; default: 2).",
        "maximum": 9007199254740991,
        "minimum": 1,
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "channel": {
        "description": "channel override for announce delivery. \"last\" reuses the last known delivery channel.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "cooldownMs": {
        "description": "minimum milliseconds between repeated alerts for the same job (non-negative integer; default: 3600000).",
        "maximum": 9007199254740991,
        "minimum": 0,
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "enabled": {
        "description": "explicitly enable or disable the global policy. false disables inherited notifications unless a job has its own failureAlert object; true explicitly enables globally. Omitting it preserves route-backed defaults.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "includeSkipped": {
        "description": "count consecutive skipped runs toward the alert threshold (default: false). Skipped runs are tracked separately and do not affect execution-error backoff.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "mode": {
        "description": "delivery mode - \"announce\" sends via a channel message; \"webhook\" posts to the target in to. Defaults to \"announce\" when enough target data exists.",
@@ -5407,14 +5429,17 @@
         "announce",
         "webhook"
        ],
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       },
       "to": {
        "description": "explicit announce target or webhook URL. Required for webhook mode.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md#cronfailurealert"
     },
     "sessionRetention": {
      "anyOf": [
@@ -5425,7 +5450,9 @@
        "const": false,
        "type": "boolean"
       }
-     ]
+     ],
+     "description": "how long to keep completed isolated automation run sessions before pruning SQLite session rows. Also controls cleanup of archived deleted automation transcripts. Default: 24h; set false or a zero duration such as \"0h\" to disable (negative durations are invalid).",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
     },
     "skipMissedJobs": {
      "type": "boolean"
@@ -5441,30 +5468,37 @@
     },
     "webhookSsrfPolicy": {
      "additionalProperties": false,
+     "description": "shared outbound SSRF policy for primary, completion, failure-destination, and failure-alert webhooks. Private/internal targets are blocked when omitted. Prefer exact allowedHostnames; use dangerouslyAllowPrivateNetwork: true only for trusted private-network receivers. The narrow fake-IP proxy flags are allowRfc2544BenchmarkRange and allowIpv6UniqueLocalRange.",
      "properties": {
       "allowIpv6UniqueLocalRange": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
       },
       "allowRfc2544BenchmarkRange": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
       },
       "allowedHostnames": {
        "items": {
         "type": "string"
        },
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
       },
       "blockedHostnames": {
        "items": {
         "type": "string"
        },
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
       },
       "dangerouslyAllowPrivateNetwork": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
     },
     "webhookToken": {
      "anyOf": [
@@ -5565,7 +5599,9 @@
         }
        ]
       }
-     ]
+     ],
+     "description": "bearer token used for automation webhook POST delivery (delivery.mode = \"webhook\"), if omitted no auth header is sent.",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-automation.md"
     }
    },
    "type": "object"
@@ -5577,19 +5613,27 @@
      "additionalProperties": false,
      "properties": {
       "enabled": {
-       "type": "boolean"
+       "description": "advertises This machine as a desktop source.",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "managed": {
-       "type": "boolean"
+       "description": "Linux only. Starts a gateway-supervised, loopback-only",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "passwordFile": {
+       "description": "optional UTF-8 VNC password file for attach mode.",
        "minLength": 1,
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "port": {
+       "description": "loopback RFB port on 127.0.0.1 (default: 5900).",
        "maximum": 65535,
        "minimum": 1,
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       }
      },
      "required": [
@@ -5613,13 +5657,17 @@
      "type": "object"
     },
     "enabled": {
-     "type": "boolean"
+     "description": "master toggle for instrumentation output (default: true).",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     },
     "flags": {
+     "description": "array of flag strings enabling targeted log output (supports wildcards like \"telegram.\" or \"\").",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     },
     "otel": {
      "additionalProperties": false,
@@ -5738,17 +5786,21 @@
    "properties": {
     "shellEnv": {
      "additionalProperties": false,
+     "description": "imports missing expected keys from your login shell profile.",
      "properties": {
       "enabled": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md"
       },
       "timeoutMs": {
        "maximum": 9007199254740991,
        "minimum": 0,
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md"
     },
     "vars": {
      "additionalProperties": {
@@ -5766,13 +5818,17 @@
    "additionalProperties": false,
    "properties": {
     "allowRealIpFallback": {
-     "type": "boolean"
+     "description": "when true, the gateway accepts X-Real-IP if X-Forwarded-For is missing. Default false: ignore X-Real-IP.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "auth": {
      "additionalProperties": false,
      "properties": {
       "allowTailscale": {
-       "type": "boolean"
+       "description": "when true, Tailscale Serve identity headers can satisfy Control UI/WebSocket auth (verified via tailscale whois). HTTP API endpoints do not use that Tailscale header auth; they follow the gateway's normal HTTP auth mode instead. This tokenless flow assumes the gateway host is trusted. Defaults to true when tailscale.mode = \"serve\".",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "identityScopes": {
        "additionalProperties": {
@@ -5793,11 +5849,13 @@
         },
         "type": "array"
        },
+       "description": "maps a verified trusted-proxy user or Tailscale WhoIs login to connection-only operator scopes. Email keys match case-insensitively; other identities match exactly. For trusted-proxy Control UI connections, x-openclaw-scopes caps device enrollment or upgrade requests and the final device-plus-identity session scopes. Grants do not create or modify pairing records. Token, password, and no-auth connections have no verified identity and receive no grant.",
        "propertyNames": {
         "minLength": 1,
         "type": "string"
        },
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "mode": {
        "anyOf": [
@@ -5817,7 +5875,9 @@
          "const": "trusted-proxy",
          "type": "string"
         }
-       ]
+       ],
+       "description": "explicit no-auth mode. Use only for trusted local loopback setups; this is intentionally not offered by onboarding prompts.",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "password": {
        "anyOf": [
@@ -5922,21 +5982,27 @@
       },
       "rateLimit": {
        "additionalProperties": false,
+       "description": "optional failed-auth limiter. Applies per client IP and per auth scope (shared-secret and device-token are tracked independently). Blocked attempts return 429 + Retry-After. Changes hot-apply to the existing limiters: recorded failures, earned lockout deadlines, and pending loopback delays survive. New limits and exemptions apply to subsequent attempts; deleting the section restores defaults.",
        "properties": {
         "exemptLoopback": {
-         "type": "boolean"
+         "type": "boolean",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         },
         "lockoutMs": {
-         "type": "number"
+         "type": "number",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         },
         "maxAttempts": {
-         "type": "number"
+         "type": "number",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         },
         "windowMs": {
-         "type": "number"
+         "type": "number",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         }
        },
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "token": {
        "anyOf": [
@@ -6131,7 +6197,9 @@
        "const": "tailnet",
        "type": "string"
       }
-     ]
+     ],
+     "description": "auto, loopback (default on regular hosts), lan (0.0.0.0), tailnet (Tailscale IPv4 when available, otherwise loopback), or custom (one IPv4 address). With gateway.bind unset, a detected container defaults to auto, which resolves to 0.0.0.0; Tailscale Serve/Funnel still forces loopback. A resolved tailnet address and any custom address other than 127.0.0.1 or 0.0.0.0 require 127.0.0.1 on the same port for same-host clients; startup fails if either listener cannot bind. Non-loopback exposure remains limited to the selected interface.",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "cliAgents": {
      "additionalProperties": false,
@@ -6566,7 +6634,9 @@
        "const": "remote",
        "type": "string"
       }
-     ]
+     ],
+     "description": "local (run gateway) or remote (connect to remote gateway). Gateway refuses to start unless local.",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "nodes": {
      "additionalProperties": false,
@@ -6621,13 +6691,17 @@
        "additionalProperties": false,
        "properties": {
         "autoApproveCidrs": {
+         "description": "optional CIDR/IP allowlist for auto-approving first-time node device pairing with no requested scopes. It is disabled when unset. This does not auto-approve operator/browser/Control UI/WebChat pairing, and it does not auto-approve role, scope, metadata, or public-key upgrades.",
          "items": {
           "type": "string"
          },
-         "type": "array"
+         "type": "array",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         },
         "autoApproveLocal": {
-         "type": "boolean"
+         "description": "silently approves pairing, role upgrades, and scope upgrades from trusted local connections (default: true). Scope upgrades additionally require the connection itself to prove local-grade credentials (auth mode none, or the shared token/password); Tailscale, trusted-proxy, and device-token connects keep their paired scopes as a durable cap. Set false to require explicit approval for every device; metadata-only reconnect refreshes remain automatic.",
+         "type": "boolean",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         },
         "sshVerify": {
          "anyOf": [
@@ -6657,7 +6731,9 @@
            },
            "type": "object"
           }
-         ]
+         ],
+         "description": "SSH-verified auto-approval for first-time node device pairing (default: enabled). The gateway SSHes back to the pairing host (BatchMode, strict host keys) and approves only on an exact openclaw node identity device-key match. Same eligibility floor as autoApproveCidrs; checks are limited to private/CGNAT source addresses unless cidrs overrides them. Set false to disable, or { user, identity, timeoutMs, cidrs } to tune. See Node pairing.",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         }
        },
        "type": "object"
@@ -6675,9 +6751,11 @@
      "type": "object"
     },
     "port": {
+     "description": "local Gateway bind port, multiplexing WS + HTTP. It does not select the macOS SSH tunnel port. Precedence: --port > OPENCLAW_GATEWAY_PORT > gateway.port > 18789.",
      "maximum": 65535,
      "minimum": 1,
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "portals": {
      "additionalProperties": false,
@@ -6731,8 +6809,10 @@
      "type": "object"
     },
     "publicOrigin": {
+     "description": "optional externally reachable HTTPS origin of the Gateway,",
      "format": "uri",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "push": {
      "additionalProperties": false,
@@ -6744,12 +6824,16 @@
          "additionalProperties": false,
          "properties": {
           "baseUrl": {
-           "type": "string"
+           "description": "base HTTPS URL for the external APNs relay used after relay-backed iOS builds publish registrations to the gateway. Public App Store builds use the hosted OpenClaw relay. Custom relay URLs must match a deliberately separate iOS build/deployment path whose relay URL points at that relay.",
+           "type": "string",
+           "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
           },
           "timeoutMs": {
+           "description": "gateway-to-relay send timeout in milliseconds. Defaults to 10000.",
            "exclusiveMinimum": 0,
            "maximum": 9007199254740991,
-           "type": "integer"
+           "type": "integer",
+           "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
           }
          },
          "type": "object"
@@ -6774,10 +6858,12 @@
          "type": "string"
         }
        ],
-       "description": "controls how config edits are applied at runtime."
+       "description": "controls how config edits are applied at runtime.",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewayreload"
     },
     "remote": {
      "additionalProperties": false,
@@ -7137,6 +7223,7 @@
     },
     "roles": {
      "additionalProperties": false,
+     "description": "optional named operator roles for authenticated user profiles on team Gateways. Every definition specifies sessions.others (none, view, suggest, or write), allowed session-creation and agent-run agents (\"*\" or an array of agent IDs), and a closed scopes ceiling that also applies to identity-authenticated HTTP requests and signed Control UI plugin grants. Optional sandbox is \"inherit\" by default or \"required\" to sandbox sessions created under that role even when the agent's sandbox mode is \"off\". This requirement is recorded once from the authenticated creator, cannot be changed through role updates or session mutation, and does not affect existing sessions. A sandbox-required person cannot start a host-execution session, including through an invitation; unavailable sandbox backends block session execution, and elevated or host-target overrides cannot escape. The administrator-scoped users.setRole Gateway method assigns or clears a profile's role and immediately disconnects its active clients so they reconnect with current authority. Identity-authenticated operator sessions do not receive reusable, person-unbound device/bootstrap tokens while roles are configured, and identity-less device-token or bootstrap-token operator authentication is rejected; reconnect through trusted-proxy or other supported verified identity instead. assignments.byGithubLogin maps case-insensitive GitHub logins to defined roles before a person first signs in; a valid explicit profile assignment wins, then a matching cached GitHub identity, then default. Invalid or duplicate normalized logins and unknown role names are rejected; profiles without a cached GitHub identity do not match. default is required and must name a configured definition. users.list preserves the explicit role and adds effectiveRole and roleSource (assigned, githubLogin, or default). sessions.others: \"none\" also denies Gateway-wide usage.cost; audit diagnostics and other operator.write control-plane capabilities remain shared-domain surfaces, not hostile-tenant isolation. Omitting roles leaves existing solo and shared-secret deployments unchanged. See Operator scopes.",
      "properties": {
       "assignments": {
        "additionalProperties": false,
@@ -7150,15 +7237,18 @@
          "propertyNames": {
           "type": "string"
          },
-         "type": "object"
+         "type": "object",
+         "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
         }
        },
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "default": {
        "maxLength": 128,
        "minLength": 1,
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "definitions": {
        "additionalProperties": {
@@ -7264,14 +7354,16 @@
         "minLength": 1,
         "type": "string"
        },
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       }
      },
      "required": [
       "default",
       "definitions"
      ],
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "tailscale": {
      "additionalProperties": false,
@@ -7319,50 +7411,62 @@
      "properties": {
       "autoGenerate": {
        "description": "defaults to true. Gateway startup generates a local self-signed cert/key pair only when both files are missing, including at configured paths; for local/dev use only. An existing partial pair is left untouched and startup fails. Generated files are published without overwriting existing paths and their parent directories are synchronized when the filesystem supports it; unsupported directory flushing emits a structured degraded-durability warning.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
       },
       "caPath": {
        "description": "optional CA bundle path for client verification or custom trust chains.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
       },
       "certPath": {
        "description": "filesystem path to the TLS certificate file.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
       },
       "enabled": {
        "description": "enables TLS termination at the gateway listener (HTTPS/WSS) (default: false).",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
       },
       "keyPath": {
        "description": "filesystem path to the TLS private key file; keep permission-restricted.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md#gatewaytls"
     },
     "tools": {
      "additionalProperties": false,
      "properties": {
       "allow": {
+       "description": "remove tool names from the default HTTP deny list for",
        "items": {
         "type": "string"
        },
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       },
       "deny": {
+       "description": "extra tool names blocked for HTTP POST /tools/invoke (extends default deny list).",
        "items": {
         "type": "string"
        },
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
       }
      },
      "type": "object"
     },
     "trustedProxies": {
+     "description": "reverse proxy IPs that terminate TLS or inject forwarded-client headers. Only list proxies you control. Loopback entries are still valid for same-host proxy/local-detection setups (for example Tailscale Serve or a local reverse proxy), but they do not make loopback requests eligible for gateway.auth.mode: \"trusted-proxy\".",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-gateway.md"
     },
     "uploads": {
      "additionalProperties": false,
@@ -7699,10 +7803,14 @@
      "additionalProperties": false,
      "properties": {
       "enabled": {
-       "type": "boolean"
+       "description": "record new audit events (default: true). The ledger is on by",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
       },
       "executionIdentity": {
-       "type": "boolean"
+       "description": "retain bounded attribution context for exact execution",
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
       },
       "messages": {
        "anyOf": [
@@ -7718,7 +7826,9 @@
          "const": "all",
          "type": "string"
         }
-       ]
+       ],
+       "description": "message metadata scope (default: \"off\"). \"direct\" records",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
       }
      },
      "type": "object"
@@ -7765,7 +7875,9 @@
        "const": "json",
        "type": "string"
       }
-     ]
+     ],
+     "description": "\"pretty\" or \"json\". The earlier \"compact\" value is retired; openclaw doctor --fix maps it to \"pretty\".",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     },
     "file": {
      "type": "string"
@@ -7808,10 +7920,12 @@
      "type": "integer"
     },
     "redactPatterns": {
+     "description": "regexes for best-effort masking of console output, log tails, diagnostic exports, and OTLP log records. Setting this replaces only the default string regex list for log output. Built-in form-body, structured auth-header, and bare AWS key protections always apply. Diagnostic helpers merge your patterns with the default string list. Tool arguments, tool results, and session transcript text are not secret-masked.",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     }
    },
    "type": "object"
@@ -8002,14 +8116,18 @@
       },
       "type": "object"
      },
+     "description": "named stdio or remote MCP server definitions for runtimes that",
      "propertyNames": {
       "type": "string"
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
     },
     "sessionIdleTtlMs": {
+     "description": "optional idle eviction in milliseconds. Unset or 0",
      "minimum": 0,
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
     }
    },
    "type": "object"
@@ -8640,11 +8758,13 @@
      "properties": {
       "enabled": {
        "description": "controls the hosted model catalog refresh",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
       },
       "url": {
        "description": "optional HTTPS mirror override (plain HTTP is",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
       }
      },
      "type": "object"
@@ -8660,7 +8780,8 @@
        "type": "string"
       }
      ],
-     "description": "provider catalog behavior (merge or replace)."
+     "description": "provider catalog behavior (merge or replace).",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "providers": {
      "additionalProperties": {
@@ -11260,7 +11381,8 @@
      "propertyNames": {
       "type": "string"
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     }
    },
    "type": "object"
@@ -11524,10 +11646,12 @@
    "additionalProperties": false,
    "properties": {
     "allow": {
+     "description": "optional allowlist (only listed plugins load). deny wins.",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
     },
     "deny": {
      "items": {
@@ -11646,10 +11770,14 @@
      "additionalProperties": false,
      "properties": {
       "contextEngine": {
-       "type": "string"
+       "description": "pick the active context engine plugin id; defaults to \"legacy\" unless you install and select another engine.",
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
       },
       "memory": {
-       "type": "string"
+       "description": "pick the active memory plugin id, or \"none\" to disable memory plugins.",
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
       }
      },
      "type": "object"
@@ -11724,7 +11852,8 @@
         "type": "string"
        },
        "maxItems": 256,
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
       },
       "bypassHosts": {
        "description": "optional exact-hostname list for authenticated blind CONNECT tunnels used by certificate-pinned clients. Sentinels are not substituted on bypassed hosts and fail vendor authentication without exposing plaintext.",
@@ -11733,14 +11862,17 @@
         "type": "string"
        },
        "maxItems": 256,
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
       },
       "enabled": {
        "description": "starts the loopback proxy and ephemeral CA at Gateway startup. Default: false. Changing it requires a Gateway restart.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-secrets-env.md#secretsegressproxy"
     },
     "providers": {
      "additionalProperties": {
@@ -12515,10 +12647,12 @@
    "additionalProperties": false,
    "properties": {
     "allowBundled": {
+     "description": "optional allowlist for bundled skills only (managed/workspace skills unaffected).",
      "items": {
       "type": "string"
      },
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-extensions.md"
     },
     "entries": {
      "additionalProperties": {
@@ -13294,12 +13428,16 @@
    "additionalProperties": false,
    "properties": {
     "consentedAt": {
+     "description": "ISO timestamp recording when the operator accepted or declined feature statistics. Prevents interactive setup from asking again.",
      "format": "date-time",
      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     },
     "enabled": {
-     "type": "boolean"
+     "description": "include public configured channel and provider names, plugin inventory names and count, and a retained session-creation count in the existing daily update-check request (default: false). These fields do not measure per-plugin usage or active sessions. Interactive setup can offer an explicit opt-in with No thanks selected by default; non-interactive setup does not enable it automatically but can retain an explicitly enabled preference. DO_NOT_TRACK=1 or DO_NOT_TRACK=true always disables feature statistics without disabling the update check.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-observability.md"
     }
    },
    "type": "object"
@@ -22051,6 +22189,7 @@
    "properties": {
     "prefs": {
      "additionalProperties": false,
+     "description": "cross-device operator preferences. This is the shared home so agents can",
      "properties": {
       "accent": {
        "anyOf": [
@@ -22072,7 +22211,8 @@
          "format": "starts_with",
          "type": "string"
         }
-       ]
+       ],
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "chatFollowUpMode": {
        "anyOf": [
@@ -22084,10 +22224,12 @@
          "const": "queue",
          "type": "string"
         }
-       ]
+       ],
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "chatPersistCommentary": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "chatSendShortcut": {
        "anyOf": [
@@ -22099,23 +22241,28 @@
          "const": "modifier-enter",
          "type": "string"
         }
-       ]
+       ],
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "chatShowThinking": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "chatShowToolCalls": {
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "locale": {
        "maxLength": 20,
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "sidebarEntries": {
        "items": {
         "type": "string"
        },
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "theme": {
        "anyOf": [
@@ -22167,7 +22314,8 @@
          "const": "custom",
          "type": "string"
         }
-       ]
+       ],
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       },
       "themeMode": {
        "anyOf": [
@@ -22183,14 +22331,18 @@
          "const": "system",
          "type": "string"
         }
-       ]
+       ],
+       "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
     },
     "seamColor": {
+     "description": "operator accent color for native app UI chrome (Talk Mode bubble",
      "pattern": "^#?[0-9a-fA-F]{6}$",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-browser-ui-desktop.md"
     }
    },
    "type": "object"
@@ -22225,10 +22377,14 @@
        "const": "dev",
        "type": "string"
       }
-     ]
+     ],
+     "description": "release channel - \"stable\", \"extended-stable\", \"beta\", or \"dev\". Extended-stable is package-only: foreground commands own installation, while the Gateway may emit read-only update hints.",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "checkOnStart": {
-     "type": "boolean"
+     "description": "check for updates through https://telemetry.openclaw.ai/api/latest-version when the Gateway starts and at most once every 24 hours afterward (default: true). The default request shares only the OpenClaw version and platform information in its User-Agent; anonymous feature statistics are included only when telemetry.enabled is true. Setting this to false, or setting OPENCLAW_NO_AUTO_UPDATE=1, prevents all automatic update requests, feature statistics, and update notices, even when auto.enabled is true. Stored extended-stable selections use the same read-only hint and 24-hour hint schedule.",
+     "type": "boolean",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     }
    },
    "type": "object"
@@ -22247,7 +22403,8 @@
        "type": "string"
       }
      ],
-     "description": "discovery consent chosen at the start of guided onboarding. \"full\" (recommended) lets setup look for AI apps, keys, and local runtimes automatically; \"guarded\" makes setup ask once before looking around and offers manual configuration instead."
+     "description": "discovery consent chosen at the start of guided onboarding. \"full\" (recommended) lets setup look for AI apps, keys, and local runtimes automatically; \"guarded\" makes setup ask once before looking around and offers manual configuration instead.",
+     "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md"
     },
     "appRecommendations": {
      "type": "boolean"
@@ -22284,18 +22441,21 @@
   },
   "worktreeAcceleration": {
    "description": "Optional global boolean for managed worktree filesystem acceleration. Defaults to true, which selects an available filesystem backend automatically and otherwise uses normal Git checkout.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreeacceleration"
   },
   "worktreeMaxCount": {
    "description": "Optional positive integer limiting live managed worktrees across all agents, repositories, and owners in the same OpenClaw state directory. Defaults to 4096. Removed checkouts with retained recovery snapshots do not count toward this limit.",
    "exclusiveMinimum": 0,
    "maximum": 9007199254740991,
-   "type": "integer"
+   "type": "integer",
+   "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreemaxcount"
   },
   "worktreeRoot": {
    "description": "Optional global root directory for managed worktree checkouts. Defaults to <openclaw-state-dir>/worktrees.",
    "minLength": 1,
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/openclaw/openclaw/blob/main/docs/gateway/config-runtime.md#worktreeroot"
   }
  },
  "type": "object"

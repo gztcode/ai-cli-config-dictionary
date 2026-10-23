@@ -106,7 +106,13 @@ fn main() -> Result<()> {
             remove,
             dry_run,
         } => cmd_edit(&path, &set, &remove, dry_run),
-        Cmd::Serve { addr } => cmd_serve(&reg, &cache_dir, &out_dir.join("i18n"), &addr),
+        Cmd::Serve { addr } => cmd_serve(
+            &reg,
+            &cache_dir,
+            &out_dir.join("i18n"),
+            &cfg_explorer::app::AppPaths::discover().snippets_path(),
+            &addr,
+        ),
         Cmd::All => {
             cmd_fetch(&reg, &cache_dir)?;
             cmd_build(&reg, &cache_dir, &out_dir)?;
@@ -375,12 +381,19 @@ fn cmd_scan(
 
 // ------------------------------------------------------------------- serve
 
-fn cmd_serve(reg: &Registry, cache_dir: &Path, i18n_dir: &Path, addr: &str) -> Result<()> {
+fn cmd_serve(
+    reg: &Registry,
+    cache_dir: &Path,
+    i18n_dir: &Path,
+    snippets_path: &Path,
+    addr: &str,
+) -> Result<()> {
     let opts = cfg_explorer::serve::ServeOptions {
         addr: addr.to_string(),
         registry: reg.clone(),
         cache_dir: cache_dir.to_path_buf(),
         i18n_dir: i18n_dir.to_path_buf(),
+        snippets_path: snippets_path.to_path_buf(),
     };
     cfg_explorer::serve::serve(opts)?;
     Ok(())

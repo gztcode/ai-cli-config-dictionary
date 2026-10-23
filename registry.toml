@@ -34,7 +34,9 @@ id = "gemini-cli"
 display_name = "Gemini CLI"
 schema_origin = "official-repo"
 schema_url = "https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/heads/main/schemas/settings.schema.json"
-docs_url = "https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/configuration.md"
+# 官方 schema 只给结构，文字说明在官方配置文档里 → 文档补充层
+doc_supplement = "gemini-cli-doc.json"
+docs_url = "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md"
 config_format = "json"
 global_config = ["~/.gemini/settings.json"]
 project_config = [".gemini/settings.json"]
@@ -44,6 +46,8 @@ id = "opencode"
 display_name = "OpenCode"
 schema_origin = "official"
 schema_url = "https://opencode.ai/config.json"
+# 官方 schema 不带任何锚点 → 用官方配置文档按小节反查
+doc_supplement = "opencode-doc.json"
 docs_url = "https://opencode.ai/docs/config/"
 config_format = "json"
 global_config = ["~/.config/opencode/opencode.json", "~/.config/opencode/opencode.jsonc"]
@@ -64,6 +68,8 @@ id = "openclaw"
 display_name = "OpenClaw"
 schema_origin = "official-package"
 schema_file = "openclaw.json"
+# 12 个官方配置文档页按小节反查 → 章节级锚点
+doc_supplement = "openclaw-doc.json"
 docs_url = "https://github.com/openclaw/openclaw/blob/main/docs/gateway/configuration-reference.md"
 config_format = "json"
 global_config = ["~/.openclaw/openclaw.json"]
@@ -74,6 +80,8 @@ id = "hermes"
 display_name = "Hermes Agent"
 schema_origin = "official-docs-derived"
 schema_file = "hermes.json"
+# 官方配置指南按小节反查 → 章节级锚点
+doc_supplement = "hermes-doc.json"
 docs_url = "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md"
 config_format = "yaml"
 global_config = ["~/.hermes/config.yaml"]

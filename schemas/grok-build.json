@@ -4,121 +4,148 @@
   "agent": {
    "properties": {
     "definition": {
-     "description": "Path to an agent definition markdown file with YAML frontmatter."
+     "description": "Path to an agent definition markdown file with YAML frontmatter.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#agent"
     },
     "name": {
      "description": "Built-in or discovered agent definition name. Also GROK_AGENT and --agent-profile.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#agent"
     },
     "system_prompt_label": {
      "description": "Global system-prompt identity; per-model override wins.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#agent"
     }
    },
    "type": "object"
   },
   "announcements": {
    "description": "Remote announcement payloads consumed at load. Not a user-authored table.",
-   "type": "array"
+   "type": "array",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#announcements"
   },
   "auth": {
    "description": "Alias of [grok_com_config]; every grok_com_config. key also works as auth..",
    "properties": {
     "auth_provider_command": {
      "description": "External auth binary; stdout is the token. With endpoints.models_base_url or models_list_url set, that endpoint's list decides which models are offered. Also GROK_AUTH_PROVIDER_COMMAND; also valid as grok_com_config.auth_provider_command.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "auth_provider_label": {
      "description": "Login button label for an external auth provider. Also GROK_AUTH_PROVIDER_LABEL; also valid as grok_com_config.auth_provider_label.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "auth_token_ttl": {
      "description": "Token TTL in seconds for providers that return a bare token. Also GROK_AUTH_TOKEN_TTL; also valid as grok_com_config.auth_token_ttl.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "disable_api_key_auth": {
      "description": "Refuse API-key auth so only the deployment IdP can log in. Also GROK_DISABLE_API_KEY_AUTH; also valid as grok_com_config.disable_api_key_auth.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "force_login_team_uuid": {
      "description": "Require login to this team UUID, or any of an array; empty array fails closed. Also GROK_FORCE_LOGIN_TEAM_ID; also valid as grok_com_config.force_login_team_uuid.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "grok_ws_origin": {
      "description": "Websocket origin for grok.com. Also GROK_WS_ORIGIN; also valid as grok_com_config.grok_ws_origin.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "grok_ws_url": {
      "description": "Relay websocket URL. Also GROK_WS_URL; also valid as grok_com_config.grok_ws_url.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "oauth2": {
      "description": "OAuth2 provider used when enterprise OIDC is unset; also valid as grok_com_config.oauth2.",
      "properties": {
       "client_id": {
        "description": "OAuth2 client id. Also GROK_OAUTH2_CLIENT_ID; also valid as grok_com_config.oauth2.client_id.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "issuer": {
        "description": "OAuth2 issuer URL. Also GROK_OAUTH2_ISSUER; also valid as grok_com_config.oauth2.issuer.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "principal_id": {
        "description": "Required principal id when principal_type is set. Also GROK_OAUTH2_PRINCIPAL_ID; also valid as grok_com_config.oauth2.principal_id.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "principal_type": {
        "description": "Token principal type, such as Team. Also GROK_OAUTH2_PRINCIPAL_TYPE; also valid as grok_com_config.oauth2.principal_type.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "referrer": {
        "description": "Referrer for OAuth usage attribution. Also GROK_OAUTH2_REFERRER; also valid as grok_com_config.oauth2.referrer.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "scopes": {
        "description": "OAuth2 scopes. Also GROK_OAUTH2_SCOPES; also valid as grok_com_config.oauth2.scopes.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "oidc": {
      "description": "Customer OIDC identity-provider settings; also valid as grok_com_config.oidc.",
      "properties": {
       "audience": {
        "description": "Optional OIDC audience. Also GROK_OIDC_AUDIENCE; also valid as grok_com_config.oidc.audience.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "client_id": {
        "description": "OIDC client id. Also GROK_OIDC_CLIENT_ID; also valid as grok_com_config.oidc.client_id.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "issuer": {
        "description": "OIDC issuer URL. Also GROK_OIDC_ISSUER; also valid as grok_com_config.oidc.issuer.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       },
       "scopes": {
        "description": "OIDC scopes. Also GROK_OIDC_SCOPES; also valid as grok_com_config.oidc.scopes.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "preferred_method": {
-     "description": "Pin automatic auth to one method with no fallthrough; also valid as grok_com_config.preferred_method."
+     "description": "Pin automatic auth to one method with no fallthrough; also valid as grok_com_config.preferred_method.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     },
     "token_header": {
      "description": "Header name that carries the CLI auth token; default xai-grok-cli; also valid as grok_com_config.token_header.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth"
   },
   "auth_provider": {
    "properties": {
     "<name>": {
      "description": "Named credential helper used by [model.<id>] auth_provider.",
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auth_provider"
     }
    },
    "type": "object"
@@ -127,76 +154,94 @@
    "properties": {
     "enabled": {
      "description": "Enable Auto permission mode.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#auto_mode"
     }
    },
    "type": "object"
   },
   "campaigns": {
    "description": "Named campaign patches applied below requirements. The deployment publishes these.",
-   "type": "array"
+   "type": "array",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#campaigns"
   },
   "cli": {
    "properties": {
     "auto_update": {
      "description": "Check for CLI updates on launch. Also GROK_DISABLE_AUTOUPDATER to suppress.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "channel": {
-     "description": "Release channel preference."
+     "description": "Release channel preference.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "grove": {
-     "description": "Convenience that turns both grok clone and session / -w Grove on when the specific knobs are unset. Also GROK_GROVE. false / copy / off means enable-all is off (fall through); it does not force both surfaces off. [cli] grove_worktree and GROK_WORKTREE_TYPE still win for worktrees; GROK_CLONE still wins for clone. Remote grove_worktree = false still kills worktrees only."
+     "description": "Convenience that turns both grok clone and session / -w Grove on when the specific knobs are unset. Also GROK_GROVE. false / copy / off means enable-all is off (fall through); it does not force both surfaces off. [cli] grove_worktree and GROK_WORKTREE_TYPE still win for worktrees; GROK_CLONE still wins for clone. Remote grove_worktree = false still kills worktrees only.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "grove_worktree": {
-     "description": "Session / -w Grove vs copy. Default copy. Distinct from creation-mode cli.worktree_type. Also GROK_WORKTREE_TYPE. Layer order: request → env → local → enable-all (GROK_GROVE / [cli] grove) → remote-true; then kill last: remote grove_worktree = false → copy (remote_kill). Missing remote settings are not a kill: local/env/request/enable-all still apply. Does not enable grok clone."
+     "description": "Session / -w Grove vs copy. Default copy. Distinct from creation-mode cli.worktree_type. Also GROK_WORKTREE_TYPE. Layer order: request → env → local → enable-all (GROK_GROVE / [cli] grove) → remote-true; then kill last: remote grove_worktree = false → copy (remote_kill). Missing remote settings are not a kill: local/env/request/enable-all still apply. Does not enable grok clone.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "installer": {
      "description": "Which installer last set up this CLI, used to pick the update path.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "maximum_version": {
      "description": "Highest CLI version that still runs without a hard block. Also GROK_MAXIMUM_VERSION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "minimum_version": {
      "description": "Lowest CLI version that still runs without a hard block. Also GROK_MINIMUM_VERSION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "nfs_worktree": {
-     "description": "Read alias of cli.grove_worktree."
+     "description": "Read alias of cli.grove_worktree.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "npm_registry": {
      "description": "npm registry used by the auto-updater.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "required_maximum_version": {
      "description": "Hard maximum CLI version. Also GROK_REQUIRED_MAXIMUM_VERSION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "required_minimum_version": {
      "description": "Hard minimum CLI version. Also GROK_REQUIRED_MINIMUM_VERSION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "session_picker_grouped": {
      "description": "Group sessions by repo in the picker and CLI listings.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "session_registry": {
      "description": "Participate in the cross-process session registry.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "show_tips": {
      "description": "Startup tips.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "use_leader": {
      "description": "Use the leader process for config reload and MCP watches.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     },
     "worktree_type": {
      "description": "Creation-mode when set to linked, standalone, or git. The spellings grove, grove-fuse, grove-nfs, nfs, and copy also feed the session / -w Grove gate (same as cli.grove_worktree); they are not creation-mode values.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#cli"
     }
    },
    "type": "object"
@@ -207,23 +252,28 @@
      "properties": {
       "agents": {
        "description": "Scan CLAUDE.md. Also GROK_CLAUDE_AGENTS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "hooks": {
        "description": "Scan Claude hooks. Also GROK_CLAUDE_HOOKS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "mcps": {
        "description": "Scan Claude MCP config. Also GROK_CLAUDE_MCPS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "rules": {
        "description": "Scan Claude rules. Also GROK_CLAUDE_RULES_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "skills": {
        "description": "Scan Claude skills. Also GROK_CLAUDE_SKILLS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       }
      },
      "type": "object"
@@ -232,11 +282,13 @@
      "properties": {
       "hooks": {
        "description": "Scan Codex hooks when present.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "skills": {
        "description": "Scan Codex skills directories when present.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       }
      },
      "type": "object"
@@ -245,23 +297,28 @@
      "properties": {
       "agents": {
        "description": "Scan agent definitions from Cursor compat sources. Also GROK_CURSOR_AGENTS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "hooks": {
        "description": "Scan Cursor hooks. Also GROK_CURSOR_HOOKS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "mcps": {
        "description": "Scan Cursor mcp.json. Also GROK_CURSOR_MCPS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "rules": {
        "description": "Scan .cursor/rules/. Also GROK_CURSOR_RULES_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       },
       "skills": {
        "description": "Scan Cursor skills directories. Also GROK_CURSOR_SKILLS_ENABLED.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#compat"
       }
      },
      "type": "object"
@@ -273,43 +330,51 @@
    "properties": {
     "enabled": {
      "description": "Show the agent dashboard.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#dashboard"
     },
     "grouping": {
-     "description": "How dashboard rows group."
+     "description": "How dashboard rows group.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#dashboard"
     }
    },
    "type": "object"
   },
   "default_auto_mode": {
    "description": "Start sessions in auto permission mode when no per-session override is set.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#default_auto_mode"
   },
   "diagnostics": {
    "properties": {
     "crash_handler": {
      "description": "Write a panic report under $GROK_HOME/crash/. Also GROK_CRASH_HANDLER.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#diagnostics"
     }
    },
    "type": "object"
   },
   "disable_web_search": {
    "description": "Drop the web_search tool for this process. Also --disable-web-search.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#disable_web_search"
   },
   "disabled_mcp_servers": {
    "description": "MCP server names to skip without deleting their [mcp_servers] blocks.",
-   "type": "string"
+   "type": "string",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#disabled_mcp_servers"
   },
   "disabled_mcp_tools": {
-   "description": "Per-server MCP tool deny lists keyed by server name."
+   "description": "Per-server MCP tool deny lists keyed by server name.",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#disabled_mcp_tools"
   },
   "doom_loop_recovery": {
    "properties": {
     "enabled": {
      "description": "Resample confident tool-call loops; set false to disable.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#doom_loop_recovery"
     }
    },
    "type": "object"
@@ -318,233 +383,290 @@
    "properties": {
     "cli_chat_proxy_base_url": {
      "description": "Session-service API base URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "deployment_key": {
      "description": "Management key for enterprise deployments. Also GROK_DEPLOYMENT_KEY.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "feedback_base_url": {
      "description": "Where feedback submissions go. Also GROK_FEEDBACK_BASE_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "managed_config_url": {
      "description": "Override managed config endpoint. Also GROK_MANAGED_CONFIG_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "models_base_url": {
      "description": "Custom inference base URL. With auth_provider_command set, {models_base_url}/models decides which models are offered. Also GROK_MODELS_BASE_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "models_list_url": {
      "description": "Override model-list URL. With auth_provider_command set, this list decides which models are offered. Also GROK_MODELS_LIST_URL. Alias models_endpoint.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_bucket": {
      "description": "Direct gs:// or s3:// bucket for traces; bypasses the proxy. Also GROK_TRACE_UPLOAD_BUCKET.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_credentials": {
      "description": "Inline GCS service-account JSON or AWS credentials for that bucket; wins over trace_upload_credentials_file and has no environment variable.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_credentials_file": {
-     "description": "Path to a GCS service-account JSON or AWS credentials file for that bucket. Also GROK_TRACE_UPLOAD_CREDENTIALS_FILE."
+     "description": "Path to a GCS service-account JSON or AWS credentials file for that bucket. Also GROK_TRACE_UPLOAD_CREDENTIALS_FILE.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_endpoint_url": {
      "description": "Custom S3-compatible endpoint for s3:// bucket uploads. Also GROK_TRACE_UPLOAD_ENDPOINT_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_region": {
      "description": "AWS region for s3:// bucket uploads; default us-east-1. Also GROK_TRACE_UPLOAD_REGION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "trace_upload_url": {
      "description": "Proxy destination for traces when no direct bucket is set. Also GROK_TRACE_UPLOAD_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     },
     "xai_api_base_url": {
      "description": "Public xAI API base. Also GROK_XAI_API_BASE_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#endpoints"
     }
    },
    "type": "object"
   },
   "fail_closed": {
    "description": "Refuse to start when signed requirements or version_overrides cannot be applied; default false.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#requirementstoml"
   },
   "features": {
    "properties": {
     "active_agent_messages": {
      "description": "Enable or disable active_agent_messages. Default false. Also GROK_ACTIVE_AGENT_MESSAGES.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "ask_user_question": {
      "description": "Enable or disable ask_user_question. Default true. Also GROK_ASK_USER_QUESTION.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "auto_wake": {
      "description": "Enable or disable auto_wake. Default true. Also GROK_AUTO_WAKE.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "backend_tools": {
      "description": "Enable or disable backend_tools. Default true. Also GROK_BACKEND_SEARCH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "campaigns": {
      "description": "Enable remote campaign patches. GROK_CAMPAIGNS=0 still disables even when requirements set this true.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "cancel_rewind": {
      "description": "Enable or disable cancel_rewind. Default true. Also GROK_CANCEL_REWIND.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "codebase_indexing": {
      "description": "Codebase graph indexing; true indexes git repos, or pass include/exclude globs.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "compaction_detail": {
-     "description": "Verbatim detail level for segments compaction. Also GROK_COMPACTION_DETAIL."
+     "description": "Verbatim detail level for segments compaction. Also GROK_COMPACTION_DETAIL.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "compaction_mode": {
-     "description": "Compaction strategy. Also GROK_COMPACTION_MODE."
+     "description": "Compaction strategy. Also GROK_COMPACTION_MODE.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "compaction_tool_choice": {
      "description": "Tool-choice hint used during compaction.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "compaction_verbatim_input": {
      "description": "Enable or disable compaction_verbatim_input. Default true. Also GROK_COMPACTION_VERBATIM_INPUT.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "dock": {
      "description": "Enable or disable dock. Default false. Also GROK_DOCK.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "feedback": {
      "description": "Enable or disable feedback. Default true. Also GROK_FEEDBACK_ENABLED.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "feedback_trace_card": {
      "description": "Show a trace-upload consent question after /feedback. Default false. Also GROK_FEEDBACK_TRACE_CARD.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "file_acceleration": {
      "description": "Hand local sessions' file systems to a file accelerator when the build installs one. Default false. Also GROK_FILE_ACCELERATION.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "image_edit": {
      "description": "Pin image_edit availability. Requirements only; a user-file entry is unrecognized and unset leaves the remotely configured default.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#requirementstoml"
     },
     "image_edit_model_override": {
      "description": "Imagine model id for image_edit.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "image_gen": {
      "description": "Enable image_gen / /imagine.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "image_gen_model_override": {
      "description": "Imagine model id for image_gen. Empty defers to the remotely configured default.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "lsp_tools": {
      "description": "Enable or disable lsp_tools. Default false. Also GROK_LSP_TOOLS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "managed_config": {
      "description": "Fetch managed_config.toml and requirements.toml from the deployment.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "mcp_auto_restart": {
      "description": "Auto-restart stdio MCP servers after transport failure. Also GROK_MCP_AUTO_RESTART.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "mcp_liveness_watchers": {
      "description": "Poll MCP transports and push server_status updates. Emergency kill switch when false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "mcp_push_server_status": {
      "description": "Pager subscribes to MCP server_status push. Process env GROK_MCP_PUSH_SERVER_STATUS wins at launch.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "mcp_recursive_config_watch": {
      "description": "Watch <cwd>/ and <cwd>/.grok/ for project MCP config edits. Name is a misnomer; watches are non-recursive.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "non_git_warning": {
      "description": "Show a blocking warning when Grok starts outside a Git repository.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "remember_mode": {
      "description": "Remember the last permission mode across sessions. Read from user config.toml only.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "remote_fetch": {
      "description": "Pin remote model-catalog and asset fetch. Managed wins over the user file when both set.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "session_recap": {
      "description": "Enable or disable session_recap. Default true. Also GROK_SESSION_RECAP.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "session_search": {
      "description": "Enable or disable session_search. Default true. Also GROK_SESSION_SEARCH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "subagent_model_inheritance": {
      "description": "Hide the subagent model argument when every model you can pick is an xAI model, so subagents inherit the parent's model. Default false. Also GROK_SUBAGENT_MODEL_INHERITANCE. Read when a session starts; changing it requires a restart.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "subagent_worktree_snapshot": {
      "description": "Enable or disable subagent_worktree_snapshot. Default false. Also GROK_SUBAGENT_WORKTREE_SNAPSHOT.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "support_permission": {
      "description": "Allow the agent to ask permission for tool executions.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "telemetry": {
      "description": "Product telemetry mode. Enterprise default is off.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "terminal_theme": {
      "description": "Reveal the terminal-native terminal color theme during its rollout. Default false. Also GROK_TERMINAL_THEME.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "title_refresh": {
      "description": "Early-session auto-title refresh. Pin this in requirements to beat GROK_TITLE_REFRESH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "turn_summary": {
      "description": "Enable or disable turn_summary. Default true. Also GROK_TURN_SUMMARY.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "two_pass_compaction": {
      "description": "Enable or disable two_pass_compaction. Default true. Also GROK_TWO_PASS_COMPACTION.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "video_gen": {
      "description": "Enable video tools / /imagine-video.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "voice_mode": {
      "description": "Enable or disable voice_mode. Default true. Also GROK_VOICE_MODE.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "web_fetch": {
      "description": "Enable or disable web_fetch. Default false. Also GROK_WEB_FETCH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "write_file": {
      "description": "Enable or disable write_file. Default true. Also GROK_WRITE_FILE.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     },
     "zdr_access_enabled": {
      "description": "Advertise ZDR-incompatible tools when the team is on Zero Data Retention. Also GROK_ZDR_ACCESS_ENABLED.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#features"
     }
    },
    "type": "object"
@@ -555,15 +677,18 @@
      "properties": {
       "command": {
        "description": "Shell command that prints name and email JSON for feedback submissions.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#feedback"
       },
       "email": {
        "description": "Sources for the feedback author email (git_email or a literal).",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#feedback"
       },
       "name": {
        "description": "Sources for the feedback author name (os_user or a literal).",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#feedback"
       }
      },
      "type": "object"
@@ -575,7 +700,8 @@
    "properties": {
     "routes": {
      "description": "Route override passed unparsed to the installed file accelerator; empty is unset. Also GROK_FILE_ACCELERATION_ROUTES.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#file_acceleration"
     }
    },
    "type": "object"
@@ -584,7 +710,8 @@
    "properties": {
     "enabled": {
      "description": "Enable /goal.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#goal"
     }
    },
    "type": "object"
@@ -594,103 +721,127 @@
    "properties": {
     "auth_provider_command": {
      "description": "External auth binary; stdout is the token. With endpoints.models_base_url or models_list_url set, that endpoint's list decides which models are offered. Also GROK_AUTH_PROVIDER_COMMAND.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "auth_provider_label": {
      "description": "Login button label for an external auth provider. Also GROK_AUTH_PROVIDER_LABEL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "auth_token_ttl": {
      "description": "Token TTL in seconds for providers that return a bare token. Also GROK_AUTH_TOKEN_TTL.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "disable_api_key_auth": {
      "description": "Refuse API-key auth so only the deployment IdP can log in. Also GROK_DISABLE_API_KEY_AUTH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "force_login_team_uuid": {
      "description": "Require login to this team UUID, or any of an array; empty array fails closed. Also GROK_FORCE_LOGIN_TEAM_ID.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "grok_ws_origin": {
      "description": "Websocket origin for grok.com. Also GROK_WS_ORIGIN.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "grok_ws_url": {
      "description": "Relay websocket URL. Also GROK_WS_URL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "oauth2": {
      "description": "OAuth2 provider used when enterprise OIDC is unset.",
      "properties": {
       "client_id": {
        "description": "OAuth2 client id. Also GROK_OAUTH2_CLIENT_ID.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "issuer": {
        "description": "OAuth2 issuer URL. Also GROK_OAUTH2_ISSUER.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "principal_id": {
        "description": "Required principal id when principal_type is set. Also GROK_OAUTH2_PRINCIPAL_ID.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "principal_type": {
        "description": "Token principal type, such as Team. Also GROK_OAUTH2_PRINCIPAL_TYPE.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "referrer": {
        "description": "Referrer for OAuth usage attribution. Also GROK_OAUTH2_REFERRER.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "scopes": {
        "description": "OAuth2 scopes. Also GROK_OAUTH2_SCOPES.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "oidc": {
      "description": "Customer OIDC identity-provider settings.",
      "properties": {
       "audience": {
        "description": "Optional OIDC audience. Also GROK_OIDC_AUDIENCE.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "client_id": {
        "description": "OIDC client id. Also GROK_OIDC_CLIENT_ID.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "issuer": {
        "description": "OIDC issuer URL. Also GROK_OIDC_ISSUER.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       },
       "scopes": {
        "description": "OIDC scopes. Also GROK_OIDC_SCOPES.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "preferred_method": {
-     "description": "Pin automatic auth to one method with no fallthrough."
+     "description": "Pin automatic auth to one method with no fallthrough.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     },
     "token_header": {
      "description": "Header name that carries the CLI auth token; default xai-grok-cli.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
     }
    },
-   "type": "object"
+   "type": "object",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#grok_com_config"
   },
   "harness": {
    "properties": {
     "disable_workspace_teleport": {
      "description": "Kill switch for per-turn workspace snapshots.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#harness"
     },
     "wait_for_uploads": {
      "description": "Wait for turn-end trace uploads before returning the prompt response. Off by default; one-shot headless runs instead drain pending turn-end uploads at exit within a mandatory minimum budget (about 150s: the parse window plus one upload attempt) that upload_flush_timeout_secs, when larger, extends.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#harness"
     }
    },
    "type": "object"
@@ -698,10 +849,12 @@
   "hints": {
    "properties": {
     "fork_worktree_mode": {
-     "description": "Whether /fork offers a worktree."
+     "description": "Whether /fork offers a worktree.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hints"
     },
     "new_session_worktree_mode": {
-     "description": "Whether /new offers a worktree."
+     "description": "Whether /new offers a worktree.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hints"
     }
    },
    "type": "object"
@@ -710,7 +863,8 @@
    "properties": {
     "<event>": {
      "description": "Matcher groups for a lifecycle event such as PreToolUse or Stop. See Hooks.",
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hooks"
     },
     "<event>[]": {
      "properties": {
@@ -718,17 +872,20 @@
        "properties": {
         "command": {
          "description": "Command to run for this hook. $VAR is not expanded at load.",
-         "type": "string"
+         "type": "string",
+         "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hooks"
         },
         "type": {
-         "description": "Hook handler type. Command hooks are supported."
+         "description": "Hook handler type. Command hooks are supported.",
+         "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hooks"
         }
        },
        "type": "object"
       },
       "matcher": {
        "description": "Tool-name matcher for this hook group.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#hooks"
       }
      },
      "type": "object"
@@ -740,15 +897,18 @@
    "properties": {
     "delay": {
      "description": "Model calls to wait after the long call before the reminder. Default 1, clamped to 0–10. Also delay in the GROK_LONG_REASONING_REMINDER JSON object.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#long_reasoning_reminder"
     },
     "enabled": {
      "description": "Inject a mid-turn reminder to reason briefly after a model call with long hidden reasoning. Default false. Also GROK_LONG_REASONING_REMINDER (a bool word, or a JSON object in this table's shape).",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#long_reasoning_reminder"
     },
     "tokens": {
      "description": "Reasoning tokens in one model call that count as long. Default 1000, clamped to 100–200000. Also tokens in the GROK_LONG_REASONING_REMINDER JSON object.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#long_reasoning_reminder"
     }
    },
    "type": "object"
@@ -757,11 +917,13 @@
    "properties": {
     "enabled": {
      "description": "Fetch managed MCP configs at startup. Also GROK_MANAGED_MCPS_ENABLED.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#managed_mcps"
     },
     "gateway_tools_enabled": {
      "description": "Expose managed MCP gateway tools. Also GROK_MANAGED_MCP_GATEWAY_TOOLS_ENABLED.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#managed_mcps"
     }
    },
    "type": "object"
@@ -770,11 +932,13 @@
    "properties": {
     "require_sha": {
      "description": "Tighten-only: remote plugin installs and updates must pin a full commit sha. Also GROK_MARKETPLACE_REQUIRE_SHA. Neither this key nor the env var can turn the gate back off.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#marketplace"
     },
     "sources": {
      "description": "[[marketplace.sources]] plugin marketplace repos.",
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#marketplace"
     }
    },
    "type": "object"
@@ -783,7 +947,8 @@
    "properties": {
     "max_output_bytes": {
      "description": "Cap MCP tool output size in bytes. Project files may set this.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp"
     }
    },
    "type": "object"
@@ -794,79 +959,98 @@
      "properties": {
       "args": {
        "description": "[mcp_servers.<name>] args on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "bearer_token_env_var": {
        "description": "[mcp_servers.<name>] bearer_token_env_var on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "bearer_token_file": {
        "description": "[mcp_servers.<name>] bearer_token_file on an HTTP MCP server: absolute or ~/ path to a bearer token, re-read on every request.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "command": {
        "description": "[mcp_servers.<name>] command on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "cwd": {
        "description": "[mcp_servers.<name>] cwd on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "enabled": {
        "description": "[mcp_servers.<name>] enabled on a stdio or HTTP MCP server.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "env": {
        "description": "[mcp_servers.<name>] env on a stdio or HTTP MCP server.",
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "expose_image_base64": {
        "description": "[mcp_servers.<name>] expose_image_base64 on a stdio or HTTP MCP server.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "headers": {
        "description": "[mcp_servers.<name>] headers on a stdio or HTTP MCP server.",
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "oauth": {
        "description": "[mcp_servers.<name>] oauth on a stdio or HTTP MCP server.",
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "oauth_client_id": {
        "description": "[mcp_servers.<name>] oauth_client_id on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "oauth_client_secret_env_var": {
        "description": "[mcp_servers.<name>] oauth_client_secret_env_var on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "oauth_scopes": {
        "description": "[mcp_servers.<name>] oauth_scopes on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "setup": {
        "description": "[mcp_servers.<name>] setup on a stdio or HTTP MCP server.",
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "startup_timeout_sec": {
        "description": "[mcp_servers.<name>] startup_timeout_sec on a stdio or HTTP MCP server.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "tool_timeout_sec": {
        "description": "[mcp_servers.<name>] tool_timeout_sec on a stdio or HTTP MCP server.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "tool_timeouts": {
        "description": "[mcp_servers.<name>] tool_timeouts on a stdio or HTTP MCP server.",
-       "type": "object"
+       "type": "object",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "type": {
        "description": "[mcp_servers.<name>] type on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       },
       "url": {
        "description": "[mcp_servers.<name>] url on a stdio or HTTP MCP server.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#mcp_servers"
       }
      },
      "type": "object"
@@ -878,7 +1062,8 @@
    "properties": {
     "enabled": {
      "description": "Legacy memory switch. Also GROK_MEMORY; superseded when the v2 gate is enabled.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     }
    },
    "type": "object"
@@ -888,66 +1073,80 @@
     "archived_retention_days": {
      "default": 30,
      "description": "Retains archived memory-v2 observation files for this many days. Default: 30.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "automatic_dream_enabled": {
      "default": true,
      "description": "Enables event-driven memory-v2 Dream. Default: true.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "batch_dream_enabled": {
      "description": "Runs active memory-v2 Dream as batch Dream, which folds notes into topics in batches with the full topic catalog; a local value wins over remote memory_v2.batch_dream_enabled, then defaults to false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "batch_dream_max_batch_note_bytes": {
      "description": "Caps note bytes in one batch Dream batch, default 98304, clamped to 16384–262144. A local value wins over remote memory_v2.batch_dream_max_batch_note_bytes.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "batch_dream_max_calls_per_batch": {
      "description": "Caps model calls per batch Dream batch, default 6, clamped to 2–16. A local value wins over remote memory_v2.batch_dream_max_calls_per_batch.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "batch_dream_max_run_secs": {
      "description": "Caps one batch Dream run in seconds, default 1800, clamped to 60–3600; unfinished notes stay in the inbox. A local value wins over remote memory_v2.batch_dream_max_run_secs.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "capture_enabled": {
      "default": true,
      "description": "Enables memory-v2 extraction and observation capture. Default: true.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "capture_status_enabled": {
      "default": false,
      "description": "Shows memory-v2 capture lifecycle messages in the UI for debugging. Successful captures are expandable and include generated content plus links to committed observation files. Telemetry and debug logs are always recorded. Default: false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "compact_index_enabled": {
      "default": false,
      "description": "Injects a titles-only memory index into the system prompt (no topic descriptions, no pending observations) so more topics fit the 8 KiB budget; titled entries are ordered by how often the agent has read each topic, and the on-disk MEMORY.md is rendered the same way. A local value wins over the remote memory_v2.compact_index_enabled. Default: false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "enabled": {
      "default": false,
      "description": "Primary memory-v2 switch. When true, v2 takes precedence over legacy memory.enabled. When false or absent, legacy enablement is resolved normally. Default: false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "file_writes_enabled": {
      "default": true,
      "description": "Enables all memory-v2 file mutation; false fails closed before scaffold creation. Default: true.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "job_retention_days": {
      "default": 14,
      "description": "Retains terminal memory-v2 capture-job metadata for this many days. Default: 14.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "manual_dream_enabled": {
      "default": true,
      "description": "Enables explicitly requested memory-v2 Dream. Default: true.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     },
     "rollout": {
-     "description": "Advanced staged-rollout control for new v2 sessions. Default: \"active\" after enabling v2. Most users should leave this unset."
+     "description": "Advanced staged-rollout control for new v2 sessions. Default: \"active\" after enabling v2. Most users should leave this unset.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#memory"
     }
    },
    "type": "object"
@@ -959,160 +1158,201 @@
      "properties": {
       "agent_type": {
        "description": "Agent definition type associated with this model.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "api_backend": {
-       "description": "Wire protocol for this model."
+       "description": "Wire protocol for this model.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "api_base_url": {
        "description": "Alternate API base used with XAI_API_KEY resolution.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "api_key": {
        "description": "Inline API key. Prefer env_key. Not a secret to put in a shared repo.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "auth_provider": {
        "description": "Name of a [auth_provider.<name>] helper that mints this model's bearer token.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "auto_compact_threshold_percent": {
        "description": "Per-model auto-compact threshold (0-100).",
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "base_url": {
        "description": "Provider endpoint base URL.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "compaction_at_tokens": {
        "description": "Token threshold that triggers compaction for this model.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "compactions_remaining": {
        "description": "How compaction leftover context is sent. Alias send_compactions_remaining.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "context_window": {
        "description": "Context window tokens; drives auto-compact timing.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "description": {
        "description": "Optional description shown in the picker.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "env_http_headers": {
-       "description": "HTTP headers populated from environment variables when set."
+       "description": "HTTP headers populated from environment variables when set.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "env_key": {
        "description": "Environment variable name(s) holding the provider API key.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "extra_headers": {
-       "description": "Per-request headers for this model."
+       "description": "Per-request headers for this model.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "hidden": {
        "description": "Hide this model from the picker. Still usable via -m.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "inference_idle_timeout_secs": {
        "description": "Idle timeout for streaming inference on this model.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "max_completion_tokens": {
        "description": "Per-model max completion tokens.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "max_request_bytes": {
        "description": "Provider request-body cap that inline images are evicted to stay under. Unset inherits the [model_providers.<id>] value, then the api_backend default: 30 MB for messages, 50 MiB otherwise.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "max_retries": {
        "description": "Inference retries for this model.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "model": {
        "description": "Model id sent to the API.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "model_family": {
        "description": "Family id used for compaction and capability grouping.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "model_provider": {
        "description": "Named [model_providers.<name>] provider id for this model.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "mtls_cert_dir": {
        "description": "Directory containing the model endpoint's mTLS identity as client.crt and client.key, or tls.crt and tls.key; configuration is rejected unless the same model has one HTTPS base_url and no api_base_url, and requests do not follow redirects.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "name": {
        "description": "Label shown in the model picker.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "notice": {
-       "description": "Message shown above the prompt while this model is selected, cleared for this model by a blank text."
+       "description": "Message shown above the prompt while this model is selected, cleared for this model by a blank text.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "query_params": {
-       "description": "Extra query parameters on this model's requests."
+       "description": "Extra query parameters on this model's requests.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "rate_limit_retry_threshold": {
        "description": "Total-attempt ceiling for rate-limited requests, capped by the resolved max_retries; when configured, it disables the separate subagent 429 wait loop.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "reasoning_effort": {
        "description": "Deprecated per-model effort; prefer reasoning_efforts.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "reasoning_efforts": {
        "description": "Allowed reasoning-effort values for this model. When omitted, the menu comes from the endpoint's /v1/models row (reasoning_efforts, or capabilities.reasoning_effort when that is absent).",
-       "type": "array"
+       "type": "array",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "reasoning_summary": {
-       "description": "Responses API reasoning.summary for this model; default concise. none omits the field for endpoints that reject it (e.g. AWS Bedrock Mantle)."
+       "description": "Responses API reasoning.summary for this model; default concise. none omits the field for endpoints that reject it (e.g. AWS Bedrock Mantle).",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "show_model_fingerprint": {
        "description": "Show the provider model fingerprint in the UI when present.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "stream_tool_calls": {
        "description": "Per-model tool-call streaming request shape.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "subagent_rate_limit_max_attempts": {
        "description": "Maximum subagent 429 wait-loop attempts when rate_limit_retry_threshold is unset; default 8, maximum 32, and 0 disables the wait loop.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "supported_in_api": {
        "description": "Whether this catalog entry is offered as a public API model.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "supports_backend_search": {
        "description": "Whether the endpoint supports Grok-hosted server-side search tools.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "supports_reasoning_effort": {
        "description": "Deprecated; prefer reasoning_efforts. An explicit false keeps the model out of any menu it would otherwise inherit from the endpoint or from a same-model catalog entry.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "system_prompt_label": {
        "description": "Per-model system-prompt identity label.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "temperature": {
        "description": "Per-model sampling temperature.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "top_p": {
        "description": "Per-model top_p.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       },
       "use_concise": {
        "description": "Use the concise tool-description pack for this model.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
       }
      },
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model"
     }
    },
    "type": "object"
@@ -1121,7 +1361,8 @@
    "properties": {
     "<name>": {
      "description": "Named custom model provider definition.",
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#model_providers"
     }
    },
    "type": "object"
@@ -1130,95 +1371,117 @@
    "properties": {
     "agent_type": {
      "description": "Fallback agent_type for models without a per-model override.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "allowed_models": {
      "description": "Glob allowlist for the model picker, default, and -m, ignored outside requirements.toml when auth_provider_command and a custom models endpoint are set. Empty means no restriction.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "default": {
      "description": "Model used for new sessions. Also GROK_DEFAULT_MODEL, --model, -m.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "default_reasoning_effort": {
      "description": "Default reasoning effort for the default model when the model supports it.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "disabled_models": {
      "description": "Remove these model IDs from the catalog. Wins over hidden_models.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "extra_headers": {
-     "description": "Request headers applied to every model; per-model keys win."
+     "description": "Request headers applied to every model; per-model keys win.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "hidden_models": {
      "description": "Hide these model IDs from the picker; -m can still select them.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "image_description": {
      "description": "Vision model used to transcribe user-supplied images.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "inference_idle_timeout_secs": {
      "description": "Global idle timeout for streaming inference when a model leaves it unset.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "max_completion_tokens": {
      "description": "Global max completion tokens default when a model leaves it unset.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "max_retries": {
      "description": "Global inference retry default when a model leaves it unset.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "prompt_suggestion": {
      "description": "Model pin for next-prompt ghost text. Unset falls through remote, then the session model.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "rate_limit_retry_threshold": {
      "description": "Global total-attempt ceiling for rate-limited requests when a model leaves it unset, capped by the resolved max_retries; when configured, it disables the separate subagent 429 wait loop.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "session_summary": {
      "description": "Model used for session titles and summaries.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "stream_tool_calls": {
      "description": "Global tool-call streaming request shape; some BYOK endpoints need false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "subagent_rate_limit_max_attempts": {
      "description": "Global default for subagent 429 wait-loop attempts when rate_limit_retry_threshold is unset; default 8, maximum 32, and 0 disables the wait loop.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "temperature": {
      "description": "Global sampling temperature default when a model leaves it unset.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "top_p": {
      "description": "Global top_p default when a model leaves it unset.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     },
     "web_search": {
      "description": "Model used by the client web_search tool. Also GROK_WEB_SEARCH_MODEL.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#models"
     }
    },
    "type": "object"
   },
   "path_not_found_hints": {
    "description": "Enrich path-not-found errors with CWD reminders and similar-name suggestions.",
-   "type": "boolean"
+   "type": "boolean",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#path_not_found_hints"
   },
   "paths": {
    "properties": {
     "extra_rule_dirs": {
      "description": "More rule directories (absolute or ~/…; each contains *.md), loaded after the home rules.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#paths"
     },
     "extra_skill_dirs": {
      "description": "Records /import-claude skill directories that skill injection ignores in favor of [skills] paths.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#paths"
     }
    },
    "type": "object"
@@ -1227,19 +1490,23 @@
    "properties": {
     "allow": {
      "description": "Compact allow rules such as Bash(git *). Deny beats ask beats allow. Project files may set this.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#permission"
     },
     "ask": {
      "description": "Compact ask rules. Project files may set this.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#permission"
     },
     "deny": {
      "description": "Compact deny rules. Project files may set this.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#permission"
     },
     "rules": {
      "description": "Verbose action/tool/pattern object rules. Project files may set this.",
-     "type": "array"
+     "type": "array",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#permission"
     }
    },
    "type": "object"
@@ -1248,15 +1515,18 @@
    "properties": {
     "disabled": {
      "description": "Plugin IDs to discover but not load. Project files may set this.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#plugins"
     },
     "enabled": {
      "description": "Plugin IDs to enable; needed for project plugins that default off.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#plugins"
     },
     "paths": {
      "description": "Additional plugin directories. Project files may set this when the folder is trusted.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#plugins"
     }
    },
    "type": "object"
@@ -1265,7 +1535,8 @@
    "properties": {
     "privacy_banner_acked": {
      "description": "RFC 3339 UTC timestamp when the local privacy banner was dismissed. The pager reads user config.toml only.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#privacy"
     }
    },
    "type": "object"
@@ -1274,14 +1545,17 @@
    "properties": {
     "max_output_tokens": {
      "description": "Visible-output tokens for the suggestion call; clamped to 16–256, default 64, with a separate reserve for reasoning. Remote-overridable.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "reasoning_effort": {
-     "description": "Reasoning effort for the suggestion call; default and none disable reasoning, while other values use a supported model effort. Remote-overridable."
+     "description": "Reasoning effort for the suggestion call; default and none disable reasoning, while other values use a supported model effort. Remote-overridable.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "temperature": {
      "description": "Sampling temperature for the suggestion call (default 0.2). Remote-overridable.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     }
    },
    "type": "object"
@@ -1290,7 +1564,8 @@
    "properties": {
     "enabled": {
      "description": "Enable session relay sync.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#relay"
     }
    },
    "type": "object"
@@ -1299,10 +1574,12 @@
    "properties": {
     "auto_allow_bash": {
      "description": "Skip bash permission prompts when a sandbox profile is active. Also GROK_SANDBOX_AUTO_ALLOW_BASH.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#sandbox"
     },
     "profile": {
-     "description": "Filesystem sandbox profile. Also --sandbox and GROK_SANDBOX."
+     "description": "Filesystem sandbox profile. Also --sandbox and GROK_SANDBOX.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#sandbox"
     }
    },
    "type": "object"
@@ -1311,11 +1588,13 @@
    "properties": {
     "auto_compact_threshold_percent": {
      "description": "Auto-compact when context usage reaches this percent (0–100).",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#session"
     },
     "load_envrc": {
      "description": "Inject .envrc variables into bash.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#session"
     }
    },
    "type": "object"
@@ -1324,22 +1603,27 @@
    "properties": {
     "exclude": {
      "description": "Env names to drop from bash. Overlay-allowlisted.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#shell_environment_policy"
     },
     "ignore_default_excludes": {
      "description": "Skip the built-in env denylist. Overlay-allowlisted.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#shell_environment_policy"
     },
     "include_only": {
      "description": "If set, bash inherits only these env names. Overlay-allowlisted.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#shell_environment_policy"
     },
     "inherit": {
      "description": "Which parent env names bash inherits. Overlay-allowlisted; cannot inject values.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#shell_environment_policy"
     },
     "set": {
-     "description": "Inject env values into bash. Not overlay-allowlisted."
+     "description": "Inject env values into bash. Not overlay-allowlisted.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#shell_environment_policy"
     }
    },
    "type": "object"
@@ -1348,11 +1632,13 @@
    "properties": {
     "disabled": {
      "description": "Skill names to discover but not activate.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#skills"
     },
     "paths": {
      "description": "Additional skill directories.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#skills"
     }
    },
    "type": "object"
@@ -1361,7 +1647,8 @@
    "properties": {
     "cleanup_ttl_days": {
      "description": "Days a session may stay idle before its folder is deleted; media and terminal logs older than this are pruned from live sessions; unset or 0 disables cleanup.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#storage"
     }
    },
    "type": "object"
@@ -1370,24 +1657,29 @@
    "properties": {
     "enabled": {
      "description": "Subagent / task tool master switch, default true even when other subagents.* keys are set. Also GROK_SUBAGENTS or --no-subagents.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
     },
     "limit_behavior": {
-     "description": "What to do when the concurrent subagent cap is hit."
+     "description": "What to do when the concurrent subagent cap is hit.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
     },
     "max_concurrent": {
      "description": "Max concurrent subagents.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
     },
     "max_depth": {
      "description": "Max nested subagent depth (clamped ≥1).",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
     },
     "models": {
      "properties": {
       "<name>": {
        "description": "Per-subagent model id override.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
       }
      },
      "type": "object"
@@ -1396,7 +1688,8 @@
      "properties": {
       "<name>": {
        "description": "Enable or disable an individual subagent type. Omitted agents default on.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#subagents"
       }
      },
      "type": "object"
@@ -1408,102 +1701,128 @@
    "properties": {
     "otel_certificate": {
      "description": "PEM path of extra CA certs for the collector. Also OTEL_EXPORTER_OTLP_CERTIFICATE. CA pin does not strip endpoints.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_client_certificate": {
      "description": "PEM path of the mTLS client certificate. Also OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE. Pin strips credential copies, developer endpoints, and unlisted file siblings.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_client_key": {
      "description": "PEM path of the mTLS client key. Tokens never live in this file. Also OTEL_EXPORTER_OTLP_CLIENT_KEY.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_enabled": {
      "description": "External OTEL master switch. Also GROK_EXTERNAL_OTEL.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_endpoint": {
      "description": "External OTLP base endpoint. Also OTEL_EXPORTER_OTLP_ENDPOINT. Pin strips developer env and unlisted user/managed file siblings except listed.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_log_assistant_responses": {
      "description": "Content gate for grok_code.assistant_response text. Unset follows otel_log_user_prompts unless a sibling gate is pinned in requirements. Env-only OTEL_LOG_USER_PROMPTS=1 must set this to 0 (or pin it false) for a prompts-only stream. Also OTEL_LOG_ASSISTANT_RESPONSES.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_log_tool_content": {
      "description": "Body gate for tool_input, tool_output, full_command, and error_message. Independent of details; default off. CONTENT-only loses verbatim MCP names and paths. Also OTEL_LOG_TOOL_CONTENT.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_log_tool_details": {
      "description": "Metadata gate for tool-arg preview, paths, and verbatim names. Recommended on for SIEM join. Also OTEL_LOG_TOOL_DETAILS. Does not include full bodies.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_log_user_prompts": {
      "description": "Content gate for prompt text on grok_code.user_prompt. Also OTEL_LOG_USER_PROMPTS. Pinning any content gate without listing a sibling defaults the omitted sibling off.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_certificate": {
      "description": "Logs-signal CA PEM path. Also OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_client_certificate": {
      "description": "Logs-signal mTLS client cert PEM path. Also OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_client_key": {
      "description": "Logs-signal mTLS client key PEM path. Also OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_endpoint": {
      "description": "Logs-signal OTLP endpoint (verbatim). Also OTEL_EXPORTER_OTLP_LOGS_ENDPOINT.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_exporter": {
-     "description": "External OTEL logs exporter. Also OTEL_LOGS_EXPORTER."
+     "description": "External OTEL logs exporter. Also OTEL_LOGS_EXPORTER.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_logs_protocol": {
-     "description": "Logs-signal OTLP protocol. Also OTEL_EXPORTER_OTLP_LOGS_PROTOCOL."
+     "description": "Logs-signal OTLP protocol. Also OTEL_EXPORTER_OTLP_LOGS_PROTOCOL.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metric_export_interval": {
      "description": "Metric export interval in milliseconds. Also OTEL_METRIC_EXPORT_INTERVAL.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_certificate": {
      "description": "Metrics-signal CA PEM path. Also OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_client_certificate": {
      "description": "Metrics-signal mTLS client cert PEM path. Also OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_client_key": {
      "description": "Metrics-signal mTLS client key PEM path. Also OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_endpoint": {
      "description": "Metrics-signal OTLP endpoint (verbatim). Also OTEL_EXPORTER_OTLP_METRICS_ENDPOINT.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_exporter": {
-     "description": "External OTEL metrics exporter. Also OTEL_METRICS_EXPORTER."
+     "description": "External OTEL metrics exporter. Also OTEL_METRICS_EXPORTER.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_include_session_id": {
      "description": "Attach session.id to metrics. Also OTEL_METRICS_INCLUDE_SESSION_ID.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_metrics_protocol": {
-     "description": "Metrics-signal OTLP protocol. Also OTEL_EXPORTER_OTLP_METRICS_PROTOCOL."
+     "description": "Metrics-signal OTLP protocol. Also OTEL_EXPORTER_OTLP_METRICS_PROTOCOL.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_protocol": {
-     "description": "External OTLP transport. Also OTEL_EXPORTER_OTLP_PROTOCOL. Pin strips per-signal protocol env and unlisted file siblings except listed."
+     "description": "External OTLP transport. Also OTEL_EXPORTER_OTLP_PROTOCOL. Pin strips per-signal protocol env and unlisted file siblings except listed.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "otel_timeout": {
      "description": "Export timeout in milliseconds. Also OTEL_EXPORTER_OTLP_TIMEOUT.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     },
     "trace_upload": {
      "description": "Upload session traces. Requirements pin beats user config.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#telemetry"
     }
    },
    "type": "object"
@@ -1512,28 +1831,33 @@
    "properties": {
     "disable_zdr_incompatible_tools": {
      "description": "Restrict tools that need xAI-hosted output under ZDR. Also GROK_DISABLE_ZDR_INCOMPATIBLE_TOOLS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#tools"
     },
     "media_gen": {
      "properties": {
       "max_parallel_image_gen_calls": {
        "description": "Cap parallel image_gen/image_edit calls in one model step. Also GROK_MAX_PARALLEL_IMAGE_GEN_CALLS.",
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#tools"
       },
       "max_parallel_video_gen_calls": {
        "description": "Cap parallel video_gen calls in one model step. Also GROK_MAX_PARALLEL_VIDEO_GEN_CALLS.",
-       "type": "integer"
+       "type": "integer",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#tools"
       }
      },
      "type": "object"
     },
     "respect_gitignore": {
      "description": "When true, search and read tools skip gitignored files. Also GROK_RESPECT_GITIGNORE.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#tools"
     },
     "zdr_video_output_s3": {
      "description": "Team S3 bucket for ZDR video output. See ZDR Video Storage.",
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#tools"
     }
    },
    "type": "object"
@@ -1544,7 +1868,8 @@
      "properties": {
       "timeout_secs": {
        "description": "Timeout for the ask_user_question tool.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       }
      },
      "type": "object"
@@ -1553,39 +1878,47 @@
      "properties": {
       "auto_background_on_timeout": {
        "description": "Background the command when the foreground timeout fires.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "login_shell_capture": {
        "description": "Capture the user's login shell environment for bash. Overlay-allowlisted.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "max_timeout_secs": {
        "description": "Cap on model-requested foreground timeouts.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "output_byte_limit": {
        "description": "Max captured bash output in bytes.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "timeout_secs": {
        "description": "Foreground bash command timeout in seconds.",
-       "type": "number"
+       "type": "number",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       }
      },
      "type": "object"
     },
     "file_toolset": {
-     "description": "File edit tool scheme."
+     "description": "File edit tool scheme.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
     },
     "web_fetch": {
      "properties": {
       "allowed_domains": {
        "description": "Domain allowlist override for web_fetch.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "proxy_endpoint": {
        "description": "Egress proxy URL for web_fetch. Also GROK_WEB_FETCH_PROXY.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       }
      },
      "type": "object"
@@ -1594,11 +1927,13 @@
      "properties": {
       "allowed_domains": {
        "description": "Domain allowlist for client web_search. Overlay-allowlisted.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       },
       "excluded_domains": {
        "description": "Domain denylist for client web_search. Overlay-allowlisted.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#toolset"
       }
      },
      "type": "object"
@@ -1610,229 +1945,283 @@
    "properties": {
     "approval_mode": {
      "description": "Deprecated; use ui.permission_mode.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "auto_dark_theme": {
      "description": "Theme when theme = auto and the OS is dark.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "auto_light_theme": {
      "description": "Theme when theme = auto and the OS is light.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "cancel_subagents_on_turn_cancel": {
-     "description": "What to do with running subagents when cancelling a parent turn."
+     "description": "What to do with running subagents when cancelling a parent turn.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "collapsed_edit_blocks": {
      "description": "Show edits as one-line +N/-M summaries. Also GROK_COLLAPSED_EDIT_BLOCKS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "combine_queued_prompts": {
      "description": "Merge consecutive plain follow-ups into one turn.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "compact_mode": {
      "description": "Denser message padding. Also /compact-mode.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "confirm_before_rewind": {
      "description": "Ask before rewinding conversation history.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "contextual_hints": {
      "properties": {
       "image_input": {
        "description": "Clipboard image paste tip when the model accepts images.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "plan_mode": {
        "description": "Suggest plan mode (Shift+Tab) for planning-style prompts.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "send_now": {
        "description": "After queuing a mid-turn follow-up, Enter on an empty prompt sends now.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "small_screen": {
        "description": "Suggest /compact-mode on short terminals.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "ssh_wrap": {
        "description": "Recommend grok wrap when SSH lacks a clipboard sink.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "undo": {
        "description": "Ctrl+Z restores a wiped prompt draft tip.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "word_select": {
        "description": "After double-click with fold/nav selection, point at Word select in settings.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       }
      },
      "type": "object"
     },
     "cursor_blink": {
      "description": "Force blinking (true) or steady (false) block cursor. Unset inherits the terminal.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "dashboard_preview": {
      "description": "The dashboard preview and reply panel appear by default (Appearance in /settings).",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "default_selected_permission": {
      "description": "Preselected approval row on the first prompt of a session. Also GROK_DEFAULT_SELECTED_PERMISSION.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "disable_bypass_permissions_mode": {
      "description": "Lock always-approve off. The lock is enforced only from a requirements layer; true in user or managed files is ignored.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#requirementstoml"
     },
     "display_refresh": {
      "properties": {
       "auto_cadence_enabled": {
        "description": "Match stream/scroll cadence to display refresh rate. Also GROK_DISPLAY_REFRESH_AUTO_CADENCE.",
-       "type": "boolean"
+       "type": "boolean",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       }
      },
      "type": "object"
     },
     "follow_up_behavior": {
-     "description": "Mid-turn follow-up routing."
+     "description": "Mid-turn follow-up routing.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "fork_secondary_model": {
      "description": "Model for the secondary agent when forking. Defaults to the main default model.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "group_tool_verbs": {
      "description": "Fold consecutive read/search/list tool rows. Also GROK_GROUP_TOOL_VERBS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "hunk_tracker_mode": {
-     "description": "File-change hunk tracking. Also GROK_HUNK_TRACKER and --hunk-tracker-mode."
+     "description": "File-change hunk tracking. Also GROK_HUNK_TRACKER and --hunk-tracker-mode.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "invert_scroll": {
      "description": "Reverse vertical scroll direction. Also GROK_INVERT_SCROLL.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "keep_text_selection": {
-     "description": "In-app selection: brief flash, hold, or double-click word select."
+     "description": "In-app selection: brief flash, hold, or double-click word select.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "max_thoughts_width": {
      "description": "Column width for the thoughts panel (40–500).",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "mouse_reporting_toggle": {
      "description": "Ctrl+R in scrollback toggles terminal mouse capture. Also GROK_MOUSE_REPORTING_TOGGLE.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "page_flip_on_send": {
      "description": "Snap the sent prompt to the top of the viewport.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "permission_mode": {
-     "description": "Default tool-permission behavior. Enterprise locks use requirements.toml."
+     "description": "Default tool-permission behavior. Enterprise locks use requirements.toml.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "prompt_suggestions": {
      "description": "Next-prompt ghost text after each turn. Also GROK_PROMPT_SUGGESTIONS; a remote kill-switch can disable it fleet-wide.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "remember_tool_approvals": {
      "description": "Show per-tool Always allow options. Also GROK_REMEMBER_TOOL_APPROVALS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "render_mermaid": {
-     "description": "How mermaid fences render: clickable open row or raw source."
+     "description": "How mermaid fences render: clickable open row or raw source.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "screen_mode": {
-     "description": "Default render mode for plain grok. Restart required."
+     "description": "Default render mode for plain grok. Restart required.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "scroll_lines": {
      "description": "Lines per scroll tick (1–10). Also GROK_SCROLL_LINES.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "scroll_mode": {
-     "description": "Scroll input classification. Also GROK_SCROLL_MODE."
+     "description": "Scroll input classification. Also GROK_SCROLL_MODE.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "scroll_speed": {
      "description": "Mouse/trackpad scroll speed multiplier (1–100). Also GROK_SCROLL_SPEED.",
-     "type": "integer"
+     "type": "integer",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "show_thinking_blocks": {
      "description": "Show thinking/reasoning blocks while streaming. Also GROK_SHOW_THINKING_BLOCKS.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "show_timeline": {
      "description": "Per-turn tick rail instead of the scrollbar.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "show_timestamps": {
      "description": "Clock time next to messages. Also /timestamps.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "simple_mode": {
      "description": "Readline prompt editing when true; experimental vim prompt keys when false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "status_line": {
      "properties": {
       "command": {
        "description": "Script for a command status line. Campaigns strip this path; a requirements layer still merges it.",
-       "type": "string"
+       "type": "string",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       },
       "type": {
-       "description": "Optional status-line row above the shortcuts bar. Off by default. See the status-line user guide."
+       "description": "Optional status-line row above the shortcuts bar. Off by default. See the status-line user guide.",
+       "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
       }
      },
      "type": "object"
     },
     "theme": {
      "description": "Color theme name, or auto/system to follow the OS. Also /theme and GROK_THEME.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "ui_theme": {
      "description": "Legacy alias for ui.theme.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "vim_mode": {
      "description": "Vim keys in the scrollback, not the prompt. Also /vim-mode.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "voice_capture_mode": {
-     "description": "Hold-to-talk or press-to-toggle voice capture."
+     "description": "Hold-to-talk or press-to-toggle voice capture.",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "voice_keybind_enabled": {
      "description": "Enable Ctrl+Space / F8 for voice dictation. /voice still works when false.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "voice_stt_language": {
      "description": "Speech-to-text language code or auto. Overrides [voice].language for the session.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     },
     "yolo": {
      "description": "Always-approve tool calls. Requirements can pin false and block --yolo.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#ui"
     }
    },
    "type": "object"
   },
   "version_overrides": {
    "description": "Per-CLI-version config patches applied before merge. See [[version_overrides]].",
-   "type": "array"
+   "type": "array",
+   "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#version_overrides"
   },
   "voice": {
    "properties": {
     "api_base": {
      "description": "HTTPS API root for speech-to-text. Unset inherits [endpoints].xai_api_base_url.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#voice"
     },
     "language": {
      "description": "Preferred STT language catalog code or auto.",
-     "type": "string"
+     "type": "string",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#voice"
     },
     "sample_rate": {
      "description": "STT capture rate in Hz.",
-     "type": "number"
+     "type": "number",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#voice"
     }
    },
    "type": "object"
@@ -1841,7 +2230,8 @@
    "properties": {
     "enabled": {
      "description": "Enable workflows.",
-     "type": "boolean"
+     "type": "boolean",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#workflows"
     }
    },
    "type": "object"
@@ -1850,7 +2240,8 @@
    "properties": {
     "auto_gc": {
      "description": "Automatic worktree garbage collection policy.",
-     "type": "object"
+     "type": "object",
+     "x-doc-url": "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md#worktree"
     }
    },
    "type": "object"

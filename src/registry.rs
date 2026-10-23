@@ -21,6 +21,13 @@ pub struct Tool {
     /// 我们据此派生出 schema 并随仓库分发，避免「编造键位」。
     #[serde(default)]
     pub schema_file: String,
+    /// 「文档补充层」文件名（在 `schemas/` 目录下）。
+    ///
+    /// 格式：`{ "键路径": { "description": "...", "doc_url": "..." } }`。
+    /// 官方 schema 照旧联网自动更新，文档里的说明与章节锚点由这一层叠加上去 ——
+    /// 官方 schema 常常只给结构不给文字说明。
+    #[serde(default)]
+    pub doc_supplement: String,
     /// 官方文档首页
     #[serde(default)]
     pub docs_url: String,
