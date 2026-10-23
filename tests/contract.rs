@@ -252,6 +252,9 @@ fn 本机配置汇总的字段名与前端一致() {
     let dir = tmp_dir("usage");
     let cfg = dir.join("settings.json");
     std::fs::write(&cfg, "{\n  \"model\": \"x\"\n}\n").unwrap();
+    // 路径要塞进 TOML 字符串，Windows 的反斜杠必须转义，
+    // 否则 `\U` 会被当成「8 位十六进制 unicode 转义」而解析失败。
+    let cfg_toml = cfg.display().to_string().replace('\\', "\\\\");
     let reg = cfg_explorer::Registry::parse(&format!(
         r#"
 [[tool]]
@@ -263,7 +266,7 @@ config_format = "json"
 global_config = ["{}"]
 project_config = []
 "#,
-        cfg.display()
+        cfg_toml
     ))
     .unwrap();
     let usage: Vec<ToolUsage> = commands::local_usage(&reg, None);
