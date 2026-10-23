@@ -50,9 +50,13 @@ jobs:
 
       - name: 装 Linux 依赖
         if: matrix.os == 'ubuntu-22.04'
+        # DEBIAN_FRONTEND=noninteractive：装包时不要弹交互式提问（会卡死）
+        # timeout：万一 apt 源抽风，别把整个 job 挂到超时
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
+          sudo timeout 600 apt-get update
+          sudo timeout 900 apt-get install -y \
             libwebkit2gtk-4.1-dev build-essential curl wget file \
             libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
 
@@ -103,8 +107,8 @@ jobs:
             desktop/src-tauri -> desktop/src-tauri/target
       - name: 装 Linux 依赖
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
+          sudo timeout 600 apt-get update
+          sudo timeout 900 apt-get install -y \
             libwebkit2gtk-4.1-dev build-essential curl wget file \
             libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
       - run: cargo clippy --release --all-targets -- -D warnings
