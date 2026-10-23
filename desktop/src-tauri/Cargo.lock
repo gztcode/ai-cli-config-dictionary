@@ -358,7 +358,7 @@ dependencies = [
 
 [[package]]
 name = "cfg-explorer"
-version = "0.1.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -375,7 +375,7 @@ dependencies = [
 
 [[package]]
 name = "cfg-explorer-desktop"
-version = "0.1.0"
+version = "0.4.0"
 dependencies = [
  "cfg-explorer",
  "serde",
