@@ -119,17 +119,18 @@ jobs:
 
       - name: 把前端资源复制到位
         # desktop/src-tauri/build.rs 也会做这件事，但 tauri CLI 先检查
-        # frontendDist 目录是否存在，先复制更稳
+        # frontendDist 目录是否存在，先复制更稳。
+        # 用 bash：Windows 默认的 PowerShell 里没有 mkdir -p / cp。
+        shell: bash
         run: |
           mkdir -p desktop/ui
           cp src/ui/app.js src/ui/app.css desktop/ui/
 
       - name: 打包
         working-directory: desktop/src-tauri
-        run: |
-          npx --yes @tauri-apps/cli@2 build \
-            --target ${{ matrix.target }} \
-            --bundles ${{ matrix.bundles }}
+        # 用 bash：反斜杠续行是 POSIX shell 的语法，PowerShell 不认
+        shell: bash
+        run: npx --yes @tauri-apps/cli@2 build --target ${{ matrix.target }} --bundles ${{ matrix.bundles }}
 
       - name: 顺带构建命令行版
         run: cargo build --release --target ${{ matrix.target }}
