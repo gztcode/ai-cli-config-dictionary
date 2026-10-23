@@ -279,9 +279,18 @@ pub fn list_snippets(
     snippets_path: &Path,
 ) -> Vec<SnippetView> {
     let store = crate::snippets::load(snippets_path);
+    // 同一工具的多个片段共用一份 IR —— 逐个片段重建太浪费
+    let mut ir_cache: BTreeMap<String, Option<Vec<String>>> = BTreeMap::new();
     let mut out = Vec::new();
     for sn in store.snippets {
-        let unknown = unknown_keys(registry, cache_dir, &sn);
+        let unknown = if sn.tool.is_empty() {
+            Vec::new()
+        } else {
+            let known = ir_cache
+                .entry(sn.tool.clone())
+                .or_insert_with(|| known_paths(registry, cache_dir, &sn.tool));
+            unknown_keys(known, &sn)
+        };
         out.push(SnippetView {
             snippet: sn,
             unknown_keys: unknown,
@@ -290,30 +299,26 @@ pub fn list_snippets(
     out
 }
 
-/// 片段里哪些键在对应工具的 schema 里找不到
-fn unknown_keys(
-    registry: &Registry,
-    cache_dir: &Path,
-    sn: &crate::snippets::Snippet,
-) -> Vec<String> {
-    if sn.tool.is_empty() {
-        return Vec::new();
-    }
-    let Some(tool) = registry.tools.iter().find(|t| t.id == sn.tool) else {
-        return Vec::new();
-    };
-    let Some(ir) = app::build_ir(tool, cache_dir, &Default::default()) else {
-        return Vec::new();
-    };
-    let mut known: Vec<String> = Vec::new();
+/// 某个工具的 IR 里所有键路径
+fn known_paths(registry: &Registry, cache_dir: &Path, tool_id: &str) -> Option<Vec<String>> {
+    let tool = registry.tools.iter().find(|t| t.id == tool_id)?;
+    let ir = app::build_ir(tool, cache_dir, &Default::default())?;
+    let mut out = Vec::new();
     fn walk(keys: &[crate::ir::IrKey], out: &mut Vec<String>) {
         for k in keys {
             out.push(k.path.clone());
             walk(&k.children, out);
         }
     }
-    walk(&ir.keys, &mut known);
+    walk(&ir.keys, &mut out);
+    Some(out)
+}
 
+/// 片段里哪些键在对应工具的 schema 里找不到
+fn unknown_keys(known: &Option<Vec<String>>, sn: &crate::snippets::Snippet) -> Vec<String> {
+    let Some(known) = known else {
+        return Vec::new();
+    };
     let mut bad = Vec::new();
     for it in &sn.items {
         let p = it.path.trim();
