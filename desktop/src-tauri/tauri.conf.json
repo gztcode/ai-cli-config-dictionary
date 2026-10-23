@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "AI配置字典",
+  "version": "0.1.0",
+  "identifier": "dev.cfg.explorer.desktop",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "AI CLI 配置字典",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 960,
+        "minHeight": 620,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "DeveloperTool",
+    "shortDescription": "AI CLI 配置字典",
+    "longDescription": "浏览 Claude Code、Codex、Gemini CLI、OpenCode 等 AI CLI 的全部配置项，查看每个 key 的官方说明与文档链接，并校验本机配置。",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

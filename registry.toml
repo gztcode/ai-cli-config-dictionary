@@ -1,0 +1,100 @@
+# AI CLI 配置工具注册表
+#
+# schema_url  = 官方发布的机器可读 schema 地址（联网抓取，带缓存）
+# schema_file = 内置的本地 schema 文件名（在 schemas/ 目录下，随仓库分发）
+#               —— 用于「官方没有发布 schema，但官方文档里有结构化字段表」的工具：
+#               由 tools/derive_schema.py 从官方来源派生，不编造键位
+# config_format 决定用哪个解析器读取真实配置文件：json | jsonc | toml | yaml
+# global_config 支持 ~ 展开；project_config 为相对路径
+
+[[tool]]
+id = "claude-code"
+display_name = "Claude Code"
+schema_origin = "schemastore"
+schema_url = "https://www.schemastore.org/claude-code-settings.json"
+docs_url = "https://code.claude.com/docs/en/settings"
+config_format = "json"
+global_config = ["~/.claude/settings.json", "~/.claude/settings.local.json"]
+project_config = [".claude/settings.json", ".claude/settings.local.json"]
+
+[[tool]]
+id = "codex"
+display_name = "Codex CLI"
+schema_origin = "official-repo"
+# developers.openai.com 的同名地址被 Cloudflare 挡（403），
+# 官方仓库里的同一份 schema 可直连。
+schema_url = "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/config.schema.json"
+docs_url = "https://developers.openai.com/codex/config-reference"
+config_format = "toml"
+global_config = ["~/.codex/config.toml"]
+project_config = [".codex/config.toml"]
+
+[[tool]]
+id = "gemini-cli"
+display_name = "Gemini CLI"
+schema_origin = "official-repo"
+schema_url = "https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/heads/main/schemas/settings.schema.json"
+docs_url = "https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/configuration.md"
+config_format = "json"
+global_config = ["~/.gemini/settings.json"]
+project_config = [".gemini/settings.json"]
+
+[[tool]]
+id = "opencode"
+display_name = "OpenCode"
+schema_origin = "official"
+schema_url = "https://opencode.ai/config.json"
+docs_url = "https://opencode.ai/docs/config/"
+config_format = "json"
+global_config = ["~/.config/opencode/opencode.json", "~/.config/opencode/opencode.jsonc"]
+project_config = ["opencode.json", "opencode.jsonc"]
+
+[[tool]]
+id = "grok-build"
+display_name = "Grok Build"
+schema_origin = "official-docs-derived"
+schema_file = "grok-build.json"
+docs_url = "https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/26-config-reference.md"
+config_format = "toml"
+global_config = ["~/.grok/config.toml"]
+project_config = [".grok/config.toml"]
+
+[[tool]]
+id = "openclaw"
+display_name = "OpenClaw"
+schema_origin = "official-package"
+schema_file = "openclaw.json"
+docs_url = "https://github.com/openclaw/openclaw/blob/main/docs/gateway/configuration-reference.md"
+config_format = "json"
+global_config = ["~/.openclaw/openclaw.json"]
+project_config = ["openclaw.json"]
+
+[[tool]]
+id = "hermes"
+display_name = "Hermes Agent"
+schema_origin = "official-docs-derived"
+schema_file = "hermes.json"
+docs_url = "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/configuration.md"
+config_format = "yaml"
+global_config = ["~/.hermes/config.yaml"]
+project_config = [".hermes/config.yaml"]
+
+[[tool]]
+id = "pi"
+display_name = "Pi"
+schema_origin = "official-docs-derived"
+schema_file = "pi.json"
+docs_url = "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md"
+config_format = "json"
+global_config = ["~/.pi/agent/settings.json", "~/.pi/agent/models.json"]
+project_config = [".pi/settings.json"]
+
+[[tool]]
+id = "minimax-code"
+display_name = "MiniMax Code"
+schema_origin = "official-package"
+schema_file = "minimax-code.json"
+docs_url = "https://platform.minimaxi.com/document/MiniMax%20Code"
+config_format = "yaml"
+global_config = ["~/.minimax/config.yaml"]
+project_config = [".minimax/config.yaml"]

@@ -1,0 +1,9 @@
+# 项目级 crates.io 镜像配置
+#
+# 背景：直连 index.crates.io 在本网络下频繁超时，改用国内稀疏索引。
+# 只作用于本项目（含 desktop/src-tauri 子项目），不影响你其它 Rust 工程。
+[source.crates-io]
+replace-with = 'rsproxy-sparse'
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"

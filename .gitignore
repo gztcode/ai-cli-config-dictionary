@@ -1,0 +1,27 @@
+# Rust 构建产物
+/target
+/desktop/src-tauri/target
+
+# 抓下来的 schema 缓存（可重新 fetch）
+/cache
+
+# 导出与截图（构建产物）
+/out
+
+# 由 desktop/src-tauri/build.rs 从 src/ui/ 复制过来的
+/desktop/ui/app.js
+/desktop/ui/app.css
+
+# Tauri 自动生成的权限 schema
+/desktop/src-tauri/gen
+
+# 翻译缓存（只在本机有用，体积不小）
+/tools/.translate-cache.json
+
+# 系统与编辑器
+.DS_Store
+*.swp
+.idea/
+.vscode/
+__pycache__/
+*.pyc

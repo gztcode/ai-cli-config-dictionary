@@ -1,0 +1,224 @@
+# 发版：推送 v* tag 时自动打包各平台并发布 GitHub Release
+#
+# 顺序是硬约束：test → build → release
+# 测试不过就不会产出任何安装包。
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "要发布的 tag（例如 v0.2.0）"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ── 1. 先在三个平台把测试跑一遍 ────────────────────────
+  test:
+    name: 测试 · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.99"
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            desktop/src-tauri -> desktop/src-tauri/target
+      - name: 装 Linux 依赖
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+      - name: 跑测试
+        run: cargo test --release
+
+  # ── 2. 测试全绿之后才打包 ─────────────────────────────
+  build:
+    name: 打包 · ${{ matrix.target }}
+    needs: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            os: macos-latest
+            bundles: app,dmg
+            label: macOS (Apple Silicon)
+          - target: x86_64-apple-darwin
+            os: macos-latest
+            bundles: app,dmg
+            label: macOS (Intel)
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+            bundles: msi
+            label: Windows (x64)
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-22.04
+            bundles: deb,appimage
+            label: Linux (x64)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.99"
+          targets: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            desktop/src-tauri -> desktop/src-tauri/target
+          key: ${{ matrix.target }}
+
+      - name: 装 Linux 依赖
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev \
+            fuse3 patchelf
+
+      - name: 装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 把前端资源复制到位
+        # desktop/src-tauri/build.rs 也会做这件事，但 tauri CLI 先检查
+        # frontendDist 目录是否存在，先复制更稳
+        run: |
+          mkdir -p desktop/ui
+          cp src/ui/app.js src/ui/app.css desktop/ui/
+
+      - name: 打包
+        working-directory: desktop/src-tauri
+        run: |
+          npx --yes @tauri-apps/cli@2 build \
+            --target ${{ matrix.target }} \
+            --bundles ${{ matrix.bundles }}
+
+      - name: 顺带构建命令行版
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: 收集产物
+        shell: bash
+        run: |
+          set -eu
+          BUNDLE="desktop/src-tauri/target/${{ matrix.target }}/release/bundle"
+          mkdir -p dist
+          case "${{ matrix.target }}" in
+            *apple-darwin)
+              ditto -c -k --keepParent "$BUNDLE/macos/AI配置字典.app" \
+                "dist/AI配置字典-${{ matrix.target }}.zip"
+              cp "$BUNDLE"/dmg/*.dmg dist/ 2>/dev/null || true
+              ;;
+            *windows-msvc)
+              cp "$BUNDLE"/msi/*.msi dist/ 2>/dev/null || true
+              ;;
+            *linux-gnu)
+              cp "$BUNDLE"/deb/*.deb dist/ 2>/dev/null || true
+              cp "$BUNDLE"/appimage/*.AppImage dist/ 2>/dev/null || true
+              ;;
+          esac
+          # 命令行版也带上（纯 Rust，无 GUI 依赖）
+          CLI="target/${{ matrix.target }}/release/cfg-explorer"
+          if [ ! -f "$CLI" ] && [ -f "$CLI.exe" ]; then CLI="$CLI.exe"; fi
+          if [ -f "$CLI" ]; then
+            case "$CLI" in
+              *.exe) cp "$CLI" "dist/cfg-explorer-${{ matrix.target }}.exe" ;;
+              *)    cp "$CLI" "dist/cfg-explorer-${{ matrix.target }}" ;;
+            esac
+          fi
+          echo "--- 产物 ---"
+          ls -la dist/
+
+      - name: 上传产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-${{ matrix.target }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+
+  # ── 3. 汇总成 Release ────────────────────────────────
+  release:
+    name: 发布 Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: 列出产物
+        run: ls -laR artifacts/
+      - name: 创建 Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          name: AI CLI 配置字典 ${{ github.event.inputs.tag || github.ref_name }}
+          generate_release_notes: true
+          body: |
+            ## AI CLI 配置字典 ${{ github.event.inputs.tag || github.ref_name }}
+
+            跨平台桌面应用（Rust + Tauri 2）：浏览 Claude Code、Codex CLI、Gemini CLI、
+            OpenCode、Grok Build、OpenClaw、Hermes Agent、Pi、MiniMax Code 的
+            **全部配置项**，查看每个 key 的官方说明与文档链接，并校验 / 编辑本机配置。
+
+            ### 安装包
+
+            | 平台 | 文件 |
+            |---|---|
+            | macOS (Apple Silicon) | `AI配置字典-aarch64-apple-darwin.zip` / `.dmg` |
+            | macOS (Intel) | `AI配置字典-x86_64-apple-darwin.zip` / `.dmg` |
+            | Windows (x64) | `.msi` |
+            | Linux (x64) | `.deb` / `.AppImage` |
+
+            命令行版 `cfg-explorer-*` 也一并附上（纯 Rust，可在无 GUI 环境里跑
+            `scan` / `check` / `edit`）。
+
+            > macOS 首次打开可能需要「右键 → 打开」——未做代码签名。
+          files: |
+            artifacts/*.zip
+            artifacts/*.dmg
+            artifacts/*.msi
+            artifacts/*.exe
+            artifacts/*.deb
+            artifacts/*.AppImage
+            artifacts/cfg-explorer-*

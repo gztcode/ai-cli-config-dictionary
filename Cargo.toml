@@ -1,0 +1,38 @@
+[package]
+name = "cfg-explorer"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "AI CLI 配置字典原型：schema 抓取 → IR → GUI 可消费的中间格式"
+license = "MIT"
+
+[[bin]]
+name = "cfg-explorer"
+path = "src/main.rs"
+
+[lib]
+name = "cfg_explorer"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+toml = "0.8"
+serde_yaml = "0.9"
+ureq = "3"
+sha2 = "0.10"
+regex = "1"
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+dirs = "6"
+
+# 保格式编辑
+# - JSON/JSONC 用自写的 src/jsonc.rs（只有它会给字节偏移，能做到只改用户动的那几个字节）
+# - TOML 用 toml_edit，天然保格式
+# - YAML 行级定点替换
+toml_edit = "0.22"
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true

@@ -1,0 +1,104 @@
+# 持续集成：每次 push / PR 都跑一遍测试与格式检查
+#
+# 只做「保证是好的」的事 —— 打包发版在 release.yml 里，
+# 而且 release.yml 的打包任务依赖这里的测试先通过。
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: 测试 · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+
+      - name: 装 Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.99"
+
+      - name: 缓存 cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            desktop/src-tauri -> desktop/src-tauri/target
+
+      - name: 装 Linux 依赖
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - name: 跑测试
+        run: cargo test --release
+
+      - name: 跑测试（桌面端）
+        run: cargo test --release --manifest-path desktop/src-tauri/Cargo.toml
+
+  fmt:
+    name: 格式检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.99"
+          components: rustfmt
+      - run: cargo fmt --all -- --check
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 去掉国内镜像配置
+        # .cargo/config.toml 把 crates.io 换成了 rsproxy 镜像（本地网络需要），
+        # 但 GitHub runner 直连 crates.io 更快更稳。Cargo.lock 是通用的。
+        run: rm -f .cargo/config.toml
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.99"
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            desktop/src-tauri -> desktop/src-tauri/target
+      - name: 装 Linux 依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+      - run: cargo clippy --release --all-targets -- -D warnings

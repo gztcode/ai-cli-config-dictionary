@@ -1,0 +1,271 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "properties": {
+  "agentStop": {
+   "properties": {
+    "debounceMs": {
+     "default": 500,
+     "type": "integer"
+    },
+    "maxActiveSpanMs": {
+     "default": 1800,
+     "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "cli": {
+   "properties": {
+    "spawn": {
+     "properties": {
+      "enabled": {
+       "default": true,
+       "type": "boolean"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "contextManagement": {
+   "properties": {
+    "cuMaxScreenshotsInContext": {
+     "default": 2,
+     "type": "integer"
+    },
+    "disableSystemReminderModels": {
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "goalWarnings": {
+   "type": "array"
+  },
+  "logLevel": {
+   "default": "info",
+   "type": "string"
+  },
+  "logRetentionDays": {
+   "default": 3,
+   "type": "integer"
+  },
+  "memory": {
+   "properties": {
+    "dailyDigest": {
+     "properties": {
+      "enabled": {
+       "default": true,
+       "type": "boolean"
+      }
+     },
+     "type": "object"
+    },
+    "enabled": {
+     "default": false,
+     "type": "boolean"
+    },
+    "proactive": {
+     "default": true,
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "opencode": {
+   "properties": {
+    "keepAlive": {
+     "properties": {
+      "agents": {
+       "type": "array"
+      },
+      "enabled": {
+       "default": true,
+       "type": "boolean"
+      },
+      "maxLifetimeMs": {
+       "default": 28800000.0,
+       "type": "number"
+      },
+      "maxProcesses": {
+       "default": 5,
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    },
+    "spawnConcurrency": {
+     "default": 3,
+     "type": "integer"
+    },
+    "xdg": {
+     "properties": {
+      "dataIsolation": {
+       "default": true,
+       "type": "boolean"
+      },
+      "startupImport": {
+       "default": "off",
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "permissionMode": {
+   "default": "auto",
+   "type": "string"
+  },
+  "review": {
+   "properties": {
+    "mode": {
+     "default": "subagent",
+     "type": "string"
+    },
+    "modeSource": {
+     "default": "default",
+     "type": "string"
+    },
+    "turnDiffCard": {
+     "default": "concise",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "runawayGuard": {
+   "properties": {
+    "enabled": {
+     "default": false,
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "sessionRotate": {
+   "properties": {
+    "activeSessionLookbackHours": {
+     "default": 12,
+     "type": "integer"
+    },
+    "enabled": {
+     "default": false,
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "sessionTitle": {
+   "properties": {
+    "enabled": {
+     "default": false,
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "skillEvolve": {
+   "properties": {
+    "builtinMrEnabled": {
+     "default": true,
+     "type": "boolean"
+    },
+    "disableModelPrefixes": {
+     "type": "array"
+    },
+    "enabled": {
+     "default": false,
+     "type": "boolean"
+    },
+    "excludeAgents": {
+     "type": "array"
+    },
+    "inSession": {
+     "properties": {
+      "N": {
+       "default": 20,
+       "type": "integer"
+      },
+      "maxPendingPerSession": {
+       "default": 1,
+       "type": "integer"
+      },
+      "minIntervalSeconds": {
+       "default": 30,
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    },
+    "lifecycle": {
+     "properties": {
+      "archiveThresholdDays": {
+       "default": 30,
+       "type": "integer"
+      },
+      "staleThresholdDays": {
+       "default": 15,
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    },
+    "proposal": {
+     "properties": {
+      "eligibleAgents": {
+       "type": "array"
+      },
+      "enabled": {
+       "default": true,
+       "type": "boolean"
+      },
+      "minMessageCount": {
+       "default": 40,
+       "type": "integer"
+      },
+      "skipPassiveSessionEnd": {
+       "default": false,
+       "type": "boolean"
+      }
+     },
+     "type": "object"
+    },
+    "signalCooldownHours": {
+     "default": 24,
+     "type": "integer"
+    },
+    "sourceRepo": {}
+   },
+   "type": "object"
+  },
+  "skipParentDeathGuard": {
+   "default": true,
+   "type": "boolean"
+  },
+  "skipWindowsHardSafetyChecks": {
+   "default": true,
+   "type": "boolean"
+  },
+  "sseErrorPush": {
+   "properties": {
+    "history": {
+     "default": false,
+     "type": "boolean"
+    },
+    "stream": {
+     "default": false,
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "worktreeRefreshBeforeCreate": {
+   "default": false,
+   "type": "boolean"
+  }
+ },
+ "type": "object"
+}
