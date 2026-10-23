@@ -232,10 +232,10 @@ jobs:
 
             | 平台 | 文件 |
             |---|---|
-            | macOS (Apple Silicon) | `AI配置字典-aarch64-apple-darwin.zip` / `.dmg` |
-            | macOS (Intel) | `AI配置字典-x86_64-apple-darwin.zip` / `.dmg` |
-            | Windows (x64) | `.msi` |
-            | Linux (x64) | `.deb` / `.AppImage` |
+            | macOS (Apple Silicon) | `AI-CLI-Config-Dictionary-aarch64-apple-darwin.zip` / `.dmg` |
+            | macOS (Intel) | `AI-CLI-Config-Dictionary-x86_64-apple-darwin.zip` / `.dmg` |
+            | Windows (x64) | `AI-CLI-Config-Dictionary-x86_64-pc-windows-msvc.msi` |
+            | Linux (x64) | `AI-CLI-Config-Dictionary-x86_64-unknown-linux-gnu.deb` / `.AppImage` |
 
             命令行版 `cfg-explorer-*` 也一并附上（纯 Rust，可在无 GUI 环境里跑
             `scan` / `check` / `edit`）。
