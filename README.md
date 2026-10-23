@@ -224,6 +224,13 @@ git tag v0.2.0 && git push origin v0.2.0
 > - Windows 包未签名，SmartScreen 可能提示。
 > - CI 上会删掉 `.cargo/config.toml`（那是给国内网络用的 crates.io 镜像），GitHub runner 直连 crates.io 更快。
 
+### 打包时踩到的坑
+
+1. **中文产品名装不进 Windows Installer。** WiX 默认用代码页 1252（西欧），`AI配置字典` 里的汉字没法表示，`light.exe` 直接报 `LGHT0311`。→ `bundle.windows.wix.language` 设成 `zh-CN`（代码页 936）。
+2. **Windows 的默认 shell 是 PowerShell。** `rm -f`（参数有歧义）、`mkdir -p`、`cp`、反斜杠续行在 PowerShell 里都不成立 —— 跨平台的步骤一律显式写 `shell: bash`。
+3. **Windows 路径塞进 TOML 要转义。** 测试里把 `C:\Users\...` 直接写进 `global_config`，TOML 会把 `\U` 当成「8 位十六进制 unicode 转义」而报 `invalid unicode 8-digit hex code`。→ 写之前把 `\` 换成 `\\`。
+4. **CI 上要把国内镜像关掉。** `.cargo/config.toml` 把 crates.io 换成了 rsproxy 镜像，那是给本地网络用的；GitHub runner 直连更快更稳。→ CI 步骤里先删掉它（`Cargo.lock` 是通用的，不受影响）。
+
 ---
 
 ## 实测数据（本机，2026-10-22）
